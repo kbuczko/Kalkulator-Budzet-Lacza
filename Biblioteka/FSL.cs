@@ -14,13 +14,13 @@ namespace Biblioteka
         public double wartosc { get; set; }
 
 
-        public string Wartosci
+        /*public string Wartosci
         {
             get
             {
-                return $"{odleglosc} {czestotliwosc} {wartosc}";
+                return $"{id} {odleglosc} {czestotliwosc} {wartosc}";
             }
-        }
+        }*/
             
     }
 }

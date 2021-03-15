@@ -29,9 +29,8 @@ namespace Biblioteka
 
         private void WireUpList()
         {
-            listBox1.DataSource = null;
-            listBox1.DataSource = lista;
-            listBox1.DisplayMember = "material";
+            dataGridView1.DataSource = lista;
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,10 +48,6 @@ namespace Biblioteka
             loadMaterialy();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Kalkulator kalk = new Kalkulator();
-            kalk.ShowDialog();
-        }
+     
     }
 }

@@ -14,12 +14,13 @@ namespace Biblioteka
         double moc { get; set; }
         int id_kabla { get; set; }
         int id_zlacza { get; set; }
+        int czy_nad { get; set; }
 
         public string parametry_anteny_opis
         {
             get
             {
-                return $"{rodzaj} {zysk} {moc} {id_kabla} {id_zlacza}";
+                return $"{rodzaj} {zysk} {moc} {id_kabla} {id_zlacza} {czy_nad}";
             }
         }
     }
