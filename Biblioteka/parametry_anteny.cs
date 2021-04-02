@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace Biblioteka
 {
-    class parametry_anteny
+    public class parametry_anteny
     {
-        int id { get; set; }
-        string rodzaj { get; set; }
-        double zysk { get; set; }
-        double moc { get; set; }
-        int id_kabla { get; set; }
-        int id_zlacza { get; set; }
-        int czy_nad { get; set; }
+        public int id { get; set; }
+        public string rodzaj { get; set; }
+        public double zysk { get; set; }
+        public double moc { get; set; }
+        public int id_kabla { get; set; }
+        public int id_zlacza { get; set; }
+        public int czy_nad { get; set; }
 
-        public string parametry_anteny_opis
+        /*public string parametry_anteny_opis
         {
             get
             {
                 return $"{rodzaj} {zysk} {moc} {id_kabla} {id_zlacza} {czy_nad}";
             }
-        }
+        }*/
     }
 }

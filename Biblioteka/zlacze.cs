@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace Biblioteka
 {
-    class zlacze
+    public class zlacze
     {
-        int id { get; set; }
-        string symbol { get; set; }
-        double tlumiennosc { get; set; }
+        public int id { get; set; }
+        public string symbol { get; set; }
+        public double tlumiennosc { get; set; }
 
-        public string zlacze_opis
+        public int id_kab { get; set; }
+
+        /*public string zlacze_opis
         {
             get
             {
                 return $"{symbol} {tlumiennosc}";
             }
-        }
+        }*/
     }
 }

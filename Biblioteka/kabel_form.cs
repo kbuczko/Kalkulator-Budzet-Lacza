@@ -11,11 +11,10 @@ using System.Windows.Forms;
 
 namespace Biblioteka
 {
-    public partial class materialy : Form
+    public partial class kabel_form : Form
     {
-        List<tl_materialow> lista = new List<tl_materialow>();
-       
-        public materialy()
+        List<kabel> lista = new List<kabel>();
+        public kabel_form()
         {
             InitializeComponent();
             loadMaterialy();
@@ -23,45 +22,39 @@ namespace Biblioteka
 
         private void loadMaterialy()
         {
-            lista = SqliteDataAccess.listMaterials();
+            lista = SqliteDataAccess.ListCables();
             WireUpList();
         }
 
         private void WireUpList()
         {
             dataGridView1.DataSource = lista;
-           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tl_materialow mat = new tl_materialow();
-            mat.nazwa = textBox1.Text;
-            mat.wartosc = Convert.ToInt32(textBox2.Text);
-            SqliteDataAccess.saveMaterials(mat);
+            kabel kab = new kabel();
+            kab.id_czest = Convert.ToInt32(textBox1.Text);
+            kab.symbol = textBox2.Text;
+            kab.wartosc= Convert.ToInt32(textBox3.Text);
+            SqliteDataAccess.saveCables(kab);
+
+
             textBox1.Text = "";
             textBox2.Text = "";
+            textBox3.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            loadMaterialy();
-        }
-
-        /// <summary>
-        /// Przycisk do cofania
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            par_anteny par = new par_anteny();
-            par.ShowDialog();
+            zlacze_form zl = new zlacze_form();
+            zl.ShowDialog();
         }
     }
 }

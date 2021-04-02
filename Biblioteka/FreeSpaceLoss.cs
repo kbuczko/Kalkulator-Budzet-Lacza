@@ -29,19 +29,13 @@ namespace Biblioteka
         private void WireUpList()
         {
             dataGridView1.DataSource = lista_FSL;
-
-
-           listBox1.DataSource = null;
-           listBox1.DataSource = lista_FSL;
-           listBox1.DisplayMember = "Wartosci";
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             FSL fsl = new FSL();
-            fsl.odleglosc = Convert.ToDouble(textBox2.Text);
-            fsl.czestotliwosc = Convert.ToInt32(textBox3.Text);
+            fsl.id_odl = Convert.ToDouble(textBox2.Text);
+            fsl.id_czest = Convert.ToInt32(textBox3.Text);
             fsl.wartosc = Convert.ToDouble(textBox4.Text);
             SqliteDataAccess.SaveFsl(fsl);
             textBox2.Text = "";
@@ -72,7 +66,16 @@ namespace Biblioteka
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SqliteDataAccess.QueryResult("Delete from FSL WHERE id=17");
+            if (!this.dataGridView1.Rows[this.rowIndex].IsNewRow)
+            {
+                this.dataGridView1.Rows.RemoveAt(this.rowIndex);
+            }
+            //SqliteDataAccess.QueryResult("Delete from FSL WHERE id= (Select id from FSL Where id = @rowIndex)");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

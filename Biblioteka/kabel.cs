@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Biblioteka
 {
-    class kabel
+    public class kabel
     {
-        int id { get; set; }
-        double czestotliwosc { get; set; }
-        string nazwa { get; set; }
-        double wartosc { get; set; }
+        public int id { get; set; }
+        public double id_czest { get; set; }
+        public string symbol { get; set; }
+        public double wartosc { get; set; }
 
-        public string kabel_opis
+       /* public string kabel_opis
         {
             get
             {
                 return $"{czestotliwosc} {nazwa} {wartosc}";
             }
-        }
+        }*/
     }
 }

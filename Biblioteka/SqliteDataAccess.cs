@@ -40,6 +40,41 @@ namespace ProjektBudzetLacza
                 return output.ToList();
             }
         }
+        public static List<zlacze> ListZlacza()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<zlacze>("select * from zlacze", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public static List<kabel> ListCables()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<kabel>("select * from kabel", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public static List<czestotliwosc> ListCzest()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<czestotliwosc>("select * from czestotliwosc", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public static List<parametry_anteny> ListParameters()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<parametry_anteny>("select * from parametry_anteny", new DynamicParameters());
+                return output.ToList();
+            }
+        }
 
         public static List<tl_materialow> listMaterials()
         {
@@ -50,11 +85,60 @@ namespace ProjektBudzetLacza
             }
         }
 
+        public static List<odleglosc> listOdl()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<odleglosc>("select * from odleglosc", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public static void saveZlacza(zlacze zl)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                cnn.Execute("insert into kabel (symbol, tlumiennosc) values (@symbol, @tlumiennosc)", zl);
+            }
+        }
+
+        public static void saveOdl(odleglosc odl)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                cnn.Execute("insert into odleglosc (wartosc) values (@wartosc)", odl);
+            }
+        }
+
+        public static void saveCzest(czestotliwosc czest)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                cnn.Execute("insert into czestotliwosc (wartosc) values (@wartosc)", czest);
+            }
+        }
+
+        public static void saveCables(kabel kab)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                cnn.Execute("insert into kabel (czestotliwosc, symbol, wartosc) values (@czestotliwosc, @symbol, @wartosc)", kab);
+            }
+        }
+
         public static void saveMaterials(tl_materialow mat)
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
                 cnn.Execute("insert into tl_materialow (nazwa, wartosc) values (@nazwa, @wartosc)", mat);
+            }
+        }
+
+        public static void saveParameters(parametry_anteny par)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                cnn.Execute("insert into parametry_anteny (rodzaj, zysk, moc, id_kabla, id_zlacza, czy_nad) values (@rodzaj, @zysk, @moc, @id_kabla, @id_zlacza, @czy_nad)", par);
             }
         }
 

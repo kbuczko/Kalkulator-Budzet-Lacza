@@ -9,8 +9,8 @@ namespace Biblioteka
     public class FSL
     {
         public int id { get; set; }
-        public double odleglosc { get; set; }
-        public int czestotliwosc { get; set; }
+        public double id_odl { get; set; }
+        public int id_czest { get; set; }
         public double wartosc { get; set; }
 
 
