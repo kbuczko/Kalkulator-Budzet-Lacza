@@ -24,4 +24,12 @@ namespace Biblioteka
             }
         }*/
     }
+    public class parametry_anteny_moc
+    {
+        public double moc { get; set; }
+    }
+    public class parametry_anteny_zysk
+    {
+        public double zysk { get; set; }
+    }
 }

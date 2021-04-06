@@ -40,6 +40,7 @@ namespace ProjektBudzetLacza
                 return output.ToList();
             }
         }
+        
         public static List<zlacze> ListZlacza()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
@@ -153,6 +154,39 @@ namespace ProjektBudzetLacza
         private static string loadConnectionString(string id= "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+        }
+        //kalkulator
+        public static List<FSL2> calc_FSL_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<FSL2>("select wartosc from FSL", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<parametry_anteny_moc> calc_MOC_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<parametry_anteny_moc>("select moc from parametry_anteny", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<parametry_anteny_zysk> calc_ZYSK_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<parametry_anteny_zysk>("select zysk from parametry_anteny", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<Tlumiennosc> calc_TLUMIENOSC_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<Tlumiennosc>("SELECT (kabel.wartosc+zlacze.tlumiennosc) FROM parametry_anteny, kabel, zlacze", new DynamicParameters());
+                return output.ToList();
+            }
         }
     }
 }
