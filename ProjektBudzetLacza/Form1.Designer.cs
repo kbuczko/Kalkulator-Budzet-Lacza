@@ -71,6 +71,8 @@
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Name = "label1";
             // 
             // menuStrip1
@@ -105,6 +107,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ProjektBudzetLacza.Properties.Resources._4882066;
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.InstructioinButton);
             this.Controls.Add(this.CalcButton);

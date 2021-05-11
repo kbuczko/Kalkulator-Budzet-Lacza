@@ -31,6 +31,7 @@ namespace ProjektBudzetLacza
             public Form1()
             {
                 InitializeComponent();
+                label1.BackColor = System.Drawing.Color.Transparent;
                 engToolStripMenuItem.Checked = false;    
                 polToolStripMenuItem.Checked = true;
                 res_man = new ResourceManager("MultiLanguageApp.Resource.Res", typeof(Form1).Assembly);
