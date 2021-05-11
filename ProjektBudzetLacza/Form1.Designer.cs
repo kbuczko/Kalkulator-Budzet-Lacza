@@ -85,8 +85,8 @@
             this.językiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.polToolStripMenuItem,
             this.engToolStripMenuItem});
-            this.językiToolStripMenuItem.Name = "językiToolStripMenuItem";
             resources.ApplyResources(this.językiToolStripMenuItem, "językiToolStripMenuItem");
+            this.językiToolStripMenuItem.Name = "językiToolStripMenuItem";
             // 
             // polToolStripMenuItem
             // 
