@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjektBudzetLacza;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,56 +13,66 @@ namespace Biblioteka
 {
     public partial class home : Form
     {
+
+        List<FSL> lista_FSL = new List<FSL>();
+        List<tl_materialow> lista_mat = new List<tl_materialow>();
+        List<parametry_anteny> lista_ant = new List<parametry_anteny>();
+        List<kabel> lista_kab = new List<kabel>();
+        List<zlacze> lista_zla = new List<zlacze>();
+        List<czestotliwosc> lista_czest = new List<czestotliwosc>();
+        List<odleglosc> lista_odl = new List<odleglosc>();
+
+
         public home()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FreeSpaceLoss fsl = new FreeSpaceLoss();
-            fsl.ShowDialog(); 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            materialy mat = new materialy();
-            mat.ShowDialog();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            par_anteny par = new par_anteny();
-            par.ShowDialog();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            kabel_form kab = new kabel_form();
-            kab.ShowDialog();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            zlacze_form zl = new zlacze_form();
-            zl.ShowDialog();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            czest_form czest = new czest_form();
-            czest.ShowDialog();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            odleglosc_form odl = new odleglosc_form();
-            odl.ShowDialog();
+            lista_mat = SqliteDataAccess.listMaterials();
+            lista_FSL = SqliteDataAccess.load();
+            lista_ant = SqliteDataAccess.ListParameters();
+            lista_kab = SqliteDataAccess.ListCables();
+            lista_zla = SqliteDataAccess.ListZlacza();
+            lista_czest = SqliteDataAccess.ListCzest();
+            lista_odl = SqliteDataAccess.listOdl();
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(comboBox1.SelectedItem.ToString())
+            {
+                case "FSL":
+                    dataGridView1.DataSource = lista_FSL;
+                    break;
+                case "Materiały":
+                    dataGridView1.DataSource = lista_mat;
+                    break;
+                case "Parametry anten":
+                    dataGridView1.DataSource = lista_ant;
+                    break;
+                case "Kable":
+                    dataGridView1.DataSource = lista_kab;
+                    break;
+                case "Złącza":
+                    dataGridView1.DataSource = lista_zla;
+                    break;
+                case "Częstotliwość":
+                    dataGridView1.DataSource = lista_czest;
+                    break;
+                case "Odległość":
+                    dataGridView1.DataSource = lista_odl;
+                    break;
+
+            }
+        }
+           
+            /*else
+            {
+                dataGridView1.DataSource = "";
+            }*/
+            
+        }
     }
-}

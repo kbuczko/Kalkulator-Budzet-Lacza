@@ -40,7 +40,7 @@ namespace ProjektBudzetLacza
                 return output.ToList();
             }
         }
-        
+
         public static List<zlacze> ListZlacza()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
