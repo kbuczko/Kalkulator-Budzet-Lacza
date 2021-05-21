@@ -184,7 +184,7 @@
             this.textBoxFSL.Name = "textBoxFSL";
             this.textBoxFSL.Size = new System.Drawing.Size(100, 20);
             this.textBoxFSL.TabIndex = 12;
-            this.textBoxFSL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(textBoxFSL_KeyPress);
+            this.textBoxFSL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFSL_KeyPress);
             // 
             // dataGridViewMoc
             // 
@@ -209,7 +209,7 @@
             this.textBoxMOC.Name = "textBoxMOC";
             this.textBoxMOC.Size = new System.Drawing.Size(100, 20);
             this.textBoxMOC.TabIndex = 15;
-            this.textBoxMOC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(textBoxMOC_KeyPress);
+            this.textBoxMOC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMOC_KeyPress);
             // 
             // textBoxZN
             // 
@@ -217,7 +217,7 @@
             this.textBoxZN.Name = "textBoxZN";
             this.textBoxZN.Size = new System.Drawing.Size(100, 20);
             this.textBoxZN.TabIndex = 17;
-            this.textBoxZN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(textBoxZN_KeyPress);
+            this.textBoxZN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxZN_KeyPress);
             // 
             // dataGridViewZN
             // 
@@ -242,7 +242,7 @@
             this.textBoxTN.Name = "textBoxTN";
             this.textBoxTN.Size = new System.Drawing.Size(100, 20);
             this.textBoxTN.TabIndex = 19;
-            this.textBoxTN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(textBoxTN_KeyPress);
+            this.textBoxTN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTN_KeyPress);
             // 
             // dataGridViewTN
             // 
@@ -258,7 +258,7 @@
             this.textBoxZO.Name = "textBoxZO";
             this.textBoxZO.Size = new System.Drawing.Size(100, 20);
             this.textBoxZO.TabIndex = 21;
-            this.textBoxZO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(textBoxZO_KeyPress);
+            this.textBoxZO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxZO_KeyPress);
             // 
             // dataGridViewZO
             // 
@@ -283,7 +283,7 @@
             this.textBoxTO.Name = "textBoxTO";
             this.textBoxTO.Size = new System.Drawing.Size(101, 20);
             this.textBoxTO.TabIndex = 23;
-            this.textBoxTO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(textBoxTO_KeyPress);
+            this.textBoxTO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTO_KeyPress);
             // 
             // dataGridViewTO
             // 
@@ -317,6 +317,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Biblioteka.Properties.Resources._4882066;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(967, 534);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.ClearButton);

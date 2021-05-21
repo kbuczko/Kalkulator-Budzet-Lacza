@@ -13,14 +13,13 @@ namespace ProjektBudzetLacza
 {
     public class SqliteDataAccess
     {
-        public static string QueryResult(string query)
+        public static void QueryResult(string query)
         {
             string result = "";
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
                 result = cnn.ExecuteScalar(query).ToString();
             }
-            return result;
         }
 
         public static List<tl_materialow> example()
@@ -123,7 +122,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into kabel (czestotliwosc, symbol, wartosc) values (@czestotliwosc, @symbol, @wartosc)", kab);
+                cnn.Execute("insert into kabel (id_czest, symbol, wartosc) values (@id_czest, @symbol, @wartosc)", kab);
             }
         }
 
