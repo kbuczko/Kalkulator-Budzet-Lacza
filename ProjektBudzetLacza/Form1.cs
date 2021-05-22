@@ -17,7 +17,7 @@ namespace ProjektBudzetLacza
     {
         ResourceManager res_man;
         CultureInfo cul;
-        void switch_language()
+        void switch_language() //nie wiem czemu nie działa
         {
             if (polToolStripMenuItem.Checked == true)    
             {
@@ -39,14 +39,14 @@ namespace ProjektBudzetLacza
         }
         
 
-        private void button3_Click(object sender, EventArgs e)
+        private void DataBaseButton_Click(object sender, EventArgs e)
         {
           
             home home = new home();
             home.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CalcButton_Click(object sender, EventArgs e)
         {
             Kalkulator kalk = new Kalkulator();
             kalk.ShowDialog();
@@ -54,19 +54,24 @@ namespace ProjektBudzetLacza
 
         private void engToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch_language();
             engToolStripMenuItem.Checked = true;
             polToolStripMenuItem.Checked = false;
+            switch_language();
         }
 
         private void polToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch_language();
             engToolStripMenuItem.Checked = false;
             polToolStripMenuItem.Checked = true;
+            switch_language();
         }
 
-        
+        private void QuitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 
       

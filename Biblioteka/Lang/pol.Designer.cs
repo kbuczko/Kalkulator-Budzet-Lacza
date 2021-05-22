@@ -63,18 +63,18 @@ namespace Biblioteka.Lang {
         /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Kalkulator.
         /// </summary>
-        internal static string button1 {
+        internal static string CalcButton {
             get {
-                return ResourceManager.GetString("button1", resourceCulture);
+                return ResourceManager.GetString("CalcButton", resourceCulture);
             }
         }
         
         /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Baza Danych.
         /// </summary>
-        internal static string button3 {
+        internal static string DataBaseButton {
             get {
-                return ResourceManager.GetString("button3", resourceCulture);
+                return ResourceManager.GetString("DataBaseButton", resourceCulture);
             }
         }
     }

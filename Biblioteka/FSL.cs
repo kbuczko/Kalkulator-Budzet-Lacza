@@ -23,4 +23,8 @@ namespace Biblioteka
         }*/
             
     }
+    public class FSL2
+    {
+        public double wartosc { get; set; }
+    }
 }

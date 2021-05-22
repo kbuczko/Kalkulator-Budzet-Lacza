@@ -58,5 +58,10 @@ namespace Biblioteka
             odleglosc_form odl = new odleglosc_form();
             odl.ShowDialog();
         }
+
+        private void QuitButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
