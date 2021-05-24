@@ -27,6 +27,7 @@ namespace Biblioteka
             InitializeComponent();
             loadList();
             textBox2.Hide();
+            textBox4.Hide();
             textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO";
         }
 
@@ -96,6 +97,7 @@ namespace Biblioteka
             double ZN;
             double ZO;
             double FSL;
+            double MAT = 0;
             if (!IsEmptyTextBox(textBoxTN))
             {
                 string[] subs = textBoxTN.Text.Split('+');
@@ -152,8 +154,29 @@ namespace Biblioteka
             {
                 FSL = 0;
             }
-            double BL = MOC + ZN - TN - FSL + ZO - TO;
-            textBox1.Text = BL.ToString();
+            if (checkBox1.Checked)
+            {
+                if (!IsEmptyTextBox(textBox4))
+                {
+                    string[] subs = textBox4.Text.Split('+');
+                    for (int i = 0; i < subs.Length; i++)
+                    {
+                        MAT += Convert.ToDouble(subs[i]);
+                    }
+                }
+                else
+                {
+                    MAT = 0;
+                }
+                double BL = MOC + ZN - TN - FSL + ZO - TO - MAT;
+                textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() + " - " + MAT.ToString() + " = " + BL.ToString();
+            }
+            else
+            {
+                double BL = MOC + ZN - TN - FSL + ZO - TO;
+                textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() +  " = " + BL.ToString();
+            }
+            
 
             //calculator kalk = new calculator();
             // textBox1.Text = kalk.calculate(Convert.ToDouble(SqliteDataAccess.QueryResult("select moc from parametry_anteny where id=1 AND czy_nad=0")), Convert.ToDouble(SqliteDataAccess.QueryResult("select zysk from parametry_anteny where id=1")), Convert.ToDouble(SqliteDataAccess.QueryResult("SELECT (kabel.wartosc+zlacze.tlumiennosc) FROM parametry_anteny, kabel, zlacze WHERE parametry_anteny.id_kabla = kabel.id AND parametry_anteny.id_zlacza = zlacze.id AND parametry_anteny.id=1")), Convert.ToDouble(SqliteDataAccess.QueryResult("select wartosc from fsl where id = 12")), Convert.ToDouble(SqliteDataAccess.QueryResult("select zysk from parametry_anteny where id=1")), Convert.ToDouble(SqliteDataAccess.QueryResult("SELECT (kabel.wartosc+zlacze.tlumiennosc) FROM parametry_anteny, kabel, zlacze WHERE parametry_anteny.id_kabla = kabel.id AND parametry_anteny.id_zlacza = zlacze.id AND parametry_anteny.id=1"))).ToString();
@@ -203,6 +226,18 @@ namespace Biblioteka
                 textBoxTO.Text += " + " + cellValue;
             }
         }
+        private void dataGridViewM_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string cellValue = dataGridViewM.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            if (textBox4.Text.Length == 0)
+            {
+                textBox4.Text = cellValue;
+            }
+            else
+            {
+                textBox4.Text += " + " + cellValue;
+            }
+        }
         private void QuitButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -217,16 +252,19 @@ namespace Biblioteka
             textBoxTO.Clear();
             textBoxZN.Clear();
             textBoxZO.Clear();
+            textBox4.Clear();
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
                 textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO - TP";
+                textBox4.Show();
             }
             else
             {
                 textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO";
+                textBox4.Hide();
             }
         }
         private void button1_Click_1(object sender, EventArgs e)

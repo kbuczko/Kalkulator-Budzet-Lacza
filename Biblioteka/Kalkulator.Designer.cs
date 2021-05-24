@@ -258,6 +258,7 @@
             // 
             this.textBoxTN.Location = new System.Drawing.Point(154, 310);
             this.textBoxTN.Name = "textBoxTN";
+            this.textBoxTN.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxTN.Size = new System.Drawing.Size(100, 20);
             this.textBoxTN.TabIndex = 19;
             this.textBoxTN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTN_KeyPress);
@@ -302,6 +303,7 @@
             // 
             this.textBoxTO.Location = new System.Drawing.Point(408, 310);
             this.textBoxTO.Name = "textBoxTO";
+            this.textBoxTO.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxTO.Size = new System.Drawing.Size(101, 20);
             this.textBoxTO.TabIndex = 23;
             this.textBoxTO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTO_KeyPress);
@@ -348,7 +350,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(214, 460);
+            this.button2.Location = new System.Drawing.Point(31, 461);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(82, 23);
             this.button2.TabIndex = 27;
@@ -358,9 +360,9 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(302, 463);
+            this.textBox2.Location = new System.Drawing.Point(136, 463);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(207, 20);
+            this.textBox2.Size = new System.Drawing.Size(373, 20);
             this.textBox2.TabIndex = 28;
             // 
             // textBox3
@@ -374,6 +376,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(666, 309);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 31;
             // 
@@ -394,6 +397,7 @@
             this.dataGridViewM.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewM.Size = new System.Drawing.Size(226, 89);
             this.dataGridViewM.TabIndex = 32;
+            this.dataGridViewM.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewM_CellDoubleClick);
             // 
             // label9
             // 
