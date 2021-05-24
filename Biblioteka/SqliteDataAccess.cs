@@ -159,7 +159,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<FSL2>("select wartosc from FSL", new DynamicParameters());
+                var output = cnn.Query<FSL2>("select * from FSL", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -167,7 +167,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny_moc>("select moc from parametry_anteny", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny_moc>("select parametry_anteny.rodzaj, parametry_anteny.moc from parametry_anteny", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -175,7 +175,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny_zysk>("select zysk from parametry_anteny", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny_zysk>("select parametry_anteny.rodzaj, parametry_anteny.zysk from parametry_anteny", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -183,7 +183,31 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<Tlumiennosc>("SELECT (kabel.wartosc+zlacze.tlumiennosc) FROM parametry_anteny, kabel, zlacze", new DynamicParameters());
+                var output = cnn.Query<Tlumiennosc>("SELECT kabel.symbol, kabel.wartosc, zlacze.symbol, zlacze.tlumiennosc FROM parametry_anteny, kabel, zlacze", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<tl_materialow2> calc_MATERIALY_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<tl_materialow2>("select tl_materialow.nazwa, tl_materialow.wartosc from tl_materialow", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<czestotliwosc> calc_CZESTOTLIWOSC_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<czestotliwosc>("select * from czestotliwosc", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<odleglosc> calc_ODLEGLOSC_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<odleglosc>("select * from odleglosc", new DynamicParameters());
                 return output.ToList();
             }
         }

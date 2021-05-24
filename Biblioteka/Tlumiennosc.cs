@@ -8,6 +8,7 @@ namespace Biblioteka
 {
     public class Tlumiennosc
     {
+        public string symbol { get; set; }
         public double tlumiennosc { get; set; }
         public double wartosc { get; set; }
     }

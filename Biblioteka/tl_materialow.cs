@@ -21,4 +21,9 @@ namespace Biblioteka
         }*/
 
     }
+    public class tl_materialow2
+    {
+        public string nazwa { get; set; }
+        public double wartosc { get; set; }
+    }
 }

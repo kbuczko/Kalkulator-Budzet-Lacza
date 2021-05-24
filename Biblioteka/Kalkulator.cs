@@ -18,12 +18,16 @@ namespace Biblioteka
         List<parametry_anteny_moc> lista_MOC = new List<parametry_anteny_moc>();
         List<parametry_anteny_zysk> lista_ZYSK = new List<parametry_anteny_zysk>();
         List<Tlumiennosc> lista_TLUM = new List<Tlumiennosc>();
+        List<tl_materialow2> lista_MAT = new List<tl_materialow2>();
+        List<czestotliwosc> lista_CZ = new List<czestotliwosc>();
+        List<odleglosc> lista_ODL = new List<odleglosc>();
 
         public Kalkulator()
         {
             InitializeComponent();
             loadList();
             textBox2.Hide();
+            textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO";
         }
 
         private void loadList()
@@ -32,7 +36,9 @@ namespace Biblioteka
             lista_MOC = SqliteDataAccess.calc_MOC_Load();
             lista_ZYSK = SqliteDataAccess.calc_ZYSK_Load();
             lista_TLUM = SqliteDataAccess.calc_TLUMIENOSC_Load();
-
+            lista_MAT = SqliteDataAccess.calc_MATERIALY_Load();
+            lista_CZ = SqliteDataAccess.calc_CZESTOTLIWOSC_Load();
+            lista_ODL = SqliteDataAccess.calc_ODLEGLOSC_Load();
             WireUpList();
         }
 
@@ -44,6 +50,9 @@ namespace Biblioteka
             dataGridViewZO.DataSource = lista_ZYSK;
             dataGridViewTO.DataSource = lista_TLUM;
             dataGridViewTN.DataSource = lista_TLUM;
+            dataGridViewM.DataSource = lista_MAT;
+            dataGridView1.DataSource = lista_ODL;
+            dataGridView2.DataSource = lista_CZ;
         }
         public bool IsEmptyTextBox(TextBox text)
         {
@@ -81,15 +90,19 @@ namespace Biblioteka
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            double TN;
+            double TN = 0;
             double MOC;
-            double TO;
+            double TO = 0;
             double ZN;
             double ZO;
             double FSL;
             if (!IsEmptyTextBox(textBoxTN))
             {
-                TN = Convert.ToDouble(textBoxTN.Text);
+                string[] subs = textBoxTN.Text.Split('+');
+                for (int i = 0; i < subs.Length; i++)
+                {
+                    TN += Convert.ToDouble(subs[i]);
+                }
             }
             else
             {
@@ -105,7 +118,11 @@ namespace Biblioteka
             }
             if (!IsEmptyTextBox(textBoxTO))
             {
-                TO = Convert.ToDouble(textBoxTO.Text);
+                string[] subs = textBoxTO.Text.Split('+');
+                for (int i = 0; i < subs.Length; i++)
+                {
+                    TO += Convert.ToDouble(subs[i]);
+                }
             }
             else
             {
@@ -161,7 +178,31 @@ namespace Biblioteka
             string cellValue = dataGridViewZO.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             textBoxZO.Text = cellValue;
         }
+        private void dataGridViewTN_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string cellValue = dataGridViewTN.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            if (textBoxTN.Text.Length == 0)
+            {
+                textBoxTN.Text = cellValue;
+            }
+            else
+            {
+                textBoxTN.Text += " + " + cellValue;
+            }
 
+        }
+        private void dataGridViewTO_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string cellValue = dataGridViewTO.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            if (textBoxTO.Text.Length == 0)
+            {
+                textBoxTO.Text = cellValue;
+            }
+            else
+            {
+                textBoxTO.Text += " + " + cellValue;
+            }
+        }
         private void QuitButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -177,7 +218,17 @@ namespace Biblioteka
             textBoxZN.Clear();
             textBoxZO.Clear();
         }
-
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO - TP";
+            }
+            else
+            {
+                textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO";
+            }
+        }
         private void button1_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();

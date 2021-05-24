@@ -25,6 +25,8 @@ namespace Biblioteka
     }
     public class FSL2
     {
+        public double id_odl { get; set; }
+        public int id_czest { get; set; }
         public double wartosc { get; set; }
     }
 }
