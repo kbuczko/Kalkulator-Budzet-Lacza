@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace Biblioteka
         {
             InitializeComponent();
             loadList();
+            textBox2.Hide();
         }
 
         private void loadList()
@@ -174,6 +176,65 @@ namespace Biblioteka
             textBoxTO.Clear();
             textBoxZN.Clear();
             textBoxZO.Clear();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                    using (StreamWriter objWriter = new StreamWriter(saveFileDialog1.FileName))
+                    {
+                        objWriter.Write("FSL: " + textBoxFSL.Text + ", ");
+                        objWriter.Write("Moc: " + textBoxMOC.Text + ", ");
+                        objWriter.Write("Nadajnik: " + textBoxTN.Text + ", ");
+                        objWriter.Write("Odbiornik: " + textBoxTO.Text + ", ");
+                        objWriter.Write("Zlacze- nadajnik: " + textBoxZN.Text + ", ");
+                        objWriter.Write("Zlacze- odbiornik: " + textBoxZO.Text + ", ");
+                        objWriter.Write("\n");
+                        objWriter.Write("Wynik: " + textBox1.Text);
+                    }
+            }
+           /* using (StreamWriter objWriter = new StreamWriter("test1.txt"))
+            {
+                objWriter.Write(textBox1.Text);
+
+                MessageBox.Show("Details have been saved");
+            }*/
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox2.Clear();
+            textBox2.Show();
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "txt files (*.txt)|*.txt",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var line in File.ReadAllLines(openFileDialog1.FileName))
+                {
+                    textBox2.Text += line;
+                }
+                    
+            }
+
         }
     }
 }

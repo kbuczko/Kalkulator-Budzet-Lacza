@@ -36,7 +36,7 @@ namespace Biblioteka
         {
             foreach (var c in this.Controls)
             {
-                if (c is Label && ((Label)c).Text != "Select table")
+                if (c is Label && ((Label)c) != label2)
                 {
                     ((Label)c).Text = "";
                 }

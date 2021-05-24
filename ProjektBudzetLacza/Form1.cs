@@ -58,6 +58,12 @@ namespace ProjektBudzetLacza
             engToolStripMenuItem.Checked = true;
             polToolStripMenuItem.Checked = false;
             switch_language();
+            label1.Text = "Link Budget";
+            DataBaseButton.Text = "Database";
+            CalcButton.Text = "Calculator";
+            InstructioinButton.Text = "Instruction";
+            QuitButton.Text = "Quit";
+            językiToolStripMenuItem.Text = "Languages";
         }
 
         private void polToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,6 +71,12 @@ namespace ProjektBudzetLacza
             engToolStripMenuItem.Checked = false;
             polToolStripMenuItem.Checked = true;
             switch_language();
+            label1.Text = "Budżet Łącza";
+            DataBaseButton.Text = "Baza danych";
+            CalcButton.Text = "Kalkulator";
+            InstructioinButton.Text = "Instrukcja";
+            QuitButton.Text = "Wyjdź";
+            językiToolStripMenuItem.Text = "Języki";
         }
 
         private void QuitButton_Click(object sender, EventArgs e)

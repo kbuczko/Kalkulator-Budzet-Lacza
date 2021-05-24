@@ -53,6 +53,9 @@
             this.dataGridViewTO = new System.Windows.Forms.DataGridView();
             this.ClearButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFSL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZN)).BeginInit();
@@ -313,6 +316,33 @@
             this.QuitButton.UseVisualStyleBackColor = true;
             this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(698, 473);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Zapisz dane";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(242, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(82, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Wczytaj dane";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(340, 19);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(207, 20);
+            this.textBox2.TabIndex = 28;
+            // 
             // Kalkulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,6 +350,9 @@
             this.BackgroundImage = global::Biblioteka.Properties.Resources._4882066;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(967, 534);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.textBoxTO);
@@ -386,5 +419,8 @@
         private System.Windows.Forms.DataGridView dataGridViewTO;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button QuitButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

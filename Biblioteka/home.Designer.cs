@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.QuitButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,9 +86,10 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(14, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 21);
+            this.label2.Size = new System.Drawing.Size(125, 21);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Select table";
+            this.label2.Text = "Wybierz tabelę";
+            this.toolTip1.SetToolTip(this.label2, "Użytkownik może wybrać tabelę z interesującymi informacjami z bazy");
             // 
             // dataGridView1
             // 
@@ -105,6 +108,7 @@
             this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 15;
             this.button1.Text = "Dodaj";
+            this.toolTip1.SetToolTip(this.button1, "Wpisz dane w wyznaczone miejsca, naciśnij przycisk");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -206,6 +210,7 @@
             this.button2.Size = new System.Drawing.Size(75, 33);
             this.button2.TabIndex = 26;
             this.button2.Text = "Usuń";
+            this.toolTip1.SetToolTip(this.button2, "Wybierz jeden z elementów tabeli, a następnie nacaiśnij przycisk");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -260,5 +265,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
