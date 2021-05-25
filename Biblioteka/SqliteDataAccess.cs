@@ -26,7 +26,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<tl_materialow>("select wartosc from tl_materialow where id=1", new DynamicParameters());
+                var output = cnn.Query<tl_materialow>("select wartosc from Material where id=1", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -80,7 +80,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<tl_materialow>("select * from tl_materialow", new DynamicParameters());
+                var output = cnn.Query<tl_materialow>("select * from Material", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -130,7 +130,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into tl_materialow (nazwa, wartosc) values (@nazwa, @wartosc)", mat);
+                cnn.Execute("insert into Material (nazwa, wartosc) values (@nazwa, @wartosc)", mat);
             }
         }
 
@@ -191,7 +191,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<tl_materialow2>("select tl_materialow.nazwa, tl_materialow.wartosc from tl_materialow", new DynamicParameters());
+                var output = cnn.Query<tl_materialow2>("select Material.nazwa, Material.wartosc from Material", new DynamicParameters());
                 return output.ToList();
             }
         }
