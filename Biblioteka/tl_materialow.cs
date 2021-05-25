@@ -12,13 +12,17 @@ namespace Biblioteka
         public string nazwa { get; set; }
         public double wartosc { get; set; }
 
-       /* public string material
-        {
-            get
-            {
-                return $"{id} {nazwa} {wartosc}";
-            }
-        }*/
+        public double grubosc_cm { get; set; }
+
+        public double czestotliwosc_MHz { get; set; }
+
+       /*  public string material
+         {
+             get
+             {
+                 return $"{id} {nazwa} {wartosc}";
+             }
+         }*/
 
     }
 }

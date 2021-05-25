@@ -14,7 +14,6 @@ namespace Biblioteka
         public double moc { get; set; }
         public int id_kabla { get; set; }
         public int id_zlacza { get; set; }
-        public int czy_nad { get; set; }
 
         /*public string parametry_anteny_opis
         {

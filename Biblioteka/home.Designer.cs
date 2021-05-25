@@ -38,6 +38,60 @@
             this.QuitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+<<<<<<< Updated upstream
+=======
+            // QuitButton
+            // 
+            this.QuitButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.QuitButton.Location = new System.Drawing.Point(834, 507);
+            this.QuitButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.QuitButton.Name = "QuitButton";
+            this.QuitButton.Size = new System.Drawing.Size(87, 34);
+            this.QuitButton.TabIndex = 7;
+            this.QuitButton.Text = "Wyjdź";
+            this.QuitButton.UseVisualStyleBackColor = true;
+            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "FSL",
+            "Materiały",
+            "Anteny",
+            "Kable",
+            "Złącza",
+            "Częstotliwość",
+            "Odległość"});
+            this.comboBox1.Location = new System.Drawing.Point(12, 99);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 8;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(14, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 21);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Wybierz tabelę";
+            this.toolTip1.SetToolTip(this.label2, "Użytkownik może wybrać tabelę z interesującymi informacjami z bazy");
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(217, 58);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(610, 445);
+            this.dataGridView1.TabIndex = 14;
+            // 
+>>>>>>> Stashed changes
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(308, 12);
