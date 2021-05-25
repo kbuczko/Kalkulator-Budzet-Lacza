@@ -71,7 +71,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny>("select * from parametry_anteny", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny>("select * from Antena", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -138,7 +138,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into parametry_anteny (rodzaj, zysk, moc, id_kabla, id_zlacza, czy_nad) values (@rodzaj, @zysk, @moc, @id_kabla, @id_zlacza, @czy_nad)", par);
+                cnn.Execute("insert into Antena (rodzaj, zysk, moc, id_kabla, id_zlacza, czy_nad) values (@rodzaj, @zysk, @moc, @id_kabla, @id_zlacza, @czy_nad)", par);
             }
         }
 
@@ -167,7 +167,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny_moc>("select parametry_anteny.rodzaj, parametry_anteny.moc from parametry_anteny", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny_moc>("select Antena.rodzaj, Antena.moc from Antena", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -175,7 +175,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny_zysk>("select parametry_anteny.rodzaj, parametry_anteny.zysk from parametry_anteny", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny_zysk>("select Antena.nazwa, Antena.zysk from Antena", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -183,7 +183,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<Tlumiennosc>("SELECT kabel.symbol, kabel.wartosc, zlacze.symbol, zlacze.tlumiennosc FROM parametry_anteny, kabel, zlacze", new DynamicParameters());
+                var output = cnn.Query<Tlumiennosc>("SELECT kabel.symbol, kabel.wartosc, zlacze.symbol, zlacze.tlumiennosc FROM Antena, kabel, zlacze", new DynamicParameters());
                 return output.ToList();
             }
         }

@@ -173,8 +173,8 @@ namespace Biblioteka
                         id_kabla = Convert.ToInt32(textBox1.Text),
                         id_zlacza = Convert.ToInt32(textBox2.Text),
                         moc = Convert.ToDouble(textBox3.Text),
-                        zysk = Convert.ToDouble(textBox4.Text),
-                        rodzaj = textBox5.Text
+                        zysk_dBi = Convert.ToDouble(textBox4.Text),
+                        nazwa = textBox5.Text
                     };
                     SqliteDataAccess.saveParameters(par);
 
