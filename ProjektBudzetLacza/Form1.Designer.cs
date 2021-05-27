@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.QuitButton = new System.Windows.Forms.Button();
+            this.InstructioinButton = new System.Windows.Forms.Button();
+            this.CalcButton = new System.Windows.Forms.Button();
+            this.DataBaseButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.językiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.polToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,81 +41,81 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button3
+            // QuitButton
             // 
-            this.button3.Location = new System.Drawing.Point(12, 63);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Baza danych";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.QuitButton, "QuitButton");
+            this.QuitButton.Name = "QuitButton";
+            this.QuitButton.UseVisualStyleBackColor = true;
+            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
-            // button1
+            // InstructioinButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 171);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Kalkulator";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.InstructioinButton, "InstructioinButton");
+            this.InstructioinButton.Name = "InstructioinButton";
+            this.InstructioinButton.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // CalcButton
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "POL",
-            "ENG"});
-            this.comboBox1.Location = new System.Drawing.Point(667, 75);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 9;
+            resources.ApplyResources(this.CalcButton, "CalcButton");
+            this.CalcButton.Name = "CalcButton";
+            this.CalcButton.UseVisualStyleBackColor = true;
+            this.CalcButton.Click += new System.EventHandler(this.CalcButton_Click);
+            // 
+            // DataBaseButton
+            // 
+            resources.ApplyResources(this.DataBaseButton, "DataBaseButton");
+            this.DataBaseButton.Name = "DataBaseButton";
+            this.DataBaseButton.UseVisualStyleBackColor = true;
+            this.DataBaseButton.Click += new System.EventHandler(this.DataBaseButton_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Name = "label1";
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.językiToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 10;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // językiToolStripMenuItem
             // 
             this.językiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.polToolStripMenuItem,
             this.engToolStripMenuItem});
+            resources.ApplyResources(this.językiToolStripMenuItem, "językiToolStripMenuItem");
             this.językiToolStripMenuItem.Name = "językiToolStripMenuItem";
-            this.językiToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.językiToolStripMenuItem.Text = "Języki";
             // 
             // polToolStripMenuItem
             // 
             this.polToolStripMenuItem.Name = "polToolStripMenuItem";
-            this.polToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.polToolStripMenuItem.Text = "Pol";
+            resources.ApplyResources(this.polToolStripMenuItem, "polToolStripMenuItem");
             this.polToolStripMenuItem.Click += new System.EventHandler(this.polToolStripMenuItem_Click);
             // 
             // engToolStripMenuItem
             // 
+            this.engToolStripMenuItem.CheckOnClick = true;
             this.engToolStripMenuItem.Name = "engToolStripMenuItem";
-            this.engToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.engToolStripMenuItem.Text = "Eng";
+            resources.ApplyResources(this.engToolStripMenuItem, "engToolStripMenuItem");
             this.engToolStripMenuItem.Click += new System.EventHandler(this.engToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
+            this.BackgroundImage = global::ProjektBudzetLacza.Properties.Resources._4882066;
+            this.Controls.Add(this.QuitButton);
+            this.Controls.Add(this.InstructioinButton);
+            this.Controls.Add(this.CalcButton);
+            this.Controls.Add(this.DataBaseButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Main";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -121,9 +124,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+
+        private System.Windows.Forms.Button QuitButton;
+        private System.Windows.Forms.Button InstructioinButton;
+        private System.Windows.Forms.Button CalcButton;
+        private System.Windows.Forms.Button DataBaseButton;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem językiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem polToolStripMenuItem;

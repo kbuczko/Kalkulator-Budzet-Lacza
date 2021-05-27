@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Biblioteka.Lang {
+namespace Biblioteka.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Biblioteka.Lang {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class pol {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal pol() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Biblioteka.Lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Biblioteka.Lang.pol", typeof(pol).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Biblioteka.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,12 @@ namespace Biblioteka.Lang {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Kalkulator.
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static string CalcButton {
+        internal static System.Drawing.Bitmap _4882066 {
             get {
-                return ResourceManager.GetString("CalcButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Baza Danych.
-        /// </summary>
-        internal static string DataBaseButton {
-            get {
-                return ResourceManager.GetString("DataBaseButton", resourceCulture);
+                object obj = ResourceManager.GetObject("4882066", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -10,7 +10,7 @@ namespace Biblioteka
     {
         public int id { get; set; }
         public string symbol { get; set; }
-        public double tlumiennosc { get; set; }
+        public double tlumiennosc_db { get; set; }
 
         public int id_kab { get; set; }
 

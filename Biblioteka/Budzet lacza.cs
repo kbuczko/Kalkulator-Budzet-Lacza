@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Biblioteka
 {
-    public class czestotliwosc
+    public class Budzet_lacza
     {
         public int id { get; set; }
+       
+        public double fsl_db { get; set; }
 
-        public int wartosc { get; set; }
+        public double odleglosc_km { get; set; }
+
+        public int czestotliwosc_MHz { get; set; }
+
     }
 }

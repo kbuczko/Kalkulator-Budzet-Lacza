@@ -17,7 +17,7 @@ namespace ProjektBudzetLacza
     {
         ResourceManager res_man;
         CultureInfo cul;
-        void switch_language()
+        void switch_language() //nie wiem czemu nie działa
         {
             if (polToolStripMenuItem.Checked == true)    
             {
@@ -31,6 +31,7 @@ namespace ProjektBudzetLacza
             public Form1()
             {
                 InitializeComponent();
+                label1.BackColor = System.Drawing.Color.Transparent;
                 engToolStripMenuItem.Checked = false;    
                 polToolStripMenuItem.Checked = true;
                 res_man = new ResourceManager("MultiLanguageApp.Resource.Res", typeof(Form1).Assembly);
@@ -39,14 +40,14 @@ namespace ProjektBudzetLacza
         }
         
 
-        private void button3_Click(object sender, EventArgs e)
+        private void DataBaseButton_Click(object sender, EventArgs e)
         {
           
             home home = new home();
             home.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CalcButton_Click(object sender, EventArgs e)
         {
             Kalkulator kalk = new Kalkulator();
             kalk.ShowDialog();
@@ -54,19 +55,36 @@ namespace ProjektBudzetLacza
 
         private void engToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch_language();
             engToolStripMenuItem.Checked = true;
             polToolStripMenuItem.Checked = false;
+            switch_language();
+            label1.Text = "Link Budget";
+            DataBaseButton.Text = "Database";
+            CalcButton.Text = "Calculator";
+            InstructioinButton.Text = "Instruction";
+            QuitButton.Text = "Quit";
+            językiToolStripMenuItem.Text = "Languages";
         }
 
         private void polToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            switch_language();
             engToolStripMenuItem.Checked = false;
             polToolStripMenuItem.Checked = true;
+            switch_language();
+            label1.Text = "Budżet Łącza";
+            DataBaseButton.Text = "Baza danych";
+            CalcButton.Text = "Kalkulator";
+            InstructioinButton.Text = "Instrukcja";
+            QuitButton.Text = "Wyjdź";
+            językiToolStripMenuItem.Text = "Języki";
         }
 
-        
+        private void QuitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 
       
