@@ -10,7 +10,7 @@ namespace Biblioteka
     {
         public int id { get; set; }
         public string nazwa { get; set; }
-        public double wartosc { get; set; }
+        public double tlumiennosc { get; set; }
 
         public double grubosc_cm { get; set; }
 
@@ -29,5 +29,9 @@ namespace Biblioteka
     {
         public string nazwa { get; set; }
         public double wartosc { get; set; }
+
+        public double grubosc_cm { get; set; }
+
+        public int czestotliwosc_MHz { get; set; }
     }
 }

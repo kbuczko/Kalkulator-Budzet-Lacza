@@ -29,7 +29,7 @@ namespace Biblioteka
     }
     public class parametry_anteny_zysk
     {
-        public string rodzaj { get; set; }
-        public double zysk { get; set; }
+        public string nazwa { get; set; }
+        public double zysk_dBi { get; set; }
     }
 }

@@ -131,10 +131,19 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny_moc>("select Antena.nazwa, Antena.moc from Antena", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny_moc>("select Antena.nazwa from Antena", new DynamicParameters());
                 return output.ToList();
             }
         }
+        public static List<Budzet_lacza> calc_FSL_Load()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<Budzet_lacza>("select fsl_db FROM 'Budzet lacza'", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
         public static List<parametry_anteny_zysk> calc_ZYSK_Load()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))

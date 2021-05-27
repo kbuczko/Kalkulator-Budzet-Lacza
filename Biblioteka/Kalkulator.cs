@@ -14,7 +14,7 @@ namespace Biblioteka
 {
     public partial class Kalkulator : Form
     {
-       
+        List<Budzet_lacza> lista_FSL = new List<Budzet_lacza>();
         List<parametry_anteny_moc> lista_MOC = new List<parametry_anteny_moc>();
         List<parametry_anteny_zysk> lista_ZYSK = new List<parametry_anteny_zysk>();
         List<tl_materialow2> lista_MAT = new List<tl_materialow2>();
@@ -34,6 +34,7 @@ namespace Biblioteka
             lista_MOC = SqliteDataAccess.calc_MOC_Load();
             lista_ZYSK = SqliteDataAccess.calc_ZYSK_Load();
             lista_MAT = SqliteDataAccess.calc_MATERIALY_Load();
+            lista_FSL = SqliteDataAccess.calc_FSL_Load();
 
             WireUpList();
         }

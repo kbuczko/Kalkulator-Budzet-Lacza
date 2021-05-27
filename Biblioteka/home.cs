@@ -145,7 +145,7 @@ namespace Biblioteka
                     tl_materialow mat = new tl_materialow
                     {
                         nazwa = textBox1.Text,
-                        wartosc = Convert.ToDouble(textBox2.Text)
+                        tlumiennosc = Convert.ToDouble(textBox2.Text)
                     };
                     SqliteDataAccess.saveMaterials(mat);
 
