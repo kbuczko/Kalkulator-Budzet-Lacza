@@ -65,13 +65,12 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "FSL",
+            "Budżet łącza",
             "Materiały",
-            "Parametry anten",
+            "Anteny",
+            "Nadajnik",
             "Kable",
-            "Złącza",
-            "Częstotliwość",
-            "Odległość"});
+            "Złącza"});
             this.comboBox1.Location = new System.Drawing.Point(12, 99);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);

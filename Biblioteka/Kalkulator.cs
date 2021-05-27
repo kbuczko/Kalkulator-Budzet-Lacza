@@ -14,13 +14,10 @@ namespace Biblioteka
 {
     public partial class Kalkulator : Form
     {
-        List<FSL2> lista_FSL = new List<FSL2>();
+       
         List<parametry_anteny_moc> lista_MOC = new List<parametry_anteny_moc>();
         List<parametry_anteny_zysk> lista_ZYSK = new List<parametry_anteny_zysk>();
-        List<Tlumiennosc> lista_TLUM = new List<Tlumiennosc>();
         List<tl_materialow2> lista_MAT = new List<tl_materialow2>();
-        List<czestotliwosc> lista_CZ = new List<czestotliwosc>();
-        List<odleglosc> lista_ODL = new List<odleglosc>();
 
         public Kalkulator()
         {
@@ -33,27 +30,20 @@ namespace Biblioteka
 
         private void loadList()
         {
-            lista_FSL = SqliteDataAccess.calc_FSL_Load();
+           
             lista_MOC = SqliteDataAccess.calc_MOC_Load();
             lista_ZYSK = SqliteDataAccess.calc_ZYSK_Load();
-            lista_TLUM = SqliteDataAccess.calc_TLUMIENOSC_Load();
             lista_MAT = SqliteDataAccess.calc_MATERIALY_Load();
-            lista_CZ = SqliteDataAccess.calc_CZESTOTLIWOSC_Load();
-            lista_ODL = SqliteDataAccess.calc_ODLEGLOSC_Load();
+
             WireUpList();
         }
 
         private void WireUpList()
         {
-            dataGridViewFSL.DataSource = lista_FSL;
             dataGridViewMoc.DataSource = lista_MOC;
             dataGridViewZN.DataSource = lista_ZYSK;
             dataGridViewZO.DataSource = lista_ZYSK;
-            dataGridViewTO.DataSource = lista_TLUM;
-            dataGridViewTN.DataSource = lista_TLUM;
             dataGridViewM.DataSource = lista_MAT;
-            dataGridView1.DataSource = lista_ODL;
-            dataGridView2.DataSource = lista_CZ;
         }
         public bool IsEmptyTextBox(TextBox text)
         {

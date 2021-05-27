@@ -31,11 +31,11 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static List<FSL> load()
+        public static List<Nadajnik> ListNadajnik()
         {
-            using (IDbConnection cnn= new SQLiteConnection(loadConnectionString()))
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<FSL>("select * from FSL", new DynamicParameters());
+                var output = cnn.Query<Nadajnik>("SELECT Nadajnik.moc, Nadajnik.dl_kabla, Nadajnik.nazwa_kabla,  Nadajnik.nazwa_zlacza,Antena.nazwa AS nazwa_anteny FROM Nadajnik, Antena WHERE Antena.id = Nadajnik.id_anteny", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -49,6 +49,15 @@ namespace ProjektBudzetLacza
             }
         }
 
+        public static List<Budzet_lacza> ListBudzet()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<Budzet_lacza>("select * from 'Budzet lacza'", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
         public static List<kabel> ListCables()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
@@ -58,14 +67,7 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static List<czestotliwosc> ListCzest()
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output = cnn.Query<czestotliwosc>("select * from czestotliwosc", new DynamicParameters());
-                return output.ToList();
-            }
-        }
+       
 
         public static List<parametry_anteny> ListParameters()
         {
@@ -85,14 +87,6 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static List<odleglosc> listOdl()
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output = cnn.Query<odleglosc>("select * from odleglosc", new DynamicParameters());
-                return output.ToList();
-            }
-        }
 
         public static void saveZlacza(zlacze zl)
         {
@@ -102,21 +96,7 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static void saveOdl(odleglosc odl)
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                cnn.Execute("insert into odleglosc (wartosc) values (@wartosc)", odl);
-            }
-        }
-
-        public static void saveCzest(czestotliwosc czest)
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                cnn.Execute("insert into czestotliwosc (wartosc) values (@wartosc)", czest);
-            }
-        }
+        
 
         public static void saveCables(kabel kab)
         {
@@ -142,32 +122,16 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static void SaveFsl(FSL fsl)
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                cnn.Execute("insert into FSL (odleglosc, czestotliwosc, wartosc) values (@odleglosc, @czestotliwosc, @wartosc)", fsl);
-
-            }
-        }
         private static string loadConnectionString(string id= "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
         //kalkulator
-        public static List<FSL2> calc_FSL_Load()
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output = cnn.Query<FSL2>("select * from FSL", new DynamicParameters());
-                return output.ToList();
-            }
-        }
         public static List<parametry_anteny_moc> calc_MOC_Load()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny_moc>("select Antena.rodzaj, Antena.moc from Antena", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny_moc>("select Antena.nazwa, Antena.moc from Antena", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -175,41 +139,19 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny_zysk>("select Antena.nazwa, Antena.zysk from Antena", new DynamicParameters());
+                var output = cnn.Query<parametry_anteny_zysk>("select Antena.nazwa, Antena.zysk_dBi from Antena", new DynamicParameters());
                 return output.ToList();
             }
         }
-        public static List<Tlumiennosc> calc_TLUMIENOSC_Load()
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output = cnn.Query<Tlumiennosc>("SELECT kabel.symbol, kabel.wartosc, zlacze.symbol, zlacze.tlumiennosc FROM Antena, kabel, zlacze", new DynamicParameters());
-                return output.ToList();
-            }
-        }
+       
         public static List<tl_materialow2> calc_MATERIALY_Load()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<tl_materialow2>("select Material.nazwa, Material.wartosc from Material", new DynamicParameters());
+                var output = cnn.Query<tl_materialow2>("select Material.nazwa, Material.wartosc, Material.grubosc_cm, Material.czestotliwosc_MHz from Material", new DynamicParameters());
                 return output.ToList();
             }
         }
-        public static List<czestotliwosc> calc_CZESTOTLIWOSC_Load()
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output = cnn.Query<czestotliwosc>("select * from czestotliwosc", new DynamicParameters());
-                return output.ToList();
-            }
-        }
-        public static List<odleglosc> calc_ODLEGLOSC_Load()
-        {
-            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output = cnn.Query<odleglosc>("select * from odleglosc", new DynamicParameters());
-                return output.ToList();
-            }
-        }
+        
     }
 }

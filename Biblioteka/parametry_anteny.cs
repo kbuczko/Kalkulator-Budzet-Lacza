@@ -11,9 +11,6 @@ namespace Biblioteka
         public int id { get; set; }
         public string nazwa { get; set; }
         public double zysk_dBi { get; set; }
-        public double moc { get; set; }
-        public int id_kabla { get; set; }
-        public int id_zlacza { get; set; }
 
         public double czestotliwosc_MHz { get; set; }
 

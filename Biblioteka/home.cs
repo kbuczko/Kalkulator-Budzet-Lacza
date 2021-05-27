@@ -13,14 +13,13 @@ namespace Biblioteka
 {
     public partial class home : Form
     {
-        List<FSL> lista_FSL = new List<FSL>();
         List<tl_materialow> lista_mat = new List<tl_materialow>();
         List<parametry_anteny> lista_ant = new List<parametry_anteny>();
         List<kabel> lista_kab = new List<kabel>();
         List<zlacze> lista_zla = new List<zlacze>();
-        List<czestotliwosc> lista_czest = new List<czestotliwosc>();
-        List<odleglosc> lista_odl = new List<odleglosc>();
-        
+        List<Budzet_lacza> lista_bud = new List<Budzet_lacza>();
+        List<Nadajnik> lista_nad = new List<Nadajnik>();
+
         private void clearTextBoxes()
         {
             foreach (var c in this.Controls)
@@ -46,14 +45,14 @@ namespace Biblioteka
         public home()
         {
             InitializeComponent();
+            lista_bud = SqliteDataAccess.ListBudzet();
             lista_mat = SqliteDataAccess.listMaterials();
-            lista_FSL = SqliteDataAccess.load();
             lista_ant = SqliteDataAccess.ListParameters();
             lista_kab = SqliteDataAccess.ListCables();
             lista_zla = SqliteDataAccess.ListZlacza();
-            lista_czest = SqliteDataAccess.ListCzest();
-            lista_odl = SqliteDataAccess.listOdl();
-            dataGridView1.DataSource = lista_FSL;
+            lista_nad = SqliteDataAccess.ListNadajnik();
+
+            dataGridView1.DataSource = lista_bud;
             clearTextBoxes();
         }
 
@@ -66,16 +65,29 @@ namespace Biblioteka
         {
             switch(comboBox1.SelectedItem.ToString())
             {
-                case "FSL":
-                    dataGridView1.DataSource = lista_FSL;
+                case "Nadajnik":
+                    dataGridView1.DataSource = lista_nad;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    label1.Text = "Odległość";
-                    label3.Text = "Częstotliwość";
-                    label4.Text = "Wartość";
+                    textBox4.Show();
+                    label1.Text = "Moc";
+                    label3.Text = "Długość kabla";
+                    label4.Text = "Nazwa kabla";
+                    label5.Text = "Nazwa złącza";
+                    break;
+                case "Budżet łącza":
+                    dataGridView1.DataSource = lista_bud;
+                    clearTextBoxes();
+                    clearLabels();
+                    textBox1.Show();
+                    textBox2.Show();
+                    textBox3.Show();
+                    label1.Text = "FSL";
+                    label3.Text = "Odległosć";
+                    label4.Text = "Częstotliwość";
                     break;
                 case "Materiały":
                     dataGridView1.DataSource = lista_mat;
@@ -86,7 +98,7 @@ namespace Biblioteka
                     label1.Text = "Nazwa";
                     label3.Text = "Wartość";
                     break;
-                case "Parametry anten":
+                case "Anteny":
                     dataGridView1.DataSource = lista_ant;
                     clearTextBoxes();
                     clearLabels();
@@ -121,20 +133,6 @@ namespace Biblioteka
                     label1.Text = "Symbol";
                     label3.Text = "Tłumienność";
                     break;
-                case "Częstotliwość":
-                    dataGridView1.DataSource = lista_czest;
-                    clearTextBoxes();
-                    clearLabels();
-                    textBox1.Show();
-                    label1.Text = "Wartość";
-                    break;
-                case "Odległość":
-                    dataGridView1.DataSource = lista_odl;
-                    clearTextBoxes();
-                    clearLabels();
-                    textBox1.Show();
-                    label1.Text = "Wartość";
-                    break;
 
             }
         }
@@ -143,19 +141,6 @@ namespace Biblioteka
         {
             switch (comboBox1.SelectedItem.ToString())
             {
-                case "FSL":
-                    FSL fsl = new FSL
-                    {
-                        id_odl = Convert.ToDouble(textBox2.Text),
-                        id_czest = Convert.ToInt32(textBox3.Text),
-                        wartosc = Convert.ToDouble(textBox4.Text)
-                    };
-                    SqliteDataAccess.SaveFsl(fsl);
-
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox4.Text = "";
-                    break;
                 case "Materiały":
                     tl_materialow mat = new tl_materialow
                     {
@@ -167,12 +152,10 @@ namespace Biblioteka
                     textBox1.Text = "";
                     textBox2.Text = "";
                     break;
-                case "Parametry anten":
+                case "Anteny":
                     parametry_anteny par = new parametry_anteny
                     {
-                        id_kabla = Convert.ToInt32(textBox1.Text),
-                        id_zlacza = Convert.ToInt32(textBox2.Text),
-                        moc = Convert.ToDouble(textBox3.Text),
+                        
                         zysk_dBi = Convert.ToDouble(textBox4.Text),
                         nazwa = textBox5.Text
                     };
@@ -187,9 +170,9 @@ namespace Biblioteka
                 case "Kable":
                     kabel kab = new kabel
                     {
-                        id_czest = Convert.ToInt32(textBox1.Text),
+                        czestotliwosc_MHz = Convert.ToInt32(textBox1.Text),
                         symbol = textBox2.Text,
-                        wartosc = Convert.ToInt32(textBox3.Text)
+                        tlumiennosc_db1m = Convert.ToInt32(textBox3.Text)
                     };
                     SqliteDataAccess.saveCables(kab);
 
@@ -202,29 +185,11 @@ namespace Biblioteka
                     zlacze zl = new zlacze
                     {
                         symbol = textBox1.Text,
-                        tlumiennosc = Convert.ToDouble(textBox2.Text)
+                        tlumiennosc_db = Convert.ToDouble(textBox2.Text)
                     };
                     SqliteDataAccess.saveZlacza(zl);
 
                     textBox1.Text = "";
-                    textBox2.Text = "";
-                    break;
-                case "Częstotliwość":
-                    czestotliwosc czest = new czestotliwosc
-                    {
-                        wartosc = Convert.ToInt32(textBox2.Text)
-                    };
-                    SqliteDataAccess.saveCzest(czest);
-
-                    textBox2.Text = "";
-                    break;
-                case "Odległość":
-                    odleglosc odl = new odleglosc
-                    {
-                        wartosc = Convert.ToInt32(textBox2.Text)
-                    };
-                    SqliteDataAccess.saveOdl(odl);
-
                     textBox2.Text = "";
                     break;
 
