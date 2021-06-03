@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +20,19 @@ namespace Biblioteka
         List<parametry_anteny_moc> lista_MOC = new List<parametry_anteny_moc>();
         List<parametry_anteny_zysk> lista_ZYSK = new List<parametry_anteny_zysk>();
         List<tl_materialow2> lista_MAT = new List<tl_materialow2>();
-
+        ResourceManager res_man;
+        CultureInfo cul;
+        void switch_language() //nie wiem czemu nie działa
+        {
+            if (polToolStripMenuItem.Checked == true)
+            {
+                cul = CultureInfo.CreateSpecificCulture("pl-PL");
+            }
+            else
+            {
+                cul = CultureInfo.CreateSpecificCulture("en-EN");
+            }
+        }
         public Kalkulator()
         {
             InitializeComponent();
@@ -26,16 +40,15 @@ namespace Biblioteka
             //WzorBox.Hide();
             textBox4.Hide();
             WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
+            engToolStripMenuItem.Checked = false;
+            polToolStripMenuItem.Checked = true;
+            res_man = new ResourceManager("MultiLanguageApp.Resource.Res", typeof(Kalkulator).Assembly);
+            switch_language();
         }
 
         private void loadList()
         {
            
-           // lista_MOC = SqliteDataAccess.calc_MOC_Load();
-            //lista_ZYSK = SqliteDataAccess.calc_ZYSK_Load();
-           // lista_MAT = SqliteDataAccess.calc_MATERIALY_Load();
-           // lista_FSL = SqliteDataAccess.calc_FSL_Load();
-
             WireUpList();
         }
 
@@ -158,13 +171,11 @@ namespace Biblioteka
                 }
                 double BL = MOC + ZN - TN - FSL + ZO - TO - MAT;
                 textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() + " - " + MAT.ToString() + " = " + BL.ToString();
-                AnswerBox.Text = BL.ToString();
             }
             else
             {
                 double BL = MOC + ZN - TN - FSL + ZO - TO;
                 textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() +  " = " + BL.ToString();
-                AnswerBox.Text = BL.ToString();
             }
             
         }
@@ -190,11 +201,13 @@ namespace Biblioteka
             {
                 WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA - TŁUMIENNOŚĆ PRZESZKÓD";
                 textBox4.Show();
+                label9.Show();
             }
             else
             {
                 WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
                 textBox4.Hide();
+                label9.Hide();
             }
         }
         private void button1_Click_1(object sender, EventArgs e)

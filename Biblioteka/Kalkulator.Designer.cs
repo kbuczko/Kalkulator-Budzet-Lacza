@@ -50,7 +50,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.WzorBox = new System.Windows.Forms.TextBox();
-            this.AnswerBox = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -81,13 +80,18 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.językToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.polToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.engToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CountButton
             // 
-            this.CountButton.Location = new System.Drawing.Point(865, 351);
+            this.CountButton.Location = new System.Drawing.Point(867, 432);
             this.CountButton.Name = "CountButton";
             this.CountButton.Size = new System.Drawing.Size(120, 58);
             this.CountButton.TabIndex = 0;
@@ -98,45 +102,45 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(128, 52);
+            this.textBox1.Location = new System.Drawing.Point(130, 133);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1084, 58);
+            this.textBox1.Size = new System.Drawing.Size(1109, 58);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(625, 145);
+            this.label1.Location = new System.Drawing.Point(627, 226);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Moc Nadajnika";
+            this.label1.Text = "Moc nadajnika";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(625, 177);
+            this.label2.Location = new System.Drawing.Point(627, 258);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(79, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Zysk Nadajnika";
+            this.label2.Text = "Zysk nadajnika";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(624, 206);
+            this.label3.Location = new System.Drawing.Point(626, 287);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 13);
+            this.label3.Size = new System.Drawing.Size(118, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Tłumienność Nadajnika";
+            this.label3.Text = "Tłumienność nadajnika";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(625, 239);
+            this.label4.Location = new System.Drawing.Point(627, 320);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 5;
@@ -145,20 +149,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(625, 263);
+            this.label5.Location = new System.Drawing.Point(627, 344);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 13);
+            this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Zysk Odbiornika";
+            this.label5.Text = "Zysk odbiornika";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(622, 290);
+            this.label6.Location = new System.Drawing.Point(624, 371);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(123, 13);
+            this.label6.Size = new System.Drawing.Size(121, 13);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Tłumienność Odbiornika";
+            this.label6.Text = "Tłumienność odbiornika";
             // 
             // label7
             // 
@@ -182,15 +186,15 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 75);
+            this.label8.Location = new System.Drawing.Point(20, 156);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 13);
+            this.label8.Size = new System.Drawing.Size(70, 13);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Budżet Łącza";
+            this.label8.Text = "Budżet łącza";
             // 
             // textBoxFSL
             // 
-            this.textBoxFSL.Location = new System.Drawing.Point(750, 232);
+            this.textBoxFSL.Location = new System.Drawing.Point(752, 313);
             this.textBoxFSL.Name = "textBoxFSL";
             this.textBoxFSL.Size = new System.Drawing.Size(100, 20);
             this.textBoxFSL.TabIndex = 12;
@@ -198,7 +202,7 @@
             // 
             // textBoxMOC
             // 
-            this.textBoxMOC.Location = new System.Drawing.Point(749, 142);
+            this.textBoxMOC.Location = new System.Drawing.Point(751, 223);
             this.textBoxMOC.Name = "textBoxMOC";
             this.textBoxMOC.Size = new System.Drawing.Size(100, 20);
             this.textBoxMOC.TabIndex = 15;
@@ -206,7 +210,7 @@
             // 
             // textBoxZN
             // 
-            this.textBoxZN.Location = new System.Drawing.Point(750, 170);
+            this.textBoxZN.Location = new System.Drawing.Point(752, 251);
             this.textBoxZN.Name = "textBoxZN";
             this.textBoxZN.Size = new System.Drawing.Size(100, 20);
             this.textBoxZN.TabIndex = 17;
@@ -214,7 +218,7 @@
             // 
             // textBoxTN
             // 
-            this.textBoxTN.Location = new System.Drawing.Point(750, 203);
+            this.textBoxTN.Location = new System.Drawing.Point(752, 284);
             this.textBoxTN.Name = "textBoxTN";
             this.textBoxTN.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxTN.Size = new System.Drawing.Size(100, 20);
@@ -223,7 +227,7 @@
             // 
             // textBoxZO
             // 
-            this.textBoxZO.Location = new System.Drawing.Point(750, 258);
+            this.textBoxZO.Location = new System.Drawing.Point(752, 339);
             this.textBoxZO.Name = "textBoxZO";
             this.textBoxZO.Size = new System.Drawing.Size(100, 20);
             this.textBoxZO.TabIndex = 21;
@@ -231,7 +235,7 @@
             // 
             // textBoxTO
             // 
-            this.textBoxTO.Location = new System.Drawing.Point(750, 289);
+            this.textBoxTO.Location = new System.Drawing.Point(752, 370);
             this.textBoxTO.Name = "textBoxTO";
             this.textBoxTO.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxTO.Size = new System.Drawing.Size(101, 20);
@@ -240,7 +244,7 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(991, 351);
+            this.ClearButton.Location = new System.Drawing.Point(993, 432);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(120, 58);
             this.ClearButton.TabIndex = 24;
@@ -250,7 +254,7 @@
             // 
             // QuitButton
             // 
-            this.QuitButton.Location = new System.Drawing.Point(1117, 351);
+            this.QuitButton.Location = new System.Drawing.Point(1119, 432);
             this.QuitButton.Name = "QuitButton";
             this.QuitButton.Size = new System.Drawing.Size(120, 58);
             this.QuitButton.TabIndex = 25;
@@ -260,7 +264,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(607, 351);
+            this.button1.Location = new System.Drawing.Point(609, 432);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 58);
             this.button1.TabIndex = 26;
@@ -270,7 +274,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(733, 351);
+            this.button2.Location = new System.Drawing.Point(735, 432);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 58);
             this.button2.TabIndex = 27;
@@ -281,25 +285,18 @@
             // WzorBox
             // 
             this.WzorBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.WzorBox.Location = new System.Drawing.Point(21, 12);
+            this.WzorBox.Location = new System.Drawing.Point(23, 74);
+            this.WzorBox.Multiline = true;
             this.WzorBox.Name = "WzorBox";
             this.WzorBox.ReadOnly = true;
-            this.WzorBox.Size = new System.Drawing.Size(1191, 24);
+            this.WzorBox.Size = new System.Drawing.Size(1216, 53);
             this.WzorBox.TabIndex = 28;
             this.WzorBox.TabStop = false;
             this.WzorBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // AnswerBox
-            // 
-            this.AnswerBox.Location = new System.Drawing.Point(628, 415);
-            this.AnswerBox.Multiline = true;
-            this.AnswerBox.Name = "AnswerBox";
-            this.AnswerBox.Size = new System.Drawing.Size(591, 67);
-            this.AnswerBox.TabIndex = 29;
-            // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(749, 323);
+            this.textBox4.Location = new System.Drawing.Point(751, 404);
             this.textBox4.Name = "textBox4";
             this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox4.Size = new System.Drawing.Size(100, 20);
@@ -308,7 +305,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(625, 326);
+            this.label9.Location = new System.Drawing.Point(627, 407);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 30;
@@ -364,7 +361,7 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel1.Location = new System.Drawing.Point(21, 131);
+            this.panel1.Location = new System.Drawing.Point(23, 212);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(580, 278);
             this.panel1.TabIndex = 37;
@@ -577,23 +574,53 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(865, 142);
+            this.dataGridView1.Location = new System.Drawing.Point(867, 223);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(347, 201);
+            this.dataGridView1.Size = new System.Drawing.Size(372, 201);
             this.dataGridView1.TabIndex = 38;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.językToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1251, 24);
+            this.menuStrip1.TabIndex = 39;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // językToolStripMenuItem
+            // 
+            this.językToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.polToolStripMenuItem,
+            this.engToolStripMenuItem});
+            this.językToolStripMenuItem.Name = "językToolStripMenuItem";
+            this.językToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.językToolStripMenuItem.Text = "Język";
+            // 
+            // polToolStripMenuItem
+            // 
+            this.polToolStripMenuItem.Name = "polToolStripMenuItem";
+            this.polToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.polToolStripMenuItem.Text = "PL";
+            // 
+            // engToolStripMenuItem
+            // 
+            this.engToolStripMenuItem.Name = "engToolStripMenuItem";
+            this.engToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.engToolStripMenuItem.Text = "ENG";
             // 
             // Kalkulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1281, 487);
+            this.ClientSize = new System.Drawing.Size(1251, 511);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.WzorBox);
-            this.Controls.Add(this.AnswerBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.QuitButton);
@@ -613,12 +640,16 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.CountButton);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Kalkulator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kalkulator";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -648,7 +679,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox WzorBox;
-        private System.Windows.Forms.TextBox AnswerBox;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -679,5 +709,9 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem językToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem polToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem engToolStripMenuItem;
     }
 }
