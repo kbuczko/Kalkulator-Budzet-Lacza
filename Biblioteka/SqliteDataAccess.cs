@@ -127,7 +127,7 @@ namespace ProjektBudzetLacza
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
         //kalkulator
-        public static List<parametry_anteny_moc> calc_MOC_Load()
+        /*public static List<parametry_anteny_moc> calc_MOC_Load()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
@@ -160,7 +160,7 @@ namespace ProjektBudzetLacza
                 var output = cnn.Query<tl_materialow2>("select Material.nazwa, Material.wartosc, Material.grubosc_cm, Material.czestotliwosc_MHz from Material", new DynamicParameters());
                 return output.ToList();
             }
-        }
+        }*/
         
     }
 }

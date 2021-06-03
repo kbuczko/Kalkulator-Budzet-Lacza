@@ -23,28 +23,25 @@ namespace Biblioteka
         {
             InitializeComponent();
             loadList();
-            textBox2.Hide();
+            //WzorBox.Hide();
             textBox4.Hide();
-            textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO";
+            WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
         }
 
         private void loadList()
         {
            
-            lista_MOC = SqliteDataAccess.calc_MOC_Load();
-            lista_ZYSK = SqliteDataAccess.calc_ZYSK_Load();
-            lista_MAT = SqliteDataAccess.calc_MATERIALY_Load();
-            lista_FSL = SqliteDataAccess.calc_FSL_Load();
+           // lista_MOC = SqliteDataAccess.calc_MOC_Load();
+            //lista_ZYSK = SqliteDataAccess.calc_ZYSK_Load();
+           // lista_MAT = SqliteDataAccess.calc_MATERIALY_Load();
+           // lista_FSL = SqliteDataAccess.calc_FSL_Load();
 
             WireUpList();
         }
 
         private void WireUpList()
         {
-            dataGridViewMoc.DataSource = lista_MOC;
-            dataGridViewZN.DataSource = lista_ZYSK;
-            dataGridViewZO.DataSource = lista_ZYSK;
-            dataGridViewM.DataSource = lista_MAT;
+
         }
         public bool IsEmptyTextBox(TextBox text)
         {
@@ -80,7 +77,7 @@ namespace Biblioteka
             if (!Char.IsNumber(e.KeyChar))
             { e.Handled = true; }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void CountButton1_Click(object sender, EventArgs e)
         {
             double TN = 0;
             double MOC;
@@ -161,73 +158,15 @@ namespace Biblioteka
                 }
                 double BL = MOC + ZN - TN - FSL + ZO - TO - MAT;
                 textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() + " - " + MAT.ToString() + " = " + BL.ToString();
+                AnswerBox.Text = BL.ToString();
             }
             else
             {
                 double BL = MOC + ZN - TN - FSL + ZO - TO;
                 textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() +  " = " + BL.ToString();
+                AnswerBox.Text = BL.ToString();
             }
             
-
-            //calculator kalk = new calculator();
-            // textBox1.Text = kalk.calculate(Convert.ToDouble(SqliteDataAccess.QueryResult("select moc from parametry_anteny where id=1 AND czy_nad=0")), Convert.ToDouble(SqliteDataAccess.QueryResult("select zysk from parametry_anteny where id=1")), Convert.ToDouble(SqliteDataAccess.QueryResult("SELECT (kabel.wartosc+zlacze.tlumiennosc) FROM parametry_anteny, kabel, zlacze WHERE parametry_anteny.id_kabla = kabel.id AND parametry_anteny.id_zlacza = zlacze.id AND parametry_anteny.id=1")), Convert.ToDouble(SqliteDataAccess.QueryResult("select wartosc from fsl where id = 12")), Convert.ToDouble(SqliteDataAccess.QueryResult("select zysk from parametry_anteny where id=1")), Convert.ToDouble(SqliteDataAccess.QueryResult("SELECT (kabel.wartosc+zlacze.tlumiennosc) FROM parametry_anteny, kabel, zlacze WHERE parametry_anteny.id_kabla = kabel.id AND parametry_anteny.id_zlacza = zlacze.id AND parametry_anteny.id=1"))).ToString();
-        }
-        private void dataGridViewFSL_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cellValue = dataGridViewFSL.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            textBoxFSL.Text = cellValue;
-        }
-        private void dataGridViewMoc_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cellValue = dataGridViewMoc.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            textBoxMOC.Text = cellValue;
-        }
-        private void dataGridViewZN_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cellValue = dataGridViewZN.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            textBoxZN.Text = cellValue;
-        }
-        private void dataGridViewZO_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cellValue = dataGridViewZO.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            textBoxZO.Text = cellValue;
-        }
-        private void dataGridViewTN_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cellValue = dataGridViewTN.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            if (textBoxTN.Text.Length == 0)
-            {
-                textBoxTN.Text = cellValue;
-            }
-            else
-            {
-                textBoxTN.Text += " + " + cellValue;
-            }
-
-        }
-        private void dataGridViewTO_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cellValue = dataGridViewTO.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            if (textBoxTO.Text.Length == 0)
-            {
-                textBoxTO.Text = cellValue;
-            }
-            else
-            {
-                textBoxTO.Text += " + " + cellValue;
-            }
-        }
-        private void dataGridViewM_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string cellValue = dataGridViewM.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            if (textBox4.Text.Length == 0)
-            {
-                textBox4.Text = cellValue;
-            }
-            else
-            {
-                textBox4.Text += " + " + cellValue;
-            }
         }
         private void QuitButton_Click(object sender, EventArgs e)
         {
@@ -249,12 +188,12 @@ namespace Biblioteka
         {
             if (checkBox1.Checked)
             {
-                textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO - TP";
+                WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA - TŁUMIENNOŚĆ PRZESZKÓD";
                 textBox4.Show();
             }
             else
             {
-                textBox3.Text = "MOC + ZN - TN - FSL + ZO - TO";
+                WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
                 textBox4.Hide();
             }
         }
@@ -290,8 +229,8 @@ namespace Biblioteka
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox2.Clear();
-            textBox2.Show();
+            WzorBox.Clear();
+            WzorBox.Show();
             OpenFileDialog openFileDialog1 = new OpenFileDialog
             {
                 CheckFileExists = true,
@@ -310,11 +249,12 @@ namespace Biblioteka
             {
                 foreach (var line in File.ReadAllLines(openFileDialog1.FileName))
                 {
-                    textBox2.Text += line;
+                    WzorBox.Text += line;
                 }
                     
             }
 
         }
+
     }
 }
