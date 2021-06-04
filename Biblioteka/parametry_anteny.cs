@@ -24,7 +24,7 @@ namespace Biblioteka
     }
     public class parametry_anteny_moc
     {
-        public string rodzaj { get; set; }
+        public int id { get; set; }
         public double moc { get; set; }
     }
     public class parametry_anteny_zysk

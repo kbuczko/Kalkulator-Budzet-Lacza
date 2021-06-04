@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Budzet lacza.cs" />
     <Compile Include="calculator.cs" />
-    <Compile Include="Nadajnik.cs" />
+    <Compile Include="Urzadzenie.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

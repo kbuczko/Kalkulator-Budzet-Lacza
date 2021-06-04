@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Biblioteka
 {
-    public class Nadajnik
+    public class Urzadzenie
     {
-       
-
         public int moc { get; set; }
 
         public int dl_kabla { get; set; }
@@ -17,6 +15,5 @@ namespace Biblioteka
         public string nazwa_zlacza { get; set; }
 
         public string nazwa_anteny { get; set; }
-
     }
 }

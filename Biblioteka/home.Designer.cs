@@ -68,7 +68,7 @@
             "Budżet łącza",
             "Materiały",
             "Anteny",
-            "Nadajnik",
+            "Urządzenie",
             "Kable",
             "Złącza"});
             this.comboBox1.Location = new System.Drawing.Point(12, 99);

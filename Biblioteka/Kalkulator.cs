@@ -16,7 +16,7 @@ namespace Biblioteka
 {
     public partial class Kalkulator : Form
     {
-        List<Budzet_lacza> lista_FSL = new List<Budzet_lacza>();
+        List<budzet_lacza_fsl> lista_FSL = new List<budzet_lacza_fsl>();
         List<parametry_anteny_moc> lista_MOC = new List<parametry_anteny_moc>();
         List<parametry_anteny_zysk> lista_ZYSK = new List<parametry_anteny_zysk>();
         List<tl_materialow2> lista_MAT = new List<tl_materialow2>();
@@ -54,7 +54,15 @@ namespace Biblioteka
 
         private void WireUpList()
         {
+<<<<<<< Updated upstream
 
+=======
+            dataGridViewMoc.DataSource = lista_MOC;
+            dataGridViewZN.DataSource = lista_ZYSK;
+            dataGridViewZO.DataSource = lista_ZYSK;
+            dataGridViewM.DataSource = lista_MAT;
+            dataGridViewFSL.DataSource = lista_FSL;
+>>>>>>> Stashed changes
         }
         public bool IsEmptyTextBox(TextBox text)
         {

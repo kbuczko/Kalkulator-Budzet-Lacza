@@ -18,7 +18,7 @@ namespace Biblioteka
         List<kabel> lista_kab = new List<kabel>();
         List<zlacze> lista_zla = new List<zlacze>();
         List<Budzet_lacza> lista_bud = new List<Budzet_lacza>();
-        List<Nadajnik> lista_nad = new List<Nadajnik>();
+        List<Urzadzenie> lista_urz = new List<Urzadzenie>();
 
         private void clearTextBoxes()
         {
@@ -50,7 +50,7 @@ namespace Biblioteka
             lista_ant = SqliteDataAccess.ListParameters();
             lista_kab = SqliteDataAccess.ListCables();
             lista_zla = SqliteDataAccess.ListZlacza();
-            lista_nad = SqliteDataAccess.ListNadajnik();
+            lista_urz = SqliteDataAccess.ListUrzadzenie();
 
             dataGridView1.DataSource = lista_bud;
             clearTextBoxes();
@@ -65,18 +65,21 @@ namespace Biblioteka
         {
             switch(comboBox1.SelectedItem.ToString())
             {
-                case "Nadajnik":
-                    dataGridView1.DataSource = lista_nad;
+               
+                case "Urządzenie":
+                    dataGridView1.DataSource = lista_urz;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    textBox4.Show();
+                    textBox4.Show(); 
+                    textBox5.Show();
                     label1.Text = "Moc";
                     label3.Text = "Długość kabla";
                     label4.Text = "Nazwa kabla";
                     label5.Text = "Nazwa złącza";
+                    label6.Text = "Nazwa anteny";
                     break;
                 case "Budżet łącza":
                     dataGridView1.DataSource = lista_bud;
@@ -141,6 +144,25 @@ namespace Biblioteka
         {
             switch (comboBox1.SelectedItem.ToString())
             {
+                case "Urządzenie":
+                    Urzadzenie urz = new Urzadzenie
+                    {
+
+                        moc = Convert.ToInt32(textBox1.Text),
+                        dl_kabla = Convert.ToInt32(textBox2.Text),
+                        nazwa_kabla = textBox3.Text,
+                        nazwa_zlacza = textBox4.Text,
+                        nazwa_anteny = textBox5.Text
+
+                    };
+                    SqliteDataAccess.saveDevices(urz);
+
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
+                    textBox5.Text = "";
+                    break;
                 case "Materiały":
                     tl_materialow mat = new tl_materialow
                     {
@@ -155,7 +177,6 @@ namespace Biblioteka
                 case "Anteny":
                     parametry_anteny par = new parametry_anteny
                     {
-                        
                         zysk_dBi = Convert.ToDouble(textBox4.Text),
                         nazwa = textBox5.Text
                     };
@@ -175,7 +196,6 @@ namespace Biblioteka
                         tlumiennosc_db1m = Convert.ToInt32(textBox3.Text)
                     };
                     SqliteDataAccess.saveCables(kab);
-
 
                     textBox1.Text = "";
                     textBox2.Text = "";

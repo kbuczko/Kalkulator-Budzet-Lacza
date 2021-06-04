@@ -17,4 +17,9 @@ namespace Biblioteka
         public int czestotliwosc_MHz { get; set; }
 
     }
+    public class budzet_lacza_fsl
+    {
+        public int id { get; set; }
+        public double fsl_db { get; set; }
+    }
 }
