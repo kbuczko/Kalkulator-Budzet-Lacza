@@ -10,46 +10,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace ProjektBudzetLacza
 {
     public partial class Form1 : Form
     {
-        ResourceManager res_man;
-        CultureInfo cul;
-        void switch_language() //nie wiem czemu nie działa
-        {
-            if (polToolStripMenuItem.Checked == true)    
-            {
-                cul = CultureInfo.CreateSpecificCulture("pl-PL");    
-            }
-            else                                                
-            {
-                cul = CultureInfo.CreateSpecificCulture("en-EN");    
-            }
-        }
-            public Form1()
+        bool jezyk_pol = true;
+        public Form1()
             {
                 InitializeComponent();
-                label1.BackColor = System.Drawing.Color.Transparent;
+                Title.BackColor = System.Drawing.Color.Transparent;
                 engToolStripMenuItem.Checked = false;    
                 polToolStripMenuItem.Checked = true;
-                res_man = new ResourceManager("MultiLanguageApp.Resource.Res", typeof(Form1).Assembly);
-                switch_language();
-
-        }
+            }
         
 
         private void DataBaseButton_Click(object sender, EventArgs e)
         {
           
             home home = new home();
+            if (jezyk_pol == false)
+            {
+                home.label2.Text = "Choose a table";
+                home.QuitButton.Text = "Quit";
+                home.AddButton.Text = "Add";
+                home.DeleteButton.Text = "Delete";
+                home.comboBox1.Items[0] = "Link budget";
+                home.comboBox1.Items[1] = "Materials";
+                home.comboBox1.Items[2] = "Antennas";
+                home.comboBox1.Items[3] = "Devices";
+                home.comboBox1.Items[4] = "Cables";
+                home.comboBox1.Items[5] = "Connectors";
+                home.dataGridView1.Columns[1].HeaderText = "abc";
+            }
             home.ShowDialog();
+            
         }
 
         private void CalcButton_Click(object sender, EventArgs e)
         {
             Kalkulator kalk = new Kalkulator();
+            if (jezyk_pol == false)
+            {
+                //kalk.label
+            }
             kalk.ShowDialog();
         }
 
@@ -57,26 +62,32 @@ namespace ProjektBudzetLacza
         {
             engToolStripMenuItem.Checked = true;
             polToolStripMenuItem.Checked = false;
-            switch_language();
-            label1.Text = "Link Budget";
+            Title.Text = "Link Budget";
             DataBaseButton.Text = "Database";
             CalcButton.Text = "Calculator";
             InstructioinButton.Text = "Instruction";
-            QuitButton.Text = "Quit";
             językiToolStripMenuItem.Text = "Languages";
+            QuitButton.Text = "Quit";
+
+            jezyk_pol = false;
+
+
         }
 
         private void polToolStripMenuItem_Click(object sender, EventArgs e)
         {
             engToolStripMenuItem.Checked = false;
             polToolStripMenuItem.Checked = true;
-            switch_language();
-            label1.Text = "Budżet Łącza";
+            Title.Text = "Budżet Łącza";
             DataBaseButton.Text = "Baza danych";
             CalcButton.Text = "Kalkulator";
             InstructioinButton.Text = "Instrukcja";
             QuitButton.Text = "Wyjdź";
             językiToolStripMenuItem.Text = "Języki";
+
+            jezyk_pol = true;
+
+
         }
 
         private void QuitButton_Click(object sender, EventArgs e)

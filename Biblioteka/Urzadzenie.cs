@@ -15,5 +15,7 @@ namespace Biblioteka
         public string nazwa_zlacza { get; set; }
 
         public string nazwa_anteny { get; set; }
+
+        public double czulosc { get; set; }
     }
 }
