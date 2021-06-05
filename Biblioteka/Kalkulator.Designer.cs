@@ -494,9 +494,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(264, 109);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(75, 13);
+            this.label20.Size = new System.Drawing.Size(71, 13);
             this.label20.TabIndex = 45;
-            this.label20.Text = "Rodzja anteny";
+            this.label20.Text = "Model anteny";
             // 
             // label19
             // 
@@ -548,9 +548,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(7, 109);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 13);
+            this.label14.Size = new System.Drawing.Size(71, 13);
             this.label14.TabIndex = 39;
-            this.label14.Text = "Rodzaj anteny";
+            this.label14.Text = "Model anteny";
             // 
             // label13
             // 
@@ -601,13 +601,13 @@
             // polToolStripMenuItem
             // 
             this.polToolStripMenuItem.Name = "polToolStripMenuItem";
-            this.polToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.polToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.polToolStripMenuItem.Text = "PL";
             // 
             // engToolStripMenuItem
             // 
             this.engToolStripMenuItem.Name = "engToolStripMenuItem";
-            this.engToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.engToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.engToolStripMenuItem.Text = "ENG";
             // 
             // Kalkulator

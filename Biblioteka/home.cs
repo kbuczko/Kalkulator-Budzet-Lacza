@@ -52,8 +52,11 @@ namespace Biblioteka
             lista_zla = SqliteDataAccess.ListZlacza();
             lista_urz = SqliteDataAccess.ListUrzadzenie();
 
+            label7.Text = "lista_fsl";
             dataGridView1.DataSource = lista_bud;
+            dataGridView1.Columns[0].Visible = false;
             clearTextBoxes();
+            clearLabels();
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
@@ -67,6 +70,7 @@ namespace Biblioteka
             {
                
                 case "Urządzenie":
+                    dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_urz;
                     clearTextBoxes();
                     clearLabels();
@@ -75,33 +79,36 @@ namespace Biblioteka
                     textBox3.Show();
                     textBox4.Show(); 
                     textBox5.Show();
-                    label1.Text = "Moc";
-                    label3.Text = "Długość kabla";
-                    label4.Text = "Nazwa kabla";
-                    label5.Text = "Nazwa złącza";
-                    label6.Text = "Nazwa anteny";
+                    label7.Text = "Moc";
+                    label1.Text = "Długość kabla";
+                    label3.Text = "Nazwa kabla";
+                    label4.Text = "Nazwa złącza";
+                    label5.Text = "Nazwa anteny";
                     break;
                 case "Budżet łącza":
+                    dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_bud;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    label1.Text = "FSL";
-                    label3.Text = "Odległosć";
-                    label4.Text = "Częstotliwość";
+                    label7.Text = "FSL";
+                    label1.Text = "Odległosć";
+                    label3.Text = "Częstotliwość";
                     break;
                 case "Materiały":
+                    dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_mat;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
-                    label1.Text = "Nazwa";
-                    label3.Text = "Wartość";
+                    label7.Text = "Nazwa";
+                    label1.Text = "Wartość";
                     break;
                 case "Anteny":
+                    dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_ant;
                     clearTextBoxes();
                     clearLabels();
@@ -110,31 +117,33 @@ namespace Biblioteka
                     textBox3.Show();
                     textBox4.Show();
                     textBox5.Show();
-                    label1.Text = "Id kabla";
-                    label3.Text = "Id złącza";
-                    label4.Text = "Moc";
-                    label5.Text = "Zysk";
-                    label6.Text = "Rodzaj";
+                    label7.Text = "Id kabla";
+                    label1.Text = "Id złącza";
+                    label3.Text = "Moc";
+                    label4.Text = "Zysk";
+                    label5.Text = "Rodzaj";
                     break;
                 case "Kable":
+                    dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_kab;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    label1.Text = "Częstotliwosć";
-                    label3.Text = "Symbol";
-                    label4.Text = "Wartość";
+                    label7.Text = "Częstotliwosć";
+                    label1.Text = "Symbol";
+                    label3.Text = "Wartość";
                     break;
                 case "Złącza":
+                    dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_zla;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
-                    label1.Text = "Symbol";
-                    label3.Text = "Tłumienność";
+                    label7.Text = "Symbol";
+                    label1.Text = "Tłumienność";
                     break;
 
             }
@@ -167,7 +176,7 @@ namespace Biblioteka
                     tl_materialow mat = new tl_materialow
                     {
                         nazwa = textBox1.Text,
-                        tlumiennosc = Convert.ToDouble(textBox2.Text)
+                        tlumiennosc_db = Convert.ToDouble(textBox2.Text)
                     };
                     SqliteDataAccess.saveMaterials(mat);
 
@@ -233,6 +242,8 @@ namespace Biblioteka
             
 
         }
+
+
 
         /*else
         {

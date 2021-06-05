@@ -54,15 +54,13 @@ namespace Biblioteka
 
         private void WireUpList()
         {
-<<<<<<< Updated upstream
-
-=======
+            /*
             dataGridViewMoc.DataSource = lista_MOC;
             dataGridViewZN.DataSource = lista_ZYSK;
             dataGridViewZO.DataSource = lista_ZYSK;
             dataGridViewM.DataSource = lista_MAT;
-            dataGridViewFSL.DataSource = lista_FSL;
->>>>>>> Stashed changes
+            dataGridViewFSL.DataSource = lista_FSL;*/
+
         }
         public bool IsEmptyTextBox(TextBox text)
         {
