@@ -33,7 +33,7 @@
             this.InstructioinButton = new System.Windows.Forms.Button();
             this.CalcButton = new System.Windows.Forms.Button();
             this.DataBaseButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Title = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.językiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.polToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,12 +68,12 @@
             this.DataBaseButton.UseVisualStyleBackColor = true;
             this.DataBaseButton.Click += new System.EventHandler(this.DataBaseButton_Click);
             // 
-            // label1
+            // Title
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.Title, "Title");
+            this.Title.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.Title.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Title.Name = "Title";
             // 
             // menuStrip1
             // 
@@ -112,7 +112,7 @@
             this.Controls.Add(this.InstructioinButton);
             this.Controls.Add(this.CalcButton);
             this.Controls.Add(this.DataBaseButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Title);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -129,7 +129,7 @@
         private System.Windows.Forms.Button InstructioinButton;
         private System.Windows.Forms.Button CalcButton;
         private System.Windows.Forms.Button DataBaseButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Title;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem językiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem polToolStripMenuItem;
