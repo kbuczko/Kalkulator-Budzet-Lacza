@@ -53,6 +53,7 @@
             resources.ApplyResources(this.InstructioinButton, "InstructioinButton");
             this.InstructioinButton.Name = "InstructioinButton";
             this.InstructioinButton.UseVisualStyleBackColor = true;
+            this.InstructioinButton.Click += new System.EventHandler(this.InstructioinButton_Click);
             // 
             // CalcButton
             // 

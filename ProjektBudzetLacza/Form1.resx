@@ -273,6 +273,27 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="polToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 22</value>
+  </data>
+  <data name="polToolStripMenuItem.Text" xml:space="preserve">
+    <value>PL</value>
+  </data>
+  <data name="engToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 22</value>
+  </data>
+  <data name="engToolStripMenuItem.Text" xml:space="preserve">
+    <value>ENG</value>
+  </data>
+  <data name="językiToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 9pt</value>
+  </data>
+  <data name="językiToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 21</value>
+  </data>
+  <data name="językiToolStripMenuItem.Text" xml:space="preserve">
+    <value>Języki</value>
+  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -299,27 +320,6 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="językiToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Century Gothic, 9pt</value>
-  </data>
-  <data name="językiToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 21</value>
-  </data>
-  <data name="językiToolStripMenuItem.Text" xml:space="preserve">
-    <value>Języki</value>
-  </data>
-  <data name="polToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="polToolStripMenuItem.Text" xml:space="preserve">
-    <value>PL</value>
-  </data>
-  <data name="engToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="engToolStripMenuItem.Text" xml:space="preserve">
-    <value>ENG</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

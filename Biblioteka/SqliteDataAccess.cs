@@ -35,7 +35,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<Urzadzenie>("SELECT Urzadzenie.moc, Urzadzenie.dl_kabla, Urzadzenie.nazwa_kabla,  Urzadzenie.nazwa_zlacza,Antena.nazwa AS nazwa_anteny FROM Urzadzenie, Antena WHERE Antena.id = Urzadzenie.id_anteny", new DynamicParameters());
+                var output = cnn.Query<Urzadzenie>("SELECT Urzadzenie.moc, Urzadzenie.dl_kabla, Urzadzenie.id_kabla, Kabel.symbol AS nazwa_kabla ,Urzadzenie.id_zlacza, Zlacze.symbol as nazwa_zlacza, Urzadzenie.id_anteny, Antena.nazwa AS nazwa_anteny, Urzadzenie.czulosc FROM Urzadzenie, Antena, Kabel, Zlacze WHERE Antena.id = Urzadzenie.id_anteny AND Kabel.id = Urzadzenie.id_kabla AND zlacze.id = Urzadzenie.id_zlacza", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -108,7 +108,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into Urzadzenie (moc, dl_kabla, nazwa_kabla, nazwa_zlacza, id_anteny, czulosc) values (@moc, @dl_kabla, @nazwa_kabla, @nazwa_zlacza, @id_anteny, @czulosc)", urz);
+                cnn.Execute("insert into Urzadzenie (moc, dl_kabla, id_kabla, id_zlacza, id_anteny, czulosc) values (@moc, @dl_kabla, @id_kabla, @id_zlacza, @id_anteny, @czulosc)", urz);
             }
         }
 

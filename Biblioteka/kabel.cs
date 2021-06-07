@@ -9,7 +9,7 @@ namespace Biblioteka
     public class kabel
     {
         public int id { get; set; }
-        public double czestotliwosc_MHz { get; set; }
+        public int czestotliwosc_MHz { get; set; }
         public string symbol { get; set; }
         public double tlumiennosc_db1m { get; set; }
 

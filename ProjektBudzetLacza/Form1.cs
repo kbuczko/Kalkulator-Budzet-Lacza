@@ -95,7 +95,11 @@ namespace ProjektBudzetLacza
             this.Close();
         }
 
-
+        private void InstructioinButton_Click(object sender, EventArgs e)
+        {
+            Instrukcja inst = new Instrukcja();
+            inst.ShowDialog();
+        }
     }
 
       

@@ -51,6 +51,12 @@
   <ItemGroup>
     <Compile Include="Budzet lacza.cs" />
     <Compile Include="calculator.cs" />
+    <Compile Include="Instrukcja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Instrukcja.Designer.cs">
+      <DependentUpon>Instrukcja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Urzadzenie.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -80,6 +86,9 @@
     <EmbeddedResource Include="home.resx">
       <DependentUpon>home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Instrukcja.resx">
+      <DependentUpon>Instrukcja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kalkulator.resx">
       <DependentUpon>Kalkulator.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,9 +115,14 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\4882066.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
