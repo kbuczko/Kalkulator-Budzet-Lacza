@@ -155,26 +155,26 @@ namespace Biblioteka
         }
         private void Load_kabel(string nazwa) 
         {
-            string query3 = "SELECT nazwa_kabla FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<Urzadzenie> output2 = new List<Urzadzenie>();
+            string query3 = "SELECT symbol FROM Kabel JOIN Urzadzenie ON Urzadzenie.id_kabla=Kabel.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
+            List<kabel> output2 = new List<kabel>();
             using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output3 = cnn.Query<Urzadzenie>(query3);
+                var output3 = cnn.Query<kabel>(query3);
                 output2 = output3.ToList();
                 comboBox3.DataSource = output2;
-                comboBox3.DisplayMember = "nazwa_kabla";
+                comboBox3.DisplayMember = "symbol";
             }
         }
         private void Load_kabel2(string nazwa)
         {
-            string query3 = "SELECT nazwa_kabla FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<Urzadzenie> output2 = new List<Urzadzenie>();
+            string query3 = "SELECT symbol FROM Kabel JOIN Urzadzenie ON Urzadzenie.id_kabla=Kabel.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
+            List<kabel> output2 = new List<kabel>();
             using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output3 = cnn.Query<Urzadzenie>(query3);
+                var output3 = cnn.Query<kabel>(query3);
                 output2 = output3.ToList();
                 comboBox8.DataSource = output2;
-                comboBox8.DisplayMember = "nazwa_kabla";
+                comboBox8.DisplayMember = "symbol";
             }
         }
         private void Load_zlacze() // ladowanie combobox zlacze na podstawie wybranego kabla
@@ -211,26 +211,28 @@ namespace Biblioteka
         }
         private void Load_zlacze(string nazwa) 
         {
-            string query4 = "SELECT nazwa_zlacza FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<Urzadzenie> output2 = new List<Urzadzenie>();
+            string query4 = "SELECT symbol FROM Zlacze JOIN Urzadzenie ON Urzadzenie.id_zlacza=Zlacze.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
+            //string query4 = "SELECT nazwa_zlacza FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
+            List<zlacze> output2 = new List<zlacze>();
             using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output3 = cnn.Query<Urzadzenie>(query4);
+                var output3 = cnn.Query<zlacze>(query4);
                 output2 = output3.ToList();
                 comboBox4.DataSource = output2;
-                comboBox4.DisplayMember = "nazwa_zlacza";
+                comboBox4.DisplayMember = "symbol";
             }
         }
         private void Load_zlacze2(string nazwa)
         {
-            string query4 = "SELECT nazwa_zlacza FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<Urzadzenie> output2 = new List<Urzadzenie>();
+            string query4 = "SELECT symbol FROM Zlacze JOIN Urzadzenie ON Urzadzenie.id_zlacza=Zlacze.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
+            //string query4 = "SELECT nazwa_zlacza FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
+            List<zlacze> output2 = new List<zlacze>();
             using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output3 = cnn.Query<Urzadzenie>(query4);
+                var output3 = cnn.Query<zlacze>(query4);
                 output2 = output3.ToList();
                 comboBox9.DataSource = output2;
-                comboBox9.DisplayMember = "nazwa_zlacza";
+                comboBox9.DisplayMember = "symbol";
             }
         }
 
@@ -519,8 +521,9 @@ namespace Biblioteka
                     string nazwa = comboBox3.GetItemText(comboBox3.SelectedItem);
                     string czestotliwosc = textBox9.Text;
                     string dl_kabla = textBox5.Text;
-                    string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
-                    string output = "";
+                //string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
+                string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa +"'";
+                string output = "";
                     using (var cnn = new SQLiteConnection(loadConnectionString()))
                     {
                         try
@@ -646,7 +649,8 @@ namespace Biblioteka
                 string nazwa = comboBox8.GetItemText(comboBox8.SelectedItem);
                 string czestotliwosc = textBox9.Text;
                 string dl_kabla = textBox6.Text;
-                string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
+                //string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
+                string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "'";
                 string output = "";
                 using (var cnn = new SQLiteConnection(loadConnectionString()))
                 {
