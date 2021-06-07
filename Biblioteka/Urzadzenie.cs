@@ -8,9 +8,9 @@ namespace Biblioteka
 {
     public class Urzadzenie
     {
-        public int moc { get; set; }
+        public double moc { get; set; }
 
-        public int dl_kabla { get; set; }
+        public double dl_kabla { get; set; }
         public int id_kabla { get; set; }
         public string nazwa_kabla { get; set; }
         public int id_zlacza { get; set; }

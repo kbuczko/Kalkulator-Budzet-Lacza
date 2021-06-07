@@ -19,6 +19,7 @@ namespace Biblioteka
 {
     public partial class Kalkulator : Form
     {
+        public int lang;
         int licznik = 0;
         int licznik2 = 0;
         //nadajnik
@@ -40,20 +41,10 @@ namespace Biblioteka
         private int licznik5;
         private int licznik6;
 
-        void switch_language() //nie wiem czemu nie działa
-        {
-            if (polToolStripMenuItem.Checked == true)
-            {
-                cul = CultureInfo.CreateSpecificCulture("pl-PL");
-            }
-            else
-            {
-                cul = CultureInfo.CreateSpecificCulture("en-EN");
-            }
-        }
         public Kalkulator()
         {
             InitializeComponent();
+
             //nadajnik
             lista_ant = SqliteDataAccess.ListParameters();
             lista_kab = SqliteDataAccess.ListCables();
@@ -74,11 +65,12 @@ namespace Biblioteka
             label24.Hide();
             label25.Hide();
             addButton.Hide();
-            WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
-            engToolStripMenuItem.Checked = false;
-            polToolStripMenuItem.Checked = true;
-            res_man = new ResourceManager("MultiLanguageApp.Resource.Res", typeof(Kalkulator).Assembly);
-            switch_language();
+            if(lang == 1)
+            {
+                WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION";
+            }
+            else { WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA"; }
+           
         }
         //load
         private void Load_list() //ładowanie wszystkich zmiennych
@@ -413,7 +405,15 @@ namespace Biblioteka
         {
             if (checkBox1.Checked)
             {
-                WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA - TŁUMIENNOŚĆ PRZESZKÓD";
+                if(lang == 1)
+                {
+                    WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION - OBSTACLES ATTENUATION";
+                }
+                else
+                {
+                    WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA - TŁUMIENNOŚĆ PRZESZKÓD";
+                }
+               
                 textBox4.Show();
                 label9.Show();
                 label24.Show();
@@ -425,8 +425,16 @@ namespace Biblioteka
             }
             else
             {
-                WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
-                textBox4.Hide();
+                if (lang == 1)
+                {
+                    WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION";
+                }
+                else
+                {
+                    WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
+                }
+
+                    textBox4.Hide();
                 label9.Hide();
                 label24.Hide();
                 label25.Hide();

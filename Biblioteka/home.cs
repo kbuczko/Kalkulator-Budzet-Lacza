@@ -21,7 +21,8 @@ namespace Biblioteka
 {
     public partial class home : Form
     {
-        
+        public int lang;
+
         List<tl_materialow> lista_mat = new List<tl_materialow>();
         List<parametry_anteny> lista_ant = new List<parametry_anteny>();
         List<kabel> lista_kab = new List<kabel>();
@@ -65,20 +66,71 @@ namespace Biblioteka
             lista_zla = SqliteDataAccess.ListZlacza();
             lista_urz = SqliteDataAccess.ListUrzadzenie();
 
-
-            dataGridView1.DataSource = lista_ant;
-            comboBox1.SelectedItem = "Anteny";
-            clearTextBoxes();
-            clearLabels();
-            textBox1.Show();
-            textBox2.Show();
-            textBox3.Show();
-            label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-            label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-            label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
-            dataGridView1.Columns[0].Visible = false;
             
+            dataGridView1.DataSource = lista_ant;
+            if(lang == 1)
+            {
+                clearTextBoxes();
+                clearLabels();
+                textBox1.Show();
+                textBox2.Show();
+                textBox3.Show();
+                label2.Text = "Choose a table";
+                label7.Text = "name" + calkowita;
+                label1.Text = "gain_dBi" + calkowita;
+                label3.Text = "frequency_MHz" + tekst;
+            }
+            else
+            {
+                clearTextBoxes();
+                clearLabels();
+                textBox1.Show();
+                textBox2.Show();
+                textBox3.Show();
+                label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
+                label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+            }
+            
+
+            dataGridView1.Columns[0].Visible = false;
+       
+
         }
+
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string strColumnName = dataGridView1.Columns[e.ColumnIndex].Name;
+            SortOrder strSortOrder = getSortOrder(e.ColumnIndex);
+
+            if (strSortOrder == SortOrder.Ascending)
+            {
+                lista_zla = lista_zla.OrderBy(x => typeof(zlacze).GetProperty(strColumnName).GetValue(x, null)).ToList();
+            }
+            else
+            {
+                lista_zla = lista_zla.OrderByDescending(x => typeof(zlacze).GetProperty(strColumnName).GetValue(x, null)).ToList();
+            }
+            dataGridView1.DataSource = lista_zla;
+            dataGridView1.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = strSortOrder;
+        }
+
+        private SortOrder getSortOrder(int columnIndex)
+        {
+            if (dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection == SortOrder.None ||
+                dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection == SortOrder.Descending)
+            {
+                dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                return SortOrder.Ascending;
+            }
+            else
+            {
+                dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+                return SortOrder.Descending;
+            }
+        }
+
+
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
@@ -103,19 +155,45 @@ namespace Biblioteka
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    textBox4.Show(); 
+                    textBox4.Show();
                     textBox5.Show();
                     textBox6.Show();
+
+
+                    if (lang == 1)
+                    {
+                        dataGridView1.Columns[0].HeaderText = "power";
+                        dataGridView1.Columns[1].HeaderText = "cable_length";
+                        dataGridView1.Columns[3].HeaderText = "cable_name";
+                        dataGridView1.Columns[5].HeaderText = "connector_name";
+                        dataGridView1.Columns[6].HeaderText = "antenna_name";
+                        dataGridView1.Columns[8].HeaderText = "sensitivity";
+
+                        label2.Text = "Choose a table";
+                        QuitButton.Text = "Quit";
+                        AddButton.Text = "Add";
+                        DeleteButton.Text = "Delete";
+                        label7.Text = dataGridView1.Columns[0].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label3.Text = "cable_name" + tekst;
+                        label4.Text = "connector_name" + tekst;
+                        label5.Text = "antenna_name" + tekst;
+                        label6.Text = dataGridView1.Columns[8].HeaderText + ulamek;
+                    }
+
+                    else
+                    {
+                        label7.Text = dataGridView1.Columns[0].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label3.Text = "nazwa_kabla" + tekst;
+                        label4.Text = "nazwa_zlacza" + tekst;
+                        label5.Text = "nazwa_anteny" + tekst;
+                        label6.Text = dataGridView1.Columns[8].HeaderText + ulamek;
+                    }
                     
-                    label7.Text = dataGridView1.Columns[0].HeaderText + calkowita;
-                    label1.Text = dataGridView1.Columns[1].HeaderText + calkowita;
-                    label3.Text = "nazwa_kabla" + tekst;
-                    label4.Text = "nazwa_zlacza" + tekst;
-                    label5.Text = "nazwa_anteny" + tekst;
-                    label6.Text = dataGridView1.Columns[8].HeaderText + ulamek;
                     break;
                 case "Budżet łącza":
-                case "Link budget":
+                case "Link Budget":
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_bud;
                     clearTextBoxes();
@@ -123,13 +201,33 @@ namespace Biblioteka
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
-                    label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                    label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+
+                    if (lang == 1)
+                    {
+                        dataGridView1.Columns[2].HeaderText = "distance_km";
+                        dataGridView1.Columns[3].HeaderText = "frequency_MHz";
+                        dataGridView1.Columns[4].HeaderText = "value";
+                        label2.Text = "Choose a table";
+                        QuitButton.Text = "Quit";
+                        AddButton.Text = "Add";
+                        DeleteButton.Text = "Delete";
+                        label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                    }
+                    else
+                    {
+                        label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                    }
+
+                    
                     break;
                 case "Materiały":
                 case "Materials":
                     dataGridView1.Columns[0].Visible = false;
+                    
                     dataGridView1.DataSource = lista_mat;
                     clearTextBoxes();
                     clearLabels();
@@ -137,10 +235,30 @@ namespace Biblioteka
                     textBox2.Show();
                     textBox3.Show();
                     textBox4.Show();
-                    label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                    label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                    label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
-                    label4.Text = dataGridView1.Columns[4].HeaderText + ulamek;
+
+                    if (lang == 1)
+                    {
+                        dataGridView1.Columns[1].HeaderText = "name";
+                        dataGridView1.Columns[2].HeaderText = "attenuation_db";
+                        dataGridView1.Columns[4].HeaderText = "frequency_MHz";
+                        dataGridView1.Columns[3].HeaderText = "thickness_cm";
+                        label2.Text = "Choose a table";
+                        QuitButton.Text = "Quit";
+                        AddButton.Text = "Add";
+                        DeleteButton.Text = "Delete";
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
+                        label4.Text = dataGridView1.Columns[4].HeaderText + ulamek;
+                    }
+                    else
+                    {
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
+                        label4.Text = dataGridView1.Columns[4].HeaderText + ulamek;
+                    }
+                   
                     break;
                 case "Anteny":
                 case "Antennas":
@@ -151,9 +269,28 @@ namespace Biblioteka
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                    label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                    label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+
+                    if (lang == 1)
+                    {
+                        dataGridView1.Columns[1].HeaderText = "name";
+                        dataGridView1.Columns[2].HeaderText = "gain_dBi";
+                        dataGridView1.Columns[3].HeaderText = "frequency_MHz";
+
+                        label2.Text = "Choose a table";
+                        QuitButton.Text = "Quit";
+                        AddButton.Text = "Add";
+                        DeleteButton.Text = "Delete";
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                    }
+                    else
+                    {
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                    }
+                    
                     break;
                 case "Kable":
                 case "Cables":
@@ -164,9 +301,28 @@ namespace Biblioteka
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
-                    label1.Text = dataGridView1.Columns[2].HeaderText + tekst;
-                    label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
+
+                    if (lang == 1)
+                    {
+                        dataGridView1.Columns[1].HeaderText = "frequency_MHZ";
+                        dataGridView1.Columns[2].HeaderText = "name";
+                        dataGridView1.Columns[3].HeaderText = "attenuation_db1m";
+                        label2.Text = "Choose a table";
+                        QuitButton.Text = "Quit";
+                        AddButton.Text = "Add";
+                        DeleteButton.Text = "Delete";
+                        label7.Text = dataGridView1.Columns[1].HeaderText + calkowita;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + tekst;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
+                    }
+
+                    else
+                    {
+                        label7.Text = dataGridView1.Columns[1].HeaderText + calkowita;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + tekst;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
+                    }
+                    
                     break;
                 case "Złącza":
                 case "Connectors":
@@ -177,9 +333,27 @@ namespace Biblioteka
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
-                    label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                    label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                    label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+
+                    if (lang == 1)
+                    {
+                        dataGridView1.Columns[1].HeaderText = "name";
+                        dataGridView1.Columns[2].HeaderText = "attenuation_db";
+                        dataGridView1.Columns[3].HeaderText = "cable_id";
+                        label2.Text = "Choose a table";
+                        QuitButton.Text = "Quit";
+                        AddButton.Text = "Add";
+                        DeleteButton.Text = "Delete";
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                    }
+
+                    else
+                    {
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                    }
                     break;
 
             }
@@ -191,6 +365,7 @@ namespace Biblioteka
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "Urządzenie":
@@ -255,6 +430,7 @@ namespace Biblioteka
                     break;
                 case "Materiały":
                 case "Materials":
+                    
                     try
                     {
                         tl_materialow mat = new tl_materialow
@@ -347,7 +523,7 @@ namespace Biblioteka
                     textBox3.Text = "";
                     break;
                 case "Budżet łącza":
-                case "Link budget":
+                case "Link Budget":
                     try
                     {
                         Budzet_lacza budzet = new Budzet_lacza
@@ -380,6 +556,7 @@ namespace Biblioteka
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "Materiały":
+                case "Materials":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());
                     try
                     {
@@ -391,6 +568,7 @@ namespace Biblioteka
                     }
                     break;
                 case "Złącza":
+                case "Connectors":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());
                     try
                     {
@@ -403,6 +581,7 @@ namespace Biblioteka
                     
                     break;
                 case "Kable":
+                case "Cables":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());
                     try
                     {
@@ -414,6 +593,7 @@ namespace Biblioteka
                     }
                     break;
                 case "Anteny":
+                case "Antennas":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());
                     try
                     {
@@ -423,6 +603,7 @@ namespace Biblioteka
                     catch { label8.ForeColor = Color.Green; label8.Text = "Usunięto!"; label8.Show(); lista_ant = SqliteDataAccess.ListParameters(); dataGridView1.DataSource = lista_ant;}
                     break;
                 case "Budżet łącza":
+                case "Budet Link":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());
                     try
                     {
@@ -438,13 +619,6 @@ namespace Biblioteka
             
 
         }
-
-
-
-        /*else
-        {
-            dataGridView1.DataSource = "";
-        }*/
 
     }
     }

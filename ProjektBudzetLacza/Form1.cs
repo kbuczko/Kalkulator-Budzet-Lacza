@@ -32,18 +32,16 @@ namespace ProjektBudzetLacza
             home home = new home();
             if (jezyk_pol == false)
             {
-                home.label2.Text = "Choose a table";
-                home.QuitButton.Text = "Quit";
-                home.AddButton.Text = "Add";
-                home.DeleteButton.Text = "Delete";
-                home.comboBox1.Items[0] = "Link budget";
+                home.lang = 1;
+                home.comboBox1.Items[0] = "Link Budget";
                 home.comboBox1.Items[1] = "Materials";
                 home.comboBox1.Items[2] = "Antennas";
                 home.comboBox1.Items[3] = "Devices";
                 home.comboBox1.Items[4] = "Cables";
                 home.comboBox1.Items[5] = "Connectors";
-                home.dataGridView1.Columns[1].HeaderText = "abc";
+                home.comboBox1.SelectedItem = "Antennas";
             }
+            else { home.lang = 0; home.comboBox1.SelectedItem = "Anteny"; }
             home.ShowDialog();
             
         }
@@ -53,9 +51,13 @@ namespace ProjektBudzetLacza
             Kalkulator kalk = new Kalkulator();
             if (jezyk_pol == false)
             {
-                //kalk.label
+                kalk.lang = 1;
             }
-            kalk.ShowDialog();
+            else
+            {
+                kalk.lang = 0;
+            }
+                kalk.ShowDialog();
         }
 
         private void engToolStripMenuItem_Click(object sender, EventArgs e)
