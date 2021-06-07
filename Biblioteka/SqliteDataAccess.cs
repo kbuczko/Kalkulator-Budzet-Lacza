@@ -40,6 +40,15 @@ namespace ProjektBudzetLacza
             }
         }
 
+        public static List<Budzet_lacza> updateBudzet(double wartosc, double odl, int czest)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                var output = cnn.Query<Budzet_lacza>("UPDATE Budzet_lacza SET wartosc='" + wartosc + "' WHERE odleglosc_km= '" + odl + "' AND czestotliwosc_MHz = '" + czest + "'", new DynamicParameters()) ;
+                return output.ToList();
+            }
+        }
+
         public static List<zlacze> ListZlacza()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
@@ -92,14 +101,14 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into kabel (symbol, tlumiennosc) values (@symbol, @tlumiennosc)", zl);
+                cnn.Execute("insert into zlacze (symbol, tlumiennosc_db, id_kab) values (@symbol, @tlumiennosc_db, @id_kab)", zl);
             }
         }
         public static void saveDevices(Urzadzenie urz)
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into Urzadzenie (moc, dl_kabla, nazwa_kabla, nazwa_zlacza, id_anteny) values (@moc, @dl_kabla, @nazwa_kabla, @nazwa_zlacza, @id_anteny)", urz);
+                cnn.Execute("insert into Urzadzenie (moc, dl_kabla, nazwa_kabla, nazwa_zlacza, id_anteny, czulosc) values (@moc, @dl_kabla, @nazwa_kabla, @nazwa_zlacza, @id_anteny, @czulosc)", urz);
             }
         }
 
@@ -108,7 +117,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into kabel (id_czest, symbol, wartosc) values (@id_czest, @symbol, @wartosc)", kab);
+                cnn.Execute("insert into kabel (czestotliwosc_MHz, symbol, tlumiennosc_db1m) values (@czestotliwosc_MHz, @symbol, @tlumiennosc_db1m)", kab);
             }
         }
 
@@ -116,7 +125,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into Material (nazwa, wartosc) values (@nazwa, @wartosc)", mat);
+                cnn.Execute("insert into Material (nazwa, tlumiennosc_db, grubosc_cm, czestotliwosc_MHz) values (@nazwa, @tlumiennosc_db, @grubosc_cm, @czestotliwosc_MHz)", mat);
             }
         }
 
@@ -124,10 +133,16 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into Antena (rodzaj, zysk, moc, id_kabla, id_zlacza, czy_nad) values (@rodzaj, @zysk, @moc, @id_kabla, @id_zlacza, @czy_nad)", par);
+                cnn.Execute("insert into Antena (nazwa, zysk_dBi, czestotliwosc_MHz) values (@nazwa, @zysk_dBi, @czestotliwosc_MHz)", par);
             }
         }
-
+        public static void saveBudget(Budzet_lacza budzet)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                cnn.Execute("insert into Budzet_lacza (fsl_db, odleglosc_km, czestotliwosc_MHz, wartosc) values (@fsl_db, @odleglosc_km, @czestotliwosc_MHz, @wartosc)", budzet);
+            }
+        }
         private static string loadConnectionString(string id= "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;

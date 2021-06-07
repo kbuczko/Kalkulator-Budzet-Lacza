@@ -341,7 +341,7 @@ namespace Biblioteka
             }
             if (!IsEmptyTextBox(textBoxFSL))
             {
-                FSL = Convert.ToDouble(textBoxFSL.Text);
+                FSL = Math.Round(Convert.ToDouble(textBoxFSL.Text));
             }
             else
             {
@@ -362,11 +362,27 @@ namespace Biblioteka
                     MAT = 0;
                 }
                 double BL = MOC + ZN - TN - FSL + ZO - TO - MAT;
+                Budzet_lacza budzet = new Budzet_lacza
+                {
+                    fsl_db = FSL,
+                    odleglosc_km = Convert.ToDouble(textBox8.Text),
+                    czestotliwosc_MHz = Convert.ToInt32(textBox9.Text),
+                    wartosc = BL
+                };
+                SqliteDataAccess.saveBudget(budzet);
                 textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() + " - " + MAT.ToString() + " = " + BL.ToString();
             }
             else
             {
                 double BL = MOC + ZN - TN - FSL + ZO - TO;
+                Budzet_lacza budzet = new Budzet_lacza
+                {
+                    fsl_db = FSL,
+                    odleglosc_km = Convert.ToDouble(textBox8.Text),
+                    czestotliwosc_MHz = Convert.ToInt32(textBox9.Text),
+                    wartosc = BL
+                };
+                SqliteDataAccess.saveBudget(budzet);
                 textBox1.Text = MOC.ToString() + " + " + ZN.ToString() + " - " + TN.ToString() + " - " + FSL.ToString() + " + " + ZO.ToString() + " - " + TO.ToString() +  " = " + BL.ToString();
             }
             
@@ -800,7 +816,7 @@ namespace Biblioteka
             {
                 d = 0;
             }
-            double FSL = 20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44;
+            double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44, 3, MidpointRounding.ToEven);
             textBoxFSL.Text = FSL.ToString();
 
         }

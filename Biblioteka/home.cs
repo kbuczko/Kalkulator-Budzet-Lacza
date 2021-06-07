@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+// DODAC ODSWIEZANIE PO USUNIECIU DANYCH
+// DODAC ID KABLI I ZLACZ DO URZADZENIA
 namespace Biblioteka
 {
     public partial class home : Form
@@ -23,7 +26,8 @@ namespace Biblioteka
         List<Budzet_lacza> lista_bud = new List<Budzet_lacza>();
         List<Urzadzenie> lista_urz = new List<Urzadzenie>();
 
-       
+        
+
         private void clearTextBoxes()
         {
             foreach (var c in this.Controls)
@@ -57,10 +61,8 @@ namespace Biblioteka
             lista_urz = SqliteDataAccess.ListUrzadzenie();
 
 
-            // MessageBox.Show(rm.GetString("QuitButton.Text"));
-            
-            label7.Text = "lista_fsl";
-            dataGridView1.DataSource = lista_bud;
+            dataGridView1.DataSource = lista_ant;
+            comboBox1.SelectedItem = "Anteny";
             dataGridView1.Columns[0].Visible = false;
             clearTextBoxes();
             clearLabels();
@@ -87,11 +89,13 @@ namespace Biblioteka
                     textBox3.Show();
                     textBox4.Show(); 
                     textBox5.Show();
-                    label7.Text = dataGridView1.Columns[1].HeaderText;
-                    label1.Text = dataGridView1.Columns[2].HeaderText;
-                    label3.Text = dataGridView1.Columns[3].HeaderText; 
-                    label4.Text = dataGridView1.Columns[4].HeaderText;
-                    label5.Text = dataGridView1.Columns[5].HeaderText;
+                    textBox6.Show();
+                    label7.Text = dataGridView1.Columns[0].HeaderText;
+                    label1.Text = dataGridView1.Columns[1].HeaderText;
+                    label3.Text = dataGridView1.Columns[2].HeaderText; 
+                    label4.Text = dataGridView1.Columns[3].HeaderText;
+                    label5.Text = dataGridView1.Columns[4].HeaderText;
+                    label6.Text = dataGridView1.Columns[5].HeaderText;
                     break;
                 case "Budżet łącza":
                 case "Link budget":
@@ -114,8 +118,12 @@ namespace Biblioteka
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
+                    textBox3.Show();
+                    textBox4.Show();
                     label7.Text = dataGridView1.Columns[1].HeaderText;
                     label1.Text = dataGridView1.Columns[2].HeaderText;
+                    label3.Text = dataGridView1.Columns[3].HeaderText;
+                    label4.Text = dataGridView1.Columns[4].HeaderText;
                     break;
                 case "Anteny":
                 case "Antennas":
@@ -151,8 +159,10 @@ namespace Biblioteka
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
+                    textBox3.Show();
                     label7.Text = dataGridView1.Columns[1].HeaderText;
                     label1.Text = dataGridView1.Columns[2].HeaderText;
+                    label3.Text = dataGridView1.Columns[3].HeaderText;
                     break;
 
             }
@@ -171,7 +181,8 @@ namespace Biblioteka
                         dl_kabla = Convert.ToInt32(textBox2.Text),
                         nazwa_kabla = textBox3.Text,
                         nazwa_zlacza = textBox4.Text,
-                        nazwa_anteny = textBox5.Text
+                        nazwa_anteny = textBox5.Text,
+                        czulosc = Convert.ToDouble(textBox6.Text)
 
                     };
                     SqliteDataAccess.saveDevices(urz);
@@ -181,25 +192,31 @@ namespace Biblioteka
                     textBox3.Text = "";
                     textBox4.Text = "";
                     textBox5.Text = "";
+                    textBox6.Text = "";
                     break;
                 case "Materiały":
                 case "Materials":
                     tl_materialow mat = new tl_materialow
                     {
                         nazwa = textBox1.Text,
-                        tlumiennosc_db = Convert.ToDouble(textBox2.Text)
+                        tlumiennosc_db = Convert.ToDouble(textBox2.Text),
+                        grubosc_cm = Convert.ToDouble(textBox3.Text),
+                        czestotliwosc_MHz = Convert.ToDouble(textBox4.Text)
                     };
                     SqliteDataAccess.saveMaterials(mat);
 
                     textBox1.Text = "";
                     textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox4.Text = "";
                     break;
                 case "Anteny":
                 case "Antennas":
                     parametry_anteny par = new parametry_anteny
                     {
-                        zysk_dBi = Convert.ToDouble(textBox4.Text),
-                        nazwa = textBox5.Text
+                        zysk_dBi = Convert.ToDouble(textBox2.Text),
+                        nazwa = textBox1.Text,
+                        czestotliwosc_MHz = Convert.ToInt32(textBox3.Text)
                     };
                     SqliteDataAccess.saveParameters(par);
 
@@ -228,12 +245,27 @@ namespace Biblioteka
                     zlacze zl = new zlacze
                     {
                         symbol = textBox1.Text,
-                        tlumiennosc_db = Convert.ToDouble(textBox2.Text)
+                        tlumiennosc_db = Convert.ToDouble(textBox2.Text),
+                        id_kab = Convert.ToInt32(textBox3.Text)
                     };
                     SqliteDataAccess.saveZlacza(zl);
 
                     textBox1.Text = "";
                     textBox2.Text = "";
+                    textBox3.Text = "";
+                    break;
+                case "Budżet łącza":
+                case "Link budget":
+                    Budzet_lacza budzet = new Budzet_lacza
+                    {
+                        fsl_db = Convert.ToDouble(textBox1.Text),
+                        odleglosc_km = Convert.ToDouble(textBox2.Text),
+                        czestotliwosc_MHz = Convert.ToInt32(textBox3.Text),
+                    };
+                    SqliteDataAccess.saveBudget(budzet);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox3.Text = "";
                     break;
 
             }
@@ -249,10 +281,52 @@ namespace Biblioteka
             {
                 case "Materiały":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());
-                    SqliteDataAccess.QueryResult("Delete FROM tl_materialow WHERE id= '"+id+"'");
-                    dataGridView1.DataSource = lista_mat;
+                    try
+                    {
+                        SqliteDataAccess.QueryResult("Delete FROM material WHERE id= '" + id + "'");
+                        dataGridView1.DataSource = lista_mat;
+                    }
+                    catch { MessageBox.Show("Usunieto"); }
+
+                    break;
+                case "Złącza":
+                    id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    try
+                    {
+                        SqliteDataAccess.QueryResult("Delete FROM zlacze WHERE id= '" + id + "'");
+                    }
+                    catch { MessageBox.Show("Usunieto"); }
+                    dataGridView1.DataSource = lista_zla;
+                    break;
+                case "Kable":
+                    id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    try
+                    {
+                        SqliteDataAccess.QueryResult("Delete FROM kabel WHERE id= '" + id + "'");
+                        dataGridView1.DataSource = lista_kab;
+                    }
+                    catch { MessageBox.Show("Usunieto"); }
+                    break;
+                case "Anteny":
+                    id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    try
+                    {
+                        SqliteDataAccess.QueryResult("Delete FROM antena WHERE id= '" + id + "'");
+                        dataGridView1.DataSource = lista_ant;
+                    }
+                    catch { MessageBox.Show("Usunieto"); }
+                    break;
+                case "Budżet łącza":
+                    id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    try
+                    {
+                        SqliteDataAccess.QueryResult("Delete FROM Budzet_lacza WHERE id= '" + id + "'");
+                        dataGridView1.DataSource = lista_bud;
+                    }
+                    catch { MessageBox.Show("Usunieto"); }
                     break;
             }
+
             
 
         }
