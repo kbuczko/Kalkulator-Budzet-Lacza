@@ -119,7 +119,8 @@ namespace Biblioteka
         }
         private void Load_material()
         {
-            string query = "SELECT nazwa FROM Material WHERE czestotliwosc_MHz='" + textBox9.Text + "'";
+            //string query = "SELECT nazwa FROM Material WHERE czestotliwosc_MHz='" + textBox9.Text + "'";
+            string query = "SELECT nazwa FROM Material";
             List<tl_materialow> output2 = new List<tl_materialow>();
             using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
@@ -385,7 +386,10 @@ namespace Biblioteka
             textBox1.Clear();
             textBoxFSL.Clear();
             textBoxMOC.Clear();
-            
+            textBox9.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+            textBox8.Clear();
             textBoxZN.Clear();
             textBoxZO.Clear();
             textBox4.Clear();
@@ -1038,8 +1042,19 @@ namespace Biblioteka
             if (!IsEmptyTextBox(textBox7) && text != "Grubość automatyczna")
             {
                 gruWpisana = Convert.ToDouble(textBox7.Text);
-                double x = tl / grubosc;
-                double y = x * gruWpisana;
+                double x;
+                double y;
+                if(grubosc == 0)
+                {
+                    x = tl;
+                    y = tl * gruWpisana;
+                }
+                else
+                {
+                    x = tl / grubosc;
+                    y = x * gruWpisana;
+
+                }
 
                 if (IsEmptyTextBox(textBox4))
                 {
