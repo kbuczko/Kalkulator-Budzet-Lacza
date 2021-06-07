@@ -65,11 +65,6 @@ namespace Biblioteka
             label24.Hide();
             label25.Hide();
             addButton.Hide();
-            if(lang == 1)
-            {
-                WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION";
-            }
-            else { WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA"; }
            
         }
         //load
@@ -1022,7 +1017,7 @@ namespace Biblioteka
         private void addButton_Click(object sender, EventArgs e)
         {
             string nazwa = comboBox1.GetItemText(comboBox1.SelectedItem);
-            string query = "SELECT tlumiennosc FROM Material WHERE nazwa= '" + nazwa + "'";
+            string query = "SELECT tlumiennosc_db FROM Material WHERE nazwa= '" + nazwa + "'";
             string query2 = "SELECT grubosc_cm FROM Material WHERE nazwa= '" + nazwa + "'";
             string output = "";
             double tl;

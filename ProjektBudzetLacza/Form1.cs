@@ -52,10 +52,44 @@ namespace ProjektBudzetLacza
             if (jezyk_pol == false)
             {
                 kalk.lang = 1;
+                kalk.WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION";
+                kalk.label8.Text = "Link budget";
+                kalk.label7.Text = "Obstacles model";
+                kalk.label10.Text = "Distance";
+                kalk.label11.Text = "Frequency";
+                kalk.label12.Text = "Transmitter";
+                kalk.label18.Text = "Receiver";
+                kalk.label14.Text = "Antenna model";
+                kalk.label15.Text = "Cable name";
+                kalk.label16.Text = "Connector name";
+                kalk.label20.Text = "Antenna model";
+                kalk.label21.Text = "Cable name";
+                kalk.label22.Text = "Connector name";
+                kalk.label17.Text = "Cable length connecting antenna with transmitter";
+                kalk.label23.Text = "Cable length connecting antenna with receiver";
+                kalk.label1.Text = "Transmitter power";
+                kalk.label2.Text = "Transmitter gain";
+                kalk.label3.Text = "Transmitter attenuation";
+                kalk.label13.Text = "Cable attenuation";
+                kalk.label19.Text = "Connector attenuation";
+                kalk.label5.Text = "Receiver gain";
+                kalk.label6.Text = "Receiver attenuation";
+                kalk.label27.Text = "Cable attenuation";
+                kalk.label26.Text = "Connector attenuation";
+                kalk.label9.Text = "Material attenuation";
+                kalk.label24.Text = "Material name";
+                kalk.label25.Text = "Thickness";
+                kalk.addButton.Text = "Add";
+                kalk.button1.Text = "Save data";
+                kalk.button2.Text = "Read data";
+                kalk.CountButton.Text = "Count";
+                kalk.ClearButton.Text = "Clear";
+                kalk.QuitButton.Text = "Quit";
             }
             else
             {
                 kalk.lang = 0;
+                kalk.WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
             }
                 kalk.ShowDialog();
         }
