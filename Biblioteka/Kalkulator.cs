@@ -331,7 +331,7 @@ namespace Biblioteka
             }
             if (!IsEmptyTextBox(textBoxFSL))
             {
-                FSL = Math.Round(Convert.ToDouble(textBoxFSL.Text));
+                FSL = Math.Round(Convert.ToDouble(textBoxFSL.Text),2);
             }
             else
             {
@@ -351,7 +351,7 @@ namespace Biblioteka
                 {
                     MAT = 0;
                 }
-                double BL = MOC + ZN - TN - FSL + ZO - TO - MAT;
+                double BL = Math.Round(MOC + ZN - TN - FSL + ZO - TO - MAT, 2);
                 Budzet_lacza budzet = new Budzet_lacza
                 {
                     fsl_db = FSL,
@@ -364,7 +364,7 @@ namespace Biblioteka
             }
             else
             {
-                double BL = MOC + ZN - TN - FSL + ZO - TO;
+                double BL = Math.Round(MOC + ZN - TN - FSL + ZO - TO, 2);
                 Budzet_lacza budzet = new Budzet_lacza
                 {
                     fsl_db = FSL,
@@ -827,7 +827,7 @@ namespace Biblioteka
             {
                 d = 0;
             }
-            double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44, 3, MidpointRounding.ToEven);
+            double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44, 2, MidpointRounding.ToEven);
             textBoxFSL.Text = FSL.ToString();
 
         }
@@ -1017,7 +1017,7 @@ namespace Biblioteka
             {
                 d = 0;
             }
-            double FSL = 20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44;
+            double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44,2);
             textBoxFSL.Text = FSL.ToString();
             
         }

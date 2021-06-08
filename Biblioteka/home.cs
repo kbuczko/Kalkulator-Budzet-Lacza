@@ -15,8 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-// DODAC ODSWIEZANIE PO USUNIECIU DANYCH
-// DODAC ID KABLI I ZLACZ DO URZADZENIA
+
 namespace Biblioteka
 {
     public partial class home : Form
@@ -145,11 +144,12 @@ namespace Biblioteka
                 case "Urządzenie":
                 case "Devices":
                     
-                    dataGridView1.Columns[0].Visible = false;
+                    
                     dataGridView1.DataSource = lista_urz;
-                    dataGridView1.Columns[2].Visible = false;
-                    dataGridView1.Columns[4].Visible = false;
-                    dataGridView1.Columns[7].Visible = false;
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[3].Visible = false;
+                    dataGridView1.Columns[5].Visible = false;
+                    dataGridView1.Columns[8].Visible = false;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
@@ -162,19 +162,19 @@ namespace Biblioteka
 
                     if (lang == 1)
                     {
-                        dataGridView1.Columns[0].HeaderText = "power";
-                        dataGridView1.Columns[1].HeaderText = "cable_length";
-                        dataGridView1.Columns[3].HeaderText = "cable_name";
-                        dataGridView1.Columns[5].HeaderText = "connector_name";
-                        dataGridView1.Columns[6].HeaderText = "antenna_name";
-                        dataGridView1.Columns[8].HeaderText = "sensitivity";
+                        dataGridView1.Columns[1].HeaderText = "power";
+                        dataGridView1.Columns[2].HeaderText = "cable_length";
+                        dataGridView1.Columns[4].HeaderText = "cable_name";
+                        dataGridView1.Columns[6].HeaderText = "connector_name";
+                        dataGridView1.Columns[7].HeaderText = "antenna_name";
+                        dataGridView1.Columns[9].HeaderText = "sensitivity";
 
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
-                        label7.Text = dataGridView1.Columns[0].HeaderText + ulamek;
-                        label1.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                         label3.Text = "cable_name" + tekst;
                         label4.Text = "connector_name" + tekst;
                         label5.Text = "antenna_name" + tekst;
@@ -555,6 +555,20 @@ namespace Biblioteka
             
             switch (comboBox1.SelectedItem.ToString())
             {
+                case "Urządzenie":
+                case "Devices":
+                    id = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    try
+                    {
+                        SqliteDataAccess.QueryResult("Delete FROM urzadzenie WHERE id= '" + id + "'");
+
+                    }
+                    catch
+                    {
+                        label8.ForeColor = Color.Green; label8.Text = "Usunięto!"; label8.Show(); lista_urz = SqliteDataAccess.ListUrzadzenie();
+                        dataGridView1.DataSource = lista_urz;
+                    }
+                    break;
                 case "Materiały":
                 case "Materials":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());

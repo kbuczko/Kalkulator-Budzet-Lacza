@@ -35,7 +35,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<Urzadzenie>("SELECT Urzadzenie.moc, Urzadzenie.dl_kabla, Urzadzenie.id_kabla, Kabel.symbol AS nazwa_kabla ,Urzadzenie.id_zlacza, Zlacze.symbol as nazwa_zlacza, Urzadzenie.id_anteny, Antena.nazwa AS nazwa_anteny, Urzadzenie.czulosc FROM Urzadzenie, Antena, Kabel, Zlacze WHERE Antena.id = Urzadzenie.id_anteny AND Kabel.id = Urzadzenie.id_kabla AND zlacze.id = Urzadzenie.id_zlacza", new DynamicParameters());
+                var output = cnn.Query<Urzadzenie>("SELECT Urzadzenie.id, Urzadzenie.moc, Urzadzenie.dl_kabla, Urzadzenie.id_kabla, Kabel.symbol AS nazwa_kabla ,Urzadzenie.id_zlacza, Zlacze.symbol as nazwa_zlacza, Urzadzenie.id_anteny, Antena.nazwa AS nazwa_anteny, Urzadzenie.czulosc FROM Urzadzenie, Antena, Kabel, Zlacze WHERE Antena.id = Urzadzenie.id_anteny AND Kabel.id = Urzadzenie.id_kabla AND zlacze.id = Urzadzenie.id_zlacza", new DynamicParameters());
                 return output.ToList();
             }
         }

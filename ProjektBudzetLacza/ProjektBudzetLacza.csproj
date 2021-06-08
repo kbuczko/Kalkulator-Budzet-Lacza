@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{176C1624-A143-45DA-95A8-9E002868E74B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>ProjektBudzetLacza</RootNamespace>
     <AssemblyName>ProjektBudzetLacza</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>

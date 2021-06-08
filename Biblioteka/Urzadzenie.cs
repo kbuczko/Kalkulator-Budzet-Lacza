@@ -8,6 +8,8 @@ namespace Biblioteka
 {
     public class Urzadzenie
     {
+
+        public int id { get; set; }
         public double moc { get; set; }
 
         public double dl_kabla { get; set; }
