@@ -12,7 +12,7 @@ namespace Biblioteka
         public string symbol { get; set; }
         public double tlumiennosc_db { get; set; }
 
-        public int id_kab { get; set; }
+        public int czestotliwosc_MHz { get; set; }
 
         /*public string zlacze_opis
         {

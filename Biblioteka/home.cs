@@ -183,8 +183,8 @@ namespace Biblioteka
 
                     else
                     {
-                        label7.Text = dataGridView1.Columns[0].HeaderText + ulamek;
-                        label1.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                         label3.Text = "nazwa_kabla" + tekst;
                         label4.Text = "nazwa_zlacza" + tekst;
                         label5.Text = "nazwa_anteny" + tekst;
@@ -375,9 +375,9 @@ namespace Biblioteka
                     string value2 = textBox4.Text;
                     string value3 = textBox5.Text;
 
-                    string query1 = "SELECT Kabel.id FROM Urzadzenie, Kabel WHERE Kabel.symbol = '" + value1 + "'AND Urzadzenie.id_kabla = Kabel.id";
-                    string query2 = "SELECT Zlacze.id FROM Urzadzenie, Zlacze WHERE Zlacze.symbol = '" + value2 + "'AND Urzadzenie.id_zlacza = Zlacze.id";
-                    string query3 = "SELECT Antena.id FROM Urzadzenie, Antena WHERE Antena.nazwa = '" + value3 + "'AND Antena.id = Urzadzenie.id_anteny";
+                    string query1 = "SELECT Kabel.id FROM  Kabel WHERE Kabel.symbol = '" + value1 + "'";
+                    string query2 = "SELECT Zlacze.id FROM  Zlacze WHERE Zlacze.symbol = '" + value2 + "'";
+                    string query3 = "SELECT Antena.id FROM  Antena WHERE Antena.nazwa = '" + value3 + "'";
                     int id_kab = 0, id_zlacz =0, id_ant = 0;
                     using (var cnn = new SQLiteConnection(loadConnectionString()))
                     {
@@ -413,20 +413,22 @@ namespace Biblioteka
                         {
                             label8.ForeColor = Color.Red; label8.Text = "Złe dane."; label8.Show();
                         }
-                        SqliteDataAccess.saveDevices(urz);
-                        lista_urz = SqliteDataAccess.ListUrzadzenie();
-                        dataGridView1.DataSource = lista_urz;
+                        else
+                        {
+                            SqliteDataAccess.saveDevices(urz);
+                            lista_urz = SqliteDataAccess.ListUrzadzenie();
+                            dataGridView1.DataSource = lista_urz;
+                            textBox1.Text = "";
+                            textBox2.Text = "";
+                            textBox3.Text = "";
+                            textBox4.Text = "";
+                            textBox5.Text = "";
+                            textBox6.Text = "";
+                        }
+                        
+                        
                     }
                     catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
-
-
-
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox4.Text = "";
-                    textBox5.Text = "";
-                    textBox6.Text = "";
                     break;
                 case "Materiały":
                 case "Materials":
@@ -444,14 +446,12 @@ namespace Biblioteka
                         label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
                         lista_mat = SqliteDataAccess.listMaterials();
                         dataGridView1.DataSource = lista_mat;
+                        textBox1.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox4.Text = "";
                     }
                     catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
-
-
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox4.Text = "";
                     break;
                 case "Anteny":
                 case "Antennas":
@@ -467,16 +467,13 @@ namespace Biblioteka
                         label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
                         lista_ant = SqliteDataAccess.ListParameters();
                         dataGridView1.DataSource = lista_ant;
+                        textBox1.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox4.Text = "";
+                        textBox5.Text = "";
                     }
                     catch(Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
-                    
-                    
-
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox4.Text = "";
-                    textBox5.Text = "";
                     break;
                 case "Kable":
                 case "Cables":
@@ -492,13 +489,12 @@ namespace Biblioteka
                         label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
                         lista_kab = SqliteDataAccess.ListCables();
                         dataGridView1.DataSource = lista_kab;
+
+                        textBox1.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
                     }
                     catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
-                    
-
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
                     break;
                 case "Złącza":
                 case "Connectors":
@@ -508,19 +504,19 @@ namespace Biblioteka
                         {
                             symbol = textBox1.Text,
                             tlumiennosc_db = Convert.ToDouble(textBox2.Text),
-                            id_kab = Convert.ToInt32(textBox3.Text)
+                            czestotliwosc_MHz = Convert.ToInt32(textBox3.Text)
                         };
                         SqliteDataAccess.saveZlacza(zl);
                         label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
                         lista_zla = SqliteDataAccess.ListZlacza();
                         dataGridView1.DataSource = lista_zla;
+                        
+                        textBox1.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
                     }
                     catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
-
-
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
+                    
                     break;
                 case "Budżet łącza":
                 case "Link Budget":
@@ -536,12 +532,12 @@ namespace Biblioteka
                         SqliteDataAccess.saveBudget(budzet);
                         lista_bud = SqliteDataAccess.ListBudzet();
                         dataGridView1.DataSource = lista_bud;
+
+                        textBox1.Text = "";
+                        textBox2.Text = "";
+                        textBox3.Text = "";
                     }
                     catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
-
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    textBox3.Text = "";
                     break;
 
             }

@@ -13,6 +13,8 @@ namespace Biblioteka
         public string symbol { get; set; }
         public double tlumiennosc_db1m { get; set; }
 
+        public int id_zlacza { get; set; }
+
        /* public string kabel_opis
         {
             get
