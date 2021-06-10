@@ -10,13 +10,15 @@ namespace Biblioteka
     {
 
         public int id { get; set; }
+
+        public string nazwa { get; set; }
         public double moc { get; set; }
 
         public double dl_kabla { get; set; }
         public int id_kabla { get; set; }
-        public string nazwa_kabla { get; set; }
+        //public string nazwa_kabla { get; set; }
         public int id_zlacza { get; set; }
-        public string nazwa_zlacza { get; set; }
+        //public string nazwa_zlacza { get; set; }
 
         public string nazwa_anteny { get; set; }
         public int id_anteny { get; set; }

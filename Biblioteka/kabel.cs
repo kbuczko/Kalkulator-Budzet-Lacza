@@ -15,12 +15,7 @@ namespace Biblioteka
 
         public int id_zlacza { get; set; }
 
-       /* public string kabel_opis
-        {
-            get
-            {
-                return $"{czestotliwosc} {nazwa} {wartosc}";
-            }
-        }*/
+        public string nazwa_zlacza { get; set; }
+
     }
 }

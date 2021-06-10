@@ -35,10 +35,11 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<Urzadzenie>("SELECT Urzadzenie.id, Urzadzenie.moc, Urzadzenie.dl_kabla, Urzadzenie.id_kabla, Kabel.symbol AS nazwa_kabla ,Urzadzenie.id_zlacza, Zlacze.symbol as nazwa_zlacza, Urzadzenie.id_anteny, Antena.nazwa AS nazwa_anteny, Urzadzenie.czulosc FROM Urzadzenie, Antena, Kabel, Zlacze WHERE Antena.id = Urzadzenie.id_anteny AND Kabel.id = Urzadzenie.id_kabla AND zlacze.id = Urzadzenie.id_zlacza", new DynamicParameters());
+                var output = cnn.Query<Urzadzenie>("SELECT *, Antena.nazwa as nazwa_anteny FROM Urzadzenie, Antena WHERE Antena.id = Urzadzenie.id_anteny", new DynamicParameters());
                 return output.ToList();
             }
         }
+
 
         public static List<Budzet_lacza> updateBudzet(double wartosc, double odl, int czest)
         {
@@ -71,7 +72,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<kabel>("select * from kabel", new DynamicParameters());
+                var output = cnn.Query<kabel>("select kabel.czestotliwosc_MHz, kabel.symbol, kabel.tlumiennosc_db1m, zlacze.symbol as nazwa_zlacza from kabel, zlacze WHERE kabel.id_zlacza = zlacze.id", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -117,7 +118,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into kabel (czestotliwosc_MHz, symbol, tlumiennosc_db1m) values (@czestotliwosc_MHz, @symbol, @tlumiennosc_db1m)", kab);
+                cnn.Execute("insert into kabel (czestotliwosc_MHz, symbol, tlumiennosc_db1m, id_zlacza) values (@czestotliwosc_MHz, @symbol, @tlumiennosc_db1m, @id_zlacza)", kab);
             }
         }
 

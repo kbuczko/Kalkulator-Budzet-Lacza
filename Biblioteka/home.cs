@@ -90,8 +90,6 @@ namespace Biblioteka
                 label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                 label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
             }
-            
-
             dataGridView1.Columns[0].Visible = false;
        
 
@@ -143,13 +141,10 @@ namespace Biblioteka
                
                 case "Urządzenie":
                 case "Devices":
-                    
+
                     
                     dataGridView1.DataSource = lista_urz;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[3].Visible = false;
-                    dataGridView1.Columns[5].Visible = false;
-                    dataGridView1.Columns[8].Visible = false;
+
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
@@ -158,39 +153,44 @@ namespace Biblioteka
                     textBox4.Show();
                     textBox5.Show();
                     textBox6.Show();
-
+                    textBox7.Show();
 
                     if (lang == 1)
                     {
-                        dataGridView1.Columns[1].HeaderText = "power";
-                        dataGridView1.Columns[2].HeaderText = "cable_length";
-                        dataGridView1.Columns[4].HeaderText = "cable_name";
-                        dataGridView1.Columns[6].HeaderText = "connector_name";
-                        dataGridView1.Columns[7].HeaderText = "antenna_name";
-                        dataGridView1.Columns[9].HeaderText = "sensitivity";
+                        dataGridView1.Columns[1].HeaderText = "name";
+                        dataGridView1.Columns[2].HeaderText = "power";
+                        dataGridView1.Columns[3].HeaderText = "cable_length";
+                        dataGridView1.Columns[5].HeaderText = "cable_name";
+                        dataGridView1.Columns[7].HeaderText = "connector_name";
+                        dataGridView1.Columns[8].HeaderText = "antenna_name";
+                        dataGridView1.Columns[10].HeaderText = "sensitivity";
 
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
-                        label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = "cable_name" + tekst;
-                        label4.Text = "connector_name" + tekst;
-                        label5.Text = "antenna_name" + tekst;
-                        label6.Text = dataGridView1.Columns[8].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
+                        label5.Text = "cable_name" + tekst;
+                        label6.Text = "connector_name" + tekst;
+                        label9.Text = "sensitivity" + calkowita;
                     }
 
                     else
                     {
-                        label7.Text = dataGridView1.Columns[1].HeaderText + ulamek;
+                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = "nazwa_kabla" + tekst;
-                        label4.Text = "nazwa_zlacza" + tekst;
-                        label5.Text = "nazwa_anteny" + tekst;
-                        label6.Text = dataGridView1.Columns[8].HeaderText + ulamek;
+                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
+                        label5.Text = "nazwa_kabla" + tekst;
+                        label6.Text = "nazwa_zlacza" + tekst;
+                        label9.Text = "czulosc" + calkowita;
                     }
-                    
+                    dataGridView1.Columns[7].Visible = false;
+
                     break;
                 case "Budżet łącza":
                 case "Link Budget":
@@ -294,19 +294,21 @@ namespace Biblioteka
                     break;
                 case "Kable":
                 case "Cables":
-                    dataGridView1.Columns[0].Visible = false;
                     dataGridView1.DataSource = lista_kab;
+                    dataGridView1.Columns[4].Visible = false;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
+                    textBox4.Show();
 
                     if (lang == 1)
                     {
                         dataGridView1.Columns[1].HeaderText = "frequency_MHZ";
                         dataGridView1.Columns[2].HeaderText = "name";
                         dataGridView1.Columns[3].HeaderText = "attenuation_db1m";
+                        dataGridView1.Columns[5].HeaderText = "connector_name";
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         AddButton.Text = "Add";
@@ -314,6 +316,7 @@ namespace Biblioteka
                         label7.Text = dataGridView1.Columns[1].HeaderText + calkowita;
                         label1.Text = dataGridView1.Columns[2].HeaderText + tekst;
                         label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
+                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
                     }
 
                     else
@@ -321,6 +324,7 @@ namespace Biblioteka
                         label7.Text = dataGridView1.Columns[1].HeaderText + calkowita;
                         label1.Text = dataGridView1.Columns[2].HeaderText + tekst;
                         label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
+                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
                     }
                     
                     break;
@@ -408,6 +412,7 @@ namespace Biblioteka
                             czulosc = Convert.ToDouble(textBox6.Text)
 
                         };
+                        MessageBox.Show(urz.id_kabla + "");
                         label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
                         if(urz.id_kabla == 0 || urz.id_zlacza ==0 || urz.id_anteny == 0)
                         {
@@ -477,14 +482,30 @@ namespace Biblioteka
                     break;
                 case "Kable":
                 case "Cables":
+
+                    string symbol = textBox4.Text;
+                    
+                    string query_zlacze = "SELECT id FROM zlacze WHERE symbol = '" + symbol + "'";
+
+                    int id = 0;
+
+                    using (var cnn = new SQLiteConnection(loadConnectionString()))
+                    {
+                        var a = cnn.ExecuteScalar<int>(query_zlacze);
+                        
+                        id = a;
+                    }
+
                     try
                     {
                         kabel kab = new kabel
                     {
                         czestotliwosc_MHz = Convert.ToInt32(textBox1.Text),
                         symbol = textBox2.Text,
-                        tlumiennosc_db1m = Convert.ToInt32(textBox3.Text)
+                        tlumiennosc_db1m = Convert.ToDouble(textBox3.Text),
+                        id_zlacza = id
                     };
+
                         SqliteDataAccess.saveCables(kab);
                         label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
                         lista_kab = SqliteDataAccess.ListCables();
@@ -493,8 +514,9 @@ namespace Biblioteka
                         textBox1.Text = "";
                         textBox2.Text = "";
                         textBox3.Text = "";
+                        textBox4.Text = "";
                     }
-                    catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
+                    catch (Exception ex)  { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
                     break;
                 case "Złącza":
                 case "Connectors":
