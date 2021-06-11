@@ -14,14 +14,9 @@ namespace Biblioteka
 
         public int czestotliwosc_MHz { get; set; }
 
-        /*public string parametry_anteny_opis
-        {
-            get
-            {
-                return $"{rodzaj} {zysk} {moc} {id_kabla} {id_zlacza} {czy_nad}";
-            }
-        }*/
+        public int id_zlacza { get; set; }
     }
+
     public class parametry_anteny_moc
     {
         public int id { get; set; }

@@ -91,7 +91,7 @@ namespace Biblioteka
                 label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
             }
             dataGridView1.Columns[0].Visible = false;
-       
+
 
         }
 
@@ -174,9 +174,10 @@ namespace Biblioteka
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                         label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
                         label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
+                        label4.Text = "connector_name" + tekst;
                         label5.Text = "cable_name" + tekst;
-                        label6.Text = "connector_name" + tekst;
-                        label9.Text = "sensitivity" + calkowita;
+                        label6.Text = "antenna_name" + tekst;
+                        label9.Text = "czulosc" + calkowita;
                     }
 
                     else
@@ -184,9 +185,9 @@ namespace Biblioteka
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                         label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
-                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
+                        label4.Text = "nazwa_zlacza" + tekst;
                         label5.Text = "nazwa_kabla" + tekst;
-                        label6.Text = "nazwa_zlacza" + tekst;
+                        label6.Text = "nazwa_anteny" + tekst;
                         label9.Text = "czulosc" + calkowita;
                     }
                     dataGridView1.Columns[7].Visible = false;
