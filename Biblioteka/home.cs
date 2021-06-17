@@ -33,6 +33,28 @@ namespace Biblioteka
         string ulamek = "(double)";
 
 
+        public static DataTable ToDataTable<T>(List<T> items)
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+
+            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo prop in Props)
+            {
+                var type = (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType);
+                dataTable.Columns.Add(prop.Name, type);
+            }
+            foreach (T item in items)
+            {
+                var values = new object[Props.Length];
+                for (int i = 0; i < Props.Length; i++)
+                {
+                    values[i] = Props[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+            return dataTable;
+        }
+
         private void clearTextBoxes()
         {
             foreach (var c in this.Controls)
@@ -65,8 +87,8 @@ namespace Biblioteka
             lista_zla = SqliteDataAccess.ListZlacza();
             lista_urz = SqliteDataAccess.ListUrzadzenie();
 
-            
-            dataGridView1.DataSource = lista_ant;
+            DataTable dt = ToDataTable(lista_ant);
+            dataGridView1.DataSource = dt;
             if(lang == 1)
             {
                 clearTextBoxes();
@@ -95,39 +117,6 @@ namespace Biblioteka
 
         }
 
-        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            string strColumnName = dataGridView1.Columns[e.ColumnIndex].Name;
-            SortOrder strSortOrder = getSortOrder(e.ColumnIndex);
-
-            if (strSortOrder == SortOrder.Ascending)
-            {
-                lista_zla = lista_zla.OrderBy(x => typeof(zlacze).GetProperty(strColumnName).GetValue(x, null)).ToList();
-            }
-            else
-            {
-                lista_zla = lista_zla.OrderByDescending(x => typeof(zlacze).GetProperty(strColumnName).GetValue(x, null)).ToList();
-            }
-            dataGridView1.DataSource = lista_zla;
-            dataGridView1.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = strSortOrder;
-        }
-
-        private SortOrder getSortOrder(int columnIndex)
-        {
-            if (dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection == SortOrder.None ||
-                dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection == SortOrder.Descending)
-            {
-                dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
-                return SortOrder.Ascending;
-            }
-            else
-            {
-                dataGridView1.Columns[columnIndex].HeaderCell.SortGlyphDirection = SortOrder.Descending;
-                return SortOrder.Descending;
-            }
-        }
-
-
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
@@ -142,8 +131,8 @@ namespace Biblioteka
                 case "Urządzenie":
                 case "Devices":
 
-                    
-                    dataGridView1.DataSource = lista_urz;
+                    DataTable dt = ToDataTable(lista_urz);
+                    dataGridView1.DataSource = dt;
 
                     clearTextBoxes();
                     clearLabels();
@@ -195,7 +184,8 @@ namespace Biblioteka
                 case "Budżet łącza":
                 case "Link Budget":
                     dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.DataSource = lista_bud;
+                    DataTable dt1 = ToDataTable(lista_bud);
+                    dataGridView1.DataSource = dt1;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
@@ -227,8 +217,8 @@ namespace Biblioteka
                 case "Materiały":
                 case "Materials":
                     dataGridView1.Columns[0].Visible = false;
-                    
-                    dataGridView1.DataSource = lista_mat;
+                    DataTable dt2 = ToDataTable(lista_mat);
+                    dataGridView1.DataSource = dt2;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
@@ -263,7 +253,8 @@ namespace Biblioteka
                 case "Anteny":
                 case "Antennas":
                     dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.DataSource = lista_ant;
+                    DataTable dt3 = ToDataTable(lista_ant);
+                    dataGridView1.DataSource = dt3;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
@@ -275,6 +266,7 @@ namespace Biblioteka
                         dataGridView1.Columns[1].HeaderText = "name";
                         dataGridView1.Columns[2].HeaderText = "gain_dBi";
                         dataGridView1.Columns[3].HeaderText = "frequency_MHz";
+                        dataGridView1.Columns[4].HeaderText = "connector_id";
 
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
@@ -294,7 +286,8 @@ namespace Biblioteka
                     break;
                 case "Kable":
                 case "Cables":
-                    dataGridView1.DataSource = lista_kab;
+                    DataTable dt4 = ToDataTable(lista_kab);
+                    dataGridView1.DataSource = dt4;
                     dataGridView1.Columns[4].Visible = false;
                     clearTextBoxes();
                     clearLabels();
@@ -331,7 +324,8 @@ namespace Biblioteka
                 case "Złącza":
                 case "Connectors":
                     dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.DataSource = lista_zla;
+                    DataTable dt5 = ToDataTable(lista_zla);
+                    dataGridView1.DataSource = dt5;
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
