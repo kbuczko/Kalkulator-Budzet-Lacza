@@ -159,11 +159,12 @@ namespace Biblioteka
                     {
                         dataGridView1.Columns[1].HeaderText = "name";
                         dataGridView1.Columns[2].HeaderText = "power";
-                        dataGridView1.Columns[3].HeaderText = "cable_length";
-                        dataGridView1.Columns[5].HeaderText = "cable_name";
-                        dataGridView1.Columns[7].HeaderText = "connector_name";
-                        dataGridView1.Columns[8].HeaderText = "antenna_name";
-                        dataGridView1.Columns[10].HeaderText = "sensitivity";
+                        dataGridView1.Columns[3].HeaderText = "connector_name";
+                        dataGridView1.Columns[4].HeaderText = "cable_name";
+                        dataGridView1.Columns[5].HeaderText = "antenna_name";
+                        dataGridView1.Columns[6].Visible = false;
+                        dataGridView1.Columns[7].HeaderText = "sensitivity";
+                       
 
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
@@ -173,11 +174,10 @@ namespace Biblioteka
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                         label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
-                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
                         label4.Text = "connector_name" + tekst;
                         label5.Text = "cable_name" + tekst;
                         label6.Text = "antenna_name" + tekst;
-                        label9.Text = "czulosc" + calkowita;
+                        label9.Text = "sensitivity" + calkowita;
                     }
 
                     else
@@ -190,7 +190,6 @@ namespace Biblioteka
                         label6.Text = "nazwa_anteny" + tekst;
                         label9.Text = "czulosc" + calkowita;
                     }
-                    dataGridView1.Columns[7].Visible = false;
 
                     break;
                 case "Budżet łącza":
@@ -406,7 +405,6 @@ namespace Biblioteka
                         {
 
                             moc = Convert.ToInt32(textBox1.Text),
-                            dl_kabla = Convert.ToInt32(textBox2.Text),
                             id_kabla = id_kab,
                             id_zlacza = id_zlacz,
                             id_anteny = id_ant,

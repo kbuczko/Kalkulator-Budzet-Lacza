@@ -14,7 +14,6 @@ namespace Biblioteka
         public string nazwa { get; set; }
         public double moc { get; set; }
 
-        public double dl_kabla { get; set; }
         public int id_kabla { get; set; }
         //public string nazwa_kabla { get; set; }
         public int id_zlacza { get; set; }
