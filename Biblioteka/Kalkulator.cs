@@ -58,6 +58,14 @@ namespace Biblioteka
             label25.Hide();
             addButton.Hide();
             textBox12.Text = "Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+            label26.Hide();
+            label27.Hide();
+            label13.Hide();
+            label19.Hide();
+            textBox2.Hide();
+            textBox3.Hide();
+            textBox11.Hide();
+            textBox10.Hide();
 
         }
         //load
