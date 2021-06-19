@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Data.Sqlite;
 using ProjektBudzetLacza;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Biblioteka
         int licznik = 0;
         int licznik2 = 0;
         //nadajnik
+        List<Urzadzenie> lista_urz = new List<Urzadzenie>();
         List<parametry_anteny> lista_ant = new List<parametry_anteny>();
         List<kabel> lista_kab = new List<kabel>();
         List<zlacze> lista_zla = new List<zlacze>();
@@ -33,19 +35,20 @@ namespace Biblioteka
 
         List<tl_materialow> lista_mat = new List<tl_materialow>();
         List<Budzet_lacza> lista_bud = new List<Budzet_lacza>();
-        List<Urzadzenie> lista_urz = new List<Urzadzenie>();
         ResourceManager res_man;
         CultureInfo cul;
         private int licznik3;
         private int licznik4;
         private int licznik5;
         private int licznik6;
+        private int licznik7;
 
         public Kalkulator()
         {
             InitializeComponent();
 
             //nadajnik
+            lista_urz = SqliteDataAccess.ListUrzadzenie();
             lista_ant = SqliteDataAccess.ListParameters();
             lista_kab = SqliteDataAccess.ListCables();
             lista_zla = SqliteDataAccess.ListZlacza();
@@ -56,9 +59,7 @@ namespace Biblioteka
 
             lista_bud = SqliteDataAccess.ListBudzet();
             lista_mat = SqliteDataAccess.listMaterials();
-            lista_urz = SqliteDataAccess.ListUrzadzenie();
             Load_list();
-            //WzorBox.Hide();
             textBox4.Hide();
             textBox7.Hide();
             comboBox1.Hide();
@@ -70,173 +71,10 @@ namespace Biblioteka
         //load
         private void Load_list() //ładowanie wszystkich zmiennych
         {
-            
-            //nadajnik
-            comboBox2.DataSource = lista_ant;
-            comboBox2.DisplayMember = "nazwa";
-            comboBox3.DataSource = lista_kab;
-            comboBox3.DisplayMember = "symbol";
-            comboBox4.DataSource = lista_zla;
-            comboBox4.DisplayMember = "symbol";
-            //odbiornik
-            comboBox7.DataSource = lista_ant2;
-            comboBox7.DisplayMember = "nazwa";
-            comboBox8.DataSource = lista_kab2;
-            comboBox8.DisplayMember = "symbol";
-            comboBox9.DataSource = lista_zla2;
-            comboBox9.DisplayMember = "symbol";
-            /*comboBox2.ResetText();
-            comboBox3.ResetText();
-            comboBox4.ResetText();
-            comboBox7.ResetText();
-            comboBox8.ResetText();
-            comboBox9.ResetText();*/
+            comboBox5.DataSource = lista_urz;
+            comboBox5.DisplayMember = "nazwa";
         }
         //load nadajnik
-        private void Load_antena() //ładowanie combobox antena na podstawie czestotliwosci
-        {
-            string query5 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + textBox9.Text + "'";
-            List<parametry_anteny> output6 = new List<parametry_anteny>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output5 = cnn.Query<parametry_anteny>(query5);
-                output6 = output5.ToList();
-                comboBox2.DataSource = output6;
-                comboBox2.DisplayMember = "nazwa";
-            }
-        }
-        private void Load_antena2() //ładowanie combobox antena na podstawie czestotliwosci
-        {
-            string query5 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + textBox9.Text + "'";
-            List<parametry_anteny> output6 = new List<parametry_anteny>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output5 = cnn.Query<parametry_anteny>(query5);
-                output6 = output5.ToList();
-                comboBox7.DataSource = output6;
-                comboBox7.DisplayMember = "nazwa";
-            }
-        }
-        private void Load_material()
-        {
-            //string query = "SELECT nazwa FROM Material WHERE czestotliwosc_MHz='" + textBox9.Text + "'";
-            string query = "SELECT nazwa FROM Material";
-            List<tl_materialow> output2 = new List<tl_materialow>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output3 = cnn.Query<tl_materialow>(query);
-                output2 = output3.ToList();
-                comboBox1.DataSource = output2;
-                comboBox1.DisplayMember = "nazwa";
-            }
-        }
-        private void Load_kabel() //ładowanie combobox kabel na podstawie czestotliwosc
-        {
-            string query2 = "SELECT symbol FROM Kabel WHERE czestotliwosc_MHz='" + textBox9.Text + "'";
-            List<kabel> output2 = new List<kabel>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output3 = cnn.Query<kabel>(query2);
-                output2 = output3.ToList();
-                comboBox3.DataSource = output2;
-                comboBox3.DisplayMember = "symbol";
-            }
-        }
-        private void Load_kabel2() //ładowanie combobox kabel na podstawie czestotliwosc
-        {
-            string query2 = "SELECT symbol FROM Kabel WHERE czestotliwosc_MHz='" + textBox9.Text + "'";
-            List<kabel> output2 = new List<kabel>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output3 = cnn.Query<kabel>(query2);
-                output2 = output3.ToList();
-                comboBox8.DataSource = output2;
-                comboBox8.DisplayMember = "symbol";
-            }
-        }
-        private void Load_kabel(string nazwa) 
-        {
-            string query3 = "SELECT symbol FROM Kabel JOIN Urzadzenie ON Urzadzenie.id_kabla=Kabel.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<kabel> output2 = new List<kabel>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output3 = cnn.Query<kabel>(query3);
-                output2 = output3.ToList();
-                comboBox3.DataSource = output2;
-                comboBox3.DisplayMember = "symbol";
-            }
-        }
-        private void Load_kabel2(string nazwa)
-        {
-            string query3 = "SELECT symbol FROM Kabel JOIN Urzadzenie ON Urzadzenie.id_kabla=Kabel.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<kabel> output2 = new List<kabel>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output3 = cnn.Query<kabel>(query3);
-                output2 = output3.ToList();
-                comboBox8.DataSource = output2;
-                comboBox8.DisplayMember = "symbol";
-            }
-        }
-        private void Load_zlacze() // ladowanie combobox zlacze na podstawie wybranego kabla
-        {
-                string symbol = comboBox3.GetItemText(comboBox3.SelectedItem);
-                string query2 = "SELECT Zlacze.symbol FROM Zlacze JOIN Kabel ON Zlacze.id_kab=Kabel.id WHERE Kabel.symbol= '" + symbol + "'";
-                List<zlacze> output2 = new List<zlacze>();
-            if (symbol != "")
-            {
-                using (var cnn = new SQLiteConnection(loadConnectionString()))
-                {
-                    var output3 = cnn.Query<zlacze>(query2);
-                    output2 = output3.ToList();
-                    comboBox4.DataSource = output2;
-                    comboBox4.DisplayMember = "symbol";
-                }
-            }
-        }
-        private void Load_zlacze2() // ladowanie combobox zlacze na podstawie wybranego kabla
-        {
-            string symbol = comboBox3.GetItemText(comboBox3.SelectedItem);
-            string query2 = "SELECT Zlacze.symbol FROM Zlacze JOIN Kabel ON Zlacze.id_kab=Kabel.id WHERE Kabel.symbol= '" + symbol + "'";
-            List<zlacze> output2 = new List<zlacze>();
-            if (symbol != "")
-            {
-                using (var cnn = new SQLiteConnection(loadConnectionString()))
-                {
-                    var output3 = cnn.Query<zlacze>(query2);
-                    output2 = output3.ToList();
-                    comboBox9.DataSource = output2;
-                    comboBox9.DisplayMember = "symbol";
-                }
-            }
-        }
-        private void Load_zlacze(string nazwa) 
-        {
-            string query4 = "SELECT symbol FROM Zlacze JOIN Urzadzenie ON Urzadzenie.id_zlacza=Zlacze.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            //string query4 = "SELECT nazwa_zlacza FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<zlacze> output2 = new List<zlacze>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output3 = cnn.Query<zlacze>(query4);
-                output2 = output3.ToList();
-                comboBox4.DataSource = output2;
-                comboBox4.DisplayMember = "symbol";
-            }
-        }
-        private void Load_zlacze2(string nazwa)
-        {
-            string query4 = "SELECT symbol FROM Zlacze JOIN Urzadzenie ON Urzadzenie.id_zlacza=Zlacze.id JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            //string query4 = "SELECT nazwa_zlacza FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-            List<zlacze> output2 = new List<zlacze>();
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
-            {
-                var output3 = cnn.Query<zlacze>(query4);
-                output2 = output3.ToList();
-                comboBox9.DataSource = output2;
-                comboBox9.DisplayMember = "symbol";
-            }
-        }
-
         public bool IsEmptyTextBox(TextBox text)
         {
             return text.Text.Length == 0;
@@ -352,11 +190,14 @@ namespace Biblioteka
                     MAT = 0;
                 }
                 double BL = Math.Round(MOC + ZN - TN - FSL + ZO - TO - MAT, 2);
+                string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
+                string[] subs2 = czestotliwosc_txt.Split('.');
+                Int32 czestotliwosc = Convert.ToInt32(subs2[0]);
                 Budzet_lacza budzet = new Budzet_lacza
                 {
                     fsl_db = FSL,
                     odleglosc_km = Convert.ToDouble(textBox8.Text),
-                    czestotliwosc_MHz = Convert.ToInt32(textBox9.Text),
+                    czestotliwosc_MHz = czestotliwosc,
                     wartosc = BL
                 };
                 SqliteDataAccess.saveBudget(budzet);
@@ -365,11 +206,15 @@ namespace Biblioteka
             else
             {
                 double BL = Math.Round(MOC + ZN - TN - FSL + ZO - TO, 2);
+                string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
+                string[] subs3 = czestotliwosc_txt.Split('.');
+                Int32 czestotliwosc = Convert.ToInt32(subs3[0]);
                 Budzet_lacza budzet = new Budzet_lacza
                 {
-                    fsl_db = FSL,
+                    
+                fsl_db = FSL,
                     odleglosc_km = Convert.ToDouble(textBox8.Text),
-                    czestotliwosc_MHz = Convert.ToInt32(textBox9.Text),
+                    czestotliwosc_MHz = czestotliwosc,
                     wartosc = BL
                 };
                 SqliteDataAccess.saveBudget(budzet);
@@ -386,7 +231,6 @@ namespace Biblioteka
             textBox1.Clear();
             textBoxFSL.Clear();
             textBoxMOC.Clear();
-            textBox9.Clear();
             textBox5.Clear();
             textBox6.Clear();
             textBox8.Clear();
@@ -422,7 +266,8 @@ namespace Biblioteka
                 textBox7.Show();
                 comboBox1.Show();
                 addButton.Show();
-                Load_material();
+                comboBox1.DataSource = lista_mat;
+                comboBox1.DisplayMember = "nazwa";
             }
             else
             {
@@ -435,7 +280,7 @@ namespace Biblioteka
                     WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
                 }
 
-                    textBox4.Hide();
+                textBox4.Hide();
                 label9.Hide();
                 label24.Hide();
                 label25.Hide();
@@ -449,273 +294,269 @@ namespace Biblioteka
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
         //combobox nadajnik
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //combobox rodzaj anteny nadajnik
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (licznik == 0)
+            if (licznik7 == 0)
             {
-                licznik++;
+                licznik7++;
             }
             else
             {
-                
-                    string nazwa = comboBox2.GetItemText(comboBox2.SelectedItem);
-                    string query = "SELECT zysk_dBi FROM Antena WHERE nazwa= '" + nazwa + "'";
-                    string query2 = "SELECT moc FROM Urzadzenie JOIN Antena ON Urzadzenie.id_anteny=Antena.id WHERE Antena.nazwa= '" + nazwa + "'";
-
-
-                    string output = "";
-                    using (var cnn = new SQLiteConnection(loadConnectionString()))
-                    {
-                        Console.WriteLine(nazwa);
-                        try
-                        {
-                            output = cnn.ExecuteScalar(query2).ToString();
-                            textBoxMOC.Text = output;
-                        }
-                        catch (NullReferenceException ex)
-                        {
-                            output = "";
-                            textBoxMOC.Text = output;
-                            Console.WriteLine(ex);
-                        }
-                        Console.WriteLine(nazwa);
-                        try
-                        {
-                            Load_kabel(nazwa);
-                        }
-                        catch (NullReferenceException ex)
-                        {
-                            Console.WriteLine(ex);
-                        }
-                        try
-                        {
-                            Load_zlacze(nazwa);
-                        }
-                        catch (NullReferenceException ex)
-                        {
-                            Console.WriteLine(ex);
-                        }
-                    try
-                    {
-                        output = cnn.ExecuteScalar(query).ToString();
-                        textBoxZN.Text = output;
-                    }
-                    catch (NullReferenceException ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-
-                    Console.WriteLine(textBoxZO.Text);
-                    }
-                if (IsEmptyTextBox(textBox9))
+                //wybraliśmy nadajnik
+                string nazwa = comboBox5.GetItemText(comboBox5.SelectedItem);
+                string query = "SELECT moc FROM Urzadzenie WHERE nazwa='"+nazwa+"'";
+                string query1 = "SELECT ant_wbud FROM Urzadzenie WHERE nazwa='"+nazwa+"'";
+                string query2 = "SELECT id_anteny FROM Urzadzenie WHERE nazwa='" + nazwa + "'";
+                using(var cnn = new SQLiteConnection(loadConnectionString()))
                 {
-                    Load_list();
+                    if (checkBox2.Checked) //sprawdzanie autouzupełniania moc
+                    {
+                        string output = cnn.ExecuteScalar(query).ToString();
+                        textBoxMOC.Text = output;
+                    }
+                    string ant_wbud = cnn.ExecuteScalar(query1).ToString(); //sprawdzanie czy jest antena wbudowana
+                    if (ant_wbud == "1") //jest
+                    {
+                        comboBox4.Text = "Antena wbudowana";
+                        comboBox3.Text = "Antena wbudowana";
+                        textBox5.Text = "Antena wbudowana";
+                        string id_anteny = cnn.ExecuteScalar(query2).ToString();
+                        string query3 = "SELECT nazwa FROM Antena WHERE id='" + id_anteny + "'";
+                        var anteny = cnn.Query<parametry_anteny>(query3, new DynamicParameters()); //uzupełnienie pasujących anten
+                        comboBox2.DataSource = anteny.ToList();
+                        comboBox2.DisplayMember = "nazwa";
+                        string nazwa_anteny = comboBox2.GetItemText(comboBox2.SelectedItem);
+                        if (checkBox2.Checked)//sprawdzanie autouzupełniania zysk
+                        {
+                            string query4 = "SELECT zysk_dBi FROM Antena WHERE nazwa='" + nazwa_anteny + "'";
+                            string zysk = cnn.ExecuteScalar(query4).ToString();
+                            textBoxZN.Text = zysk;
+                        }
+                        string query7 = "SELECT czestotliwosc_MHz FROM Antena WHERE nazwa='" + nazwa_anteny + "'";
+                        comboBox6.Text = cnn.ExecuteScalar(query7).ToString();
+
+                    }
+                    else//nie ma wbudowanej anteny
+                    {
+                        string query5 = "SELECT id_zlacza FROM Urzadzenie WHERE nazwa='" + nazwa + "'";
+                        string id_zlacza = cnn.ExecuteScalar(query5).ToString();
+                        string query6 = "SELECT symbol FROM Zlacze WHERE id='" + id_zlacza + "'"; //uzupełnienie listy dostępnych złącz
+                        var zlacza = cnn.Query<zlacze>(query6, new DynamicParameters());
+                        comboBox4.DataSource = zlacza.ToList();
+                        comboBox4.DisplayMember = "symbol";
+                    }
                 }
+            }
+        }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //combobox rodzaj anteny nadajnik
+        {
+            string nazwa = comboBox2.GetItemText(comboBox2.SelectedItem);
+            using(var cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                if (checkBox2.Checked)
+                {
+                    string query1 = "SELECT zysk_dBi FROM Antena WHERE nazwa='" + nazwa + "'";
+                    textBoxZN.Text = cnn.ExecuteScalar(query1).ToString();
+                }
+
+
             }
         }
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) //combobox rodzaj kabla nadajnik
         {
-            if(licznik3 == 0)
+            string nazwa = comboBox3.GetItemText(comboBox3.SelectedItem);
+            string czestotliwosc = comboBox6.GetItemText(comboBox6.SelectedItem);
+            if (checkBox2.Checked)
             {
-                licznik3++;
-            }
-            else
-            {
-
-                    string nazwa = comboBox3.GetItemText(comboBox3.SelectedItem);
-                    string czestotliwosc = textBox9.Text;
-                    string dl_kabla = textBox5.Text;
-                //string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
-                string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa +"'";
-                string output = "";
-                    using (var cnn = new SQLiteConnection(loadConnectionString()))
+                using (var cnn = new SQLiteConnection(loadConnectionString()))
+                {
+                    string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz='" + czestotliwosc + "'";
+                    if (textBox5.Text == "")
                     {
-                        try
-                        {
-                            output = cnn.ExecuteScalar(query).ToString();
-                            double x = Convert.ToDouble(output);
-                            double y;
-                            if (dl_kabla == "")
-                            {
-                                y = 1;
-                            }
-                            else
-                            {
-                                y = Convert.ToDouble(dl_kabla);
-                            }
-                            double opd = x * y;
-                            textBox2.Text = opd.ToString();
-                        }
-                        catch (NullReferenceException ex)
-                        {
-                            output = "";
-                            Console.WriteLine(ex);
-                            textBox2.Text = output;
-                        }
 
+                        textBox2.Text = cnn.ExecuteScalar(query).ToString();
                     }
-               
+                    else
+                    {
+                        string dl = textBox5.Text;
+                        string tl = cnn.ExecuteScalar(query).ToString();
+                        double wynik = Convert.ToDouble(dl) * Convert.ToDouble(tl);
+                        textBox2.Text = wynik.ToString();
+                    }
+                }
             }
         }
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e) //combobx rodzaj zlacze nadajnik
         {
-            if (licznik4 == 0)
+                string nazwa = comboBox4.GetItemText(comboBox4.SelectedItem);
+            using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                licznik4++;
-            }
-            else
-            {
-
-                    string symbol = comboBox4.GetItemText(comboBox4.SelectedItem);
-                    string query = "SELECT tlumiennosc_db FROM Zlacze WHERE symbol='" + symbol + "'";
-                    string output = "";
-                    using (var cnn = new SQLiteConnection(loadConnectionString()))
+                string query2 = "SELECT id FROM Zlacze WHERE symbol='" + nazwa + "'";
+                try
+                {
+                    string id = cnn.ExecuteScalar(query2).ToString();
+                    string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
+                    string query1 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + czestotliwosc_txt + "' AND id_zlacza='" + id + "'";
+                    var output = cnn.Query<parametry_anteny>(query1, new DynamicParameters());
+                    comboBox2.DataSource = output.ToList();
+                    comboBox2.DisplayMember = "nazwa";
+                    if (checkBox2.Checked)//autouzupełnianie
                     {
-                        try
+                        string query = "SELECT tlumiennosc_db FROM Zlacze WHERE symbol='" + nazwa + "'"; //pobranie tlumieności na podstawie nazwy
+                        string tlum = cnn.ExecuteScalar(query).ToString();
+                        double tluml = Convert.ToDouble(tlum);
+                        double czestotliwosc = 0;
+                        if (czestotliwosc_txt != "")
                         {
-                            output = cnn.ExecuteScalar(query).ToString();
-                            textBox3.Text = output;
+                            string[] subs = czestotliwosc_txt.Split('.');
+                            czestotliwosc = Double.Parse(subs[0]);
                         }
-                        catch (NullReferenceException ex)
-                        {
-                            output = "";
-                            Console.WriteLine(ex);
-                        }
-
+                        double wynik = tluml * Math.Sqrt(czestotliwosc / 1000); //wyliczanie ze wzoru
+                        textBox3.Text = wynik.ToString();
                     }
-
+                    string query3 = "SELECT symbol FROM Kabel WHERE czestotliwosc_MHz='" + czestotliwosc_txt + "' AND id_zlacza='" + id + "'";
+                    var output2 = cnn.Query<kabel>(query3, new DynamicParameters());
+                    comboBox3.DataSource = output2.ToList();
+                    comboBox3.DisplayMember = "symbol";
+                }
+                catch (NullReferenceException ex) { }
             }
         }
-
-        //combobox odbiornik
-
-        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (licznik2 == 0)
+            string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
+            string query1 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + czestotliwosc_txt + "'";
+            using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                licznik2++;
+                var output = cnn.Query<parametry_anteny>(query1, new DynamicParameters());
+                comboBox7.DataSource = output.ToList();
+                comboBox7.DisplayMember = "nazwa";
+            }
+            double f;
+            double d;
+            if (czestotliwosc_txt != "" || !IsEmptyTextBox(textBox8))
+            {
+                if (czestotliwosc_txt != "")
+                {
+                    string[] subs = czestotliwosc_txt.Split('.');
+                    double czestotliwosc = Double.Parse(subs[0]);
+                    f = czestotliwosc;
+                }
+                else
+                {
+                    f = 1;
+                }
+                if (!IsEmptyTextBox(textBox8))
+                {
+                    d = Convert.ToDouble(textBox8.Text);
+                }
+                else
+                {
+                    d = 1;
+                }
+                double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44, 2);
+                textBoxFSL.Text = FSL.ToString();
             }
             else
             {
+                textBoxFSL.Text = "0";
+            }
 
-                string nazwa = comboBox7.GetItemText(comboBox7.SelectedItem);
-                string query = "SELECT zysk_dBi FROM Antena WHERE nazwa= '" + nazwa + "'";
-                string output = "";
-                using (var cnn = new SQLiteConnection(loadConnectionString()))
+        }
+        //combobox odbiornik
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
+            string query1 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + czestotliwosc_txt + "'";
+            using (var cnn = new SQLiteConnection(loadConnectionString()))
+            {
+                try
                 {
-                    Console.WriteLine(nazwa);
-                    output = cnn.ExecuteScalar(query).ToString();
-                    textBoxZO.Text = output;
-                    Console.WriteLine(textBoxZO.Text);
+                    string nazwa = cnn.ExecuteScalar(query1).ToString();
+                    if (checkBox2.Checked)
+                    {
+                        string query2 = "SELECT zysk_dBi FROM Antena WHERE nazwa='" + nazwa + "'";
+                        textBoxZO.Text = cnn.ExecuteScalar(query2).ToString();
+                    }
+                    string query3 = "SELECT id_zlacza FROM Antena WHERE nazwa='" + nazwa + "'";
+                    string id_zlacza = cnn.ExecuteScalar(query3).ToString();
+                    string query4 = "SELECT symbol FROM Zlacze WHERE id='" + id_zlacza + "'";
+                    var output = cnn.Query<zlacze>(query4, new DynamicParameters());
+                    comboBox9.DataSource = output.ToList();
+                    comboBox9.DisplayMember = "symbol";
                 }
-                using (var cnn = new SQLiteConnection(loadConnectionString()))
-                {
-                    Console.WriteLine(nazwa);
-                    try
-                    {
-                        Load_kabel2(nazwa);
-                    }
-                    catch (NullReferenceException ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                    try
-                    {
-                        Load_zlacze2(nazwa);
-                    }
-                    catch (NullReferenceException ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                    try
-                    {
-                        output = cnn.ExecuteScalar(query).ToString();
-                        textBoxZO.Text = output;
-                    }
-                    catch (NullReferenceException ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-
-                    Console.WriteLine(textBoxZO.Text);
-                }
+                catch (NullReferenceException ex) { }
             }
         }
         private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (licznik6 == 0)
+            string nazwa = comboBox8.GetItemText(comboBox8.SelectedItem);
+            string czestotliwosc = comboBox6.GetItemText(comboBox6.SelectedItem);
+            if (checkBox2.Checked)
             {
-                licznik6++;
-            }
-            else
-            {
-
-                string nazwa = comboBox8.GetItemText(comboBox8.SelectedItem);
-                string czestotliwosc = textBox9.Text;
-                string dl_kabla = textBox6.Text;
-                //string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
-                string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "'";
-                string output = "";
                 using (var cnn = new SQLiteConnection(loadConnectionString()))
                 {
-                    try
+                    try { 
+                    string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz='" + czestotliwosc + "'";
+                    if (textBox6.Text == "")
                     {
-                        output = cnn.ExecuteScalar(query).ToString();
-                        double x = Convert.ToDouble(output);
-                        double y;
-                        if (dl_kabla == "")
-                        {
-                            y = 1;
-                        }
-                        else
-                        {
-                            y = Convert.ToDouble(dl_kabla);
-                        }
-                        double opd = x * y;
-                        textBox11.Text = opd.ToString();
-                    }
-                    catch (NullReferenceException ex)
-                    {
-                        output = "";
-                        Console.WriteLine(ex);
-                        textBox11.Text = output;
-                    }
 
+                        textBox11.Text = cnn.ExecuteScalar(query).ToString();
+                    }
+                    else
+                    {
+                        string dl = textBox6.Text;
+                        string tl = cnn.ExecuteScalar(query).ToString();
+                        double wynik = Convert.ToDouble(dl) * Convert.ToDouble(tl);
+                        textBox11.Text = wynik.ToString();
+                    }
+                    }
+                    catch (NullReferenceException ex) { }
                 }
-
             }
         }
         private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (licznik5 == 0)
+            string nazwa = comboBox9.GetItemText(comboBox9.SelectedItem);
+            string query = "SELECT id FROM Zlacze WHERE symbol='" + nazwa + "'";
+            string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
+            using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                licznik5++;
-            }
-            else
-            {
-
-                string symbol = comboBox9.GetItemText(comboBox9.SelectedItem);
-                string query = "SELECT tlumiennosc_db FROM Zlacze WHERE symbol='" + symbol + "'";
-                string output = "";
-                using (var cnn = new SQLiteConnection(loadConnectionString()))
+                try
                 {
-                    try
+                    if (checkBox2.Checked)
+                {
+                    if (checkBox2.Checked)//autouzupełnianie
                     {
-                        output = cnn.ExecuteScalar(query).ToString();
-                        textBox10.Text = output;
+                        string query1 = "SELECT tlumiennosc_db FROM Zlacze WHERE symbol='" + nazwa + "'"; //pobranie tlumieności na podstawie nazwy
+                        string tlum = cnn.ExecuteScalar(query).ToString();
+                        double tluml = Convert.ToDouble(tlum);
+                        double czestotliwosc = 0;
+                        if (czestotliwosc_txt != "")
+                        {
+                            string[] subs = czestotliwosc_txt.Split('.');
+                            czestotliwosc = Double.Parse(subs[0]);
+                        }
+                        double wynik = tluml * Math.Sqrt(czestotliwosc / 1000); //wyliczanie ze wzoru
+                        textBox10.Text = wynik.ToString();
                     }
-                    catch (NullReferenceException ex)
-                    {
-                        output = "";
-                        Console.WriteLine(ex);
-                    }
-
                 }
+                
+                    string id = cnn.ExecuteScalar(query).ToString();
+                    string query2 = "SELECT nazwa FROM Urzadzenie WHERE id_zlacza ='" + id + "'";
+                    var output = cnn.Query<parametry_anteny>(query2, new DynamicParameters());
+                    comboBox10.DataSource = output.ToList();
+                    comboBox10.DisplayMember = "nazwa";
+                    string query3 = "SELECT symbol FROM Kabel WHERE id_zlacza='" + id + "' AND czestotliwosc_MHz='" + czestotliwosc_txt + "'";
+                    var output2 = cnn.Query<kabel>(query3, new DynamicParameters());
+                    comboBox8.DataSource = output2.ToList();
+                    comboBox8.DisplayMember = "symbol";
+                }
+                catch (NullReferenceException ex) { }
 
             }
         }
         //obsługa pliku
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -773,255 +614,155 @@ namespace Biblioteka
             }
 
         }
-
-        //zmiana czestotliwosci
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-            if (IsEmptyTextBox(textBox9))
-            {
-                comboBox2.ResetText();
-                comboBox3.ResetText();
-                comboBox4.ResetText();
-                comboBox7.ResetText();
-                comboBox8.ResetText();
-                comboBox9.ResetText();
-                comboBox1.ResetText();
-                textBox7.Clear();
-
-                    Load_list();
-            }
-            else
-            {
-                comboBox2.ResetText();
-                comboBox3.ResetText();
-                comboBox4.ResetText();
-                comboBox7.ResetText();
-                comboBox8.ResetText();
-                comboBox9.ResetText();
-                comboBox1.ResetText();
-                textBox7.Clear();
-                Load_antena();
-                Load_kabel();
-                Load_zlacze();
-                Load_antena2();
-                Load_kabel2();
-                Load_zlacze2();
-                Load_material();
-            }
-            double f;
-            double d;
-            if (!IsEmptyTextBox(textBox9))
-            {
-                f = Convert.ToDouble(textBox9.Text);
-            }
-            else
-            {
-                f = 0;
-            }
-            if (!IsEmptyTextBox(textBox8))
-            {
-                d = Convert.ToDouble(textBox8.Text);
-            }
-            else
-            {
-                d = 0;
-            }
-            double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44, 2, MidpointRounding.ToEven);
-            textBoxFSL.Text = FSL.ToString();
-
-        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            double tk;
-            double tz;
-            if (!IsEmptyTextBox(textBox2))
+            string tlk = textBox2.Text;
+            string tlz = textBox3.Text;
+            double tlk_l = 0;
+            double tlz_l = 0;
+            if(textBox2.Text != "")
             {
-                tk = Convert.ToDouble(textBox2.Text);
+                tlk_l = Convert.ToDouble(tlk);
             }
-            else
+            if(textBox3.Text != "")
             {
-                tk = 0;
+                tlz_l = Convert.ToDouble(tlz);
             }
+            double wynik = tlk_l + tlz_l;
+            textBoxTN.Text = wynik.ToString();
             
-            if (!IsEmptyTextBox(textBox3))
-            {
-                tz = Convert.ToDouble(textBox3.Text);
-            }
-            else
-            {
-                tz = 0;
-            }
-            double TN = tk + tz;
-            textBoxTN.Text = TN.ToString();
+
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            double tk;
-            double tz;
-            if (!IsEmptyTextBox(textBox2))
+            string tlk = textBox2.Text;
+            string tlz = textBox3.Text;
+            double tlk_l = 0;
+            double tlz_l = 0;
+            if (textBox2.Text != "")
             {
-                tk = Convert.ToDouble(textBox2.Text);
+                tlk_l = Convert.ToDouble(tlk);
             }
-            else
+            if (textBox3.Text != "")
             {
-                tk = 0;
+                tlz_l = Convert.ToDouble(tlz);
             }
-
-            if (!IsEmptyTextBox(textBox3))
-            {
-                tz = Convert.ToDouble(textBox3.Text);
-            }
-            else
-            {
-                tz = 0;
-            }
-            double TN = tk + tz;
-            textBoxTN.Text = TN.ToString();
+            double wynik = tlk_l + tlz_l;
+            textBoxTN.Text = wynik.ToString();
         }
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             string nazwa = comboBox3.GetItemText(comboBox3.SelectedItem);
-            string czestotliwosc = textBox9.Text;
-            string dl_kabla = textBox5.Text;
-            string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
-            string output = "";
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
+            string czestotliwosc = comboBox6.GetItemText(comboBox6.SelectedItem);
+            if (checkBox2.Checked)
             {
-                try
+                using (var cnn = new SQLiteConnection(loadConnectionString()))
                 {
-                    output = cnn.ExecuteScalar(query).ToString();
-                    double x = Convert.ToDouble(output);
-                    double y;
-                    if (dl_kabla == "")
+                    string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz='" + czestotliwosc + "'";
+                    if (textBox5.Text == "")
                     {
-                        y = 1;
+
+                        textBox2.Text = cnn.ExecuteScalar(query).ToString();
                     }
                     else
                     {
-                        y = Convert.ToDouble(dl_kabla);
+                        string dl = textBox5.Text;
+                        string tl = cnn.ExecuteScalar(query).ToString();
+                        double wynik = Convert.ToDouble(dl) * Convert.ToDouble(tl);
+                        textBox2.Text = wynik.ToString();
                     }
-                    double opd = x * y;
-                    textBox2.Text = opd.ToString();
                 }
-                catch (NullReferenceException ex)
-                {
-                    output = "";
-                    Console.WriteLine(ex);
-                    textBox2.Text = output;
-                }
-
             }
-
         }
         private void textBox11_TextChanged(object sender, EventArgs e)
         {
-            double tk;
-            double tz;
-            if (!IsEmptyTextBox(textBox2))
+            string tlk = textBox11.Text;
+            string tlz = textBox10.Text;
+            double tlk_l = 0;
+            double tlz_l = 0;
+            if (textBox11.Text != "")
             {
-                tk = Convert.ToDouble(textBox2.Text);
+                tlk_l = Convert.ToDouble(tlk);
             }
-            else
+            if (textBox10.Text != "")
             {
-                tk = 0;
+                tlz_l = Convert.ToDouble(tlz);
             }
-
-            if (!IsEmptyTextBox(textBox3))
-            {
-                tz = Convert.ToDouble(textBox3.Text);
-            }
-            else
-            {
-                tz = 0;
-            }
-            double TN = tk + tz;
-            textBoxTO.Text = TN.ToString();
+            double wynik = tlk_l + tlz_l;
+            textBoxTO.Text = wynik.ToString();
         }
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
-            double tk;
-            double tz;
-            if (!IsEmptyTextBox(textBox2))
+            string tlk = textBox11.Text;
+            string tlz = textBox10.Text;
+            double tlk_l = 0;
+            double tlz_l = 0;
+            if (textBox11.Text != "")
             {
-                tk = Convert.ToDouble(textBox2.Text);
+                tlk_l = Double.Parse(tlk);
             }
-            else
+            if (textBox10.Text != "")
             {
-                tk = 0;
+                tlz_l = Double.Parse(tlz);
             }
-
-            if (!IsEmptyTextBox(textBox3))
-            {
-                tz = Convert.ToDouble(textBox3.Text);
-            }
-            else
-            {
-                tz = 0;
-            }
-            double TN = tk + tz;
-            textBoxTO.Text = TN.ToString();
+            double wynik = tlk_l + tlz_l;
+            textBoxTO.Text = wynik.ToString();
         }
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             string nazwa = comboBox8.GetItemText(comboBox8.SelectedItem);
-            string czestotliwosc = textBox9.Text;
-            string dl_kabla = textBox6.Text;
-            string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz = '" + czestotliwosc + "'";
-            string output = "";
-            using (var cnn = new SQLiteConnection(loadConnectionString()))
+            string czestotliwosc = comboBox6.GetItemText(comboBox6.SelectedItem);
+            if (checkBox2.Checked)
             {
-                try
+                using (var cnn = new SQLiteConnection(loadConnectionString()))
                 {
-                    output = cnn.ExecuteScalar(query).ToString();
-                    double x = Convert.ToDouble(output);
-                    double y;
-                    if (dl_kabla == "")
+                    string query = "SELECT tlumiennosc_db1m FROM Kabel WHERE symbol='" + nazwa + "' AND czestotliwosc_MHz='" + czestotliwosc + "'";
+                    if (textBox5.Text == "")
                     {
-                        y = 1;
+
+                        textBox11.Text = cnn.ExecuteScalar(query).ToString();
                     }
                     else
                     {
-                        y = Convert.ToDouble(dl_kabla);
+                        string dl = textBox6.Text;
+                        string tl = cnn.ExecuteScalar(query).ToString();
+                        double wynik = Convert.ToDouble(dl) * Convert.ToDouble(tl);
+                        textBox11.Text = wynik.ToString();
                     }
-                    double opd = x * y;
-                    textBox11.Text = opd.ToString();
                 }
-                catch (NullReferenceException ex)
-                {
-                    output = "";
-                    Console.WriteLine(ex);
-                    textBox2.Text = output;
-                }
-
             }
         }
-
         private void textBox8_TextChanged(object sender, EventArgs e)
         {
             double f;
             double d;
-            if (!IsEmptyTextBox(textBox9))
+            string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedIndex);
+            if(czestotliwosc_txt !="" || !IsEmptyTextBox(textBox8)){
+                if (czestotliwosc_txt != "")
+                {
+                    string[] subs = czestotliwosc_txt.Split('.');
+                    double czestotliwosc = Double.Parse(subs[0]);
+                    f = czestotliwosc;
+                }
+                else
+                {
+                    f = 1;
+                }
+                if (!IsEmptyTextBox(textBox8))
+                {
+                    d = Convert.ToDouble(textBox8.Text);
+                }
+                else
+                {
+                    d = 1;
+                }
+                double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44, 2);
+                textBoxFSL.Text = FSL.ToString();
+            }else
             {
-                f = Convert.ToDouble(textBox9.Text);
+                textBoxFSL.Text = "0";
             }
-            else
-            {
-                f = 0;
-            }
-            if (!IsEmptyTextBox(textBox8))
-            {
-                d = Convert.ToDouble(textBox8.Text);
-            }
-            else
-            {
-                d = 0;
-            }
-            double FSL = Math.Round(20 * Math.Log10(d) + 20 * Math.Log10(f) + 32.44,2);
-            textBoxFSL.Text = FSL.ToString();
-            
         }
-
         private void addButton_Click(object sender, EventArgs e)
         {
             string nazwa = comboBox1.GetItemText(comboBox1.SelectedItem);
@@ -1044,7 +785,7 @@ namespace Biblioteka
                 gruWpisana = Convert.ToDouble(textBox7.Text);
                 double x;
                 double y;
-                if(grubosc == 0)
+                if (grubosc == 0)
                 {
                     x = tl;
                     y = tl * gruWpisana;
@@ -1076,7 +817,6 @@ namespace Biblioteka
                 {
                     textBox4.Text += "+" + tl.ToString();
                 }
-                
             }
         }
     }
