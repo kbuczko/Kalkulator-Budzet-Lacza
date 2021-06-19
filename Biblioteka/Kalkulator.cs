@@ -57,7 +57,7 @@ namespace Biblioteka
             label24.Hide();
             label25.Hide();
             addButton.Hide();
-            textBox12.Text = "Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+            textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
             label26.Hide();
             label27.Hide();
             label13.Hide();
@@ -261,7 +261,15 @@ namespace Biblioteka
         {
             if (checkBox1.Checked)
             {
-                if(lang == 1)
+                if (checkBox2.Checked)
+                {
+                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                }
+                else
+                {
+                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                }
+                if (lang == 1)
                 {
                     WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION - OBSTACLES ATTENUATION";
                 }
@@ -282,6 +290,14 @@ namespace Biblioteka
             }
             else
             {
+                if (checkBox2.Checked)
+                {
+                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                }
+                else
+                {
+                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                }
                 if (lang == 1)
                 {
                     WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION";
@@ -304,7 +320,14 @@ namespace Biblioteka
         {
             if (checkBox2.Checked)
             {
-                textBox12.Text = "Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                if (checkBox1.Checked)
+                {
+                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                }
+                else
+                {
+                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                }
                 label26.Show();
                 label27.Show();
                 label13.Show();
@@ -313,11 +336,16 @@ namespace Biblioteka
                 textBox3.Show();
                 textBox11.Show();
                 textBox10.Show();
-
             }
             else
             {
-                textBox12.Text = "Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                if (checkBox1.Checked)
+                {
+                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                }
+                else{
+                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                }
                 label26.Hide();
                 label27.Hide();
                 label13.Hide();

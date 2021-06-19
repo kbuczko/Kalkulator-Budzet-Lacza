@@ -132,7 +132,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(19, 12);
+            this.label1.Location = new System.Drawing.Point(16, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 2;
@@ -145,11 +145,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(19, 44);
+            this.label2.Location = new System.Drawing.Point(16, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.Size = new System.Drawing.Size(103, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Zysk nadajnika";
+            this.label2.Text = "Zysk nadajnika [dBi]";
             // 
             // label3
             // 
@@ -158,11 +158,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(19, 77);
+            this.label3.Location = new System.Drawing.Point(16, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 13);
+            this.label3.Size = new System.Drawing.Size(139, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Tłumienność nadajnika";
+            this.label3.Text = "Tłumienność nadajnika [db]";
             // 
             // label4
             // 
@@ -171,7 +171,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(19, 135);
+            this.label4.Location = new System.Drawing.Point(16, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 5;
@@ -184,11 +184,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(19, 157);
+            this.label5.Location = new System.Drawing.Point(16, 173);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.Size = new System.Drawing.Size(106, 13);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Zysk odbiornika";
+            this.label5.Text = "Zysk odbiornika [dBi]";
             // 
             // label6
             // 
@@ -197,11 +197,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(16, 177);
+            this.label6.Location = new System.Drawing.Point(16, 205);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 13);
+            this.label6.Size = new System.Drawing.Size(142, 13);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Tłumienność odbiornika";
+            this.label6.Text = "Tłumienność odbiornika [db]";
             // 
             // label7
             // 
@@ -246,7 +246,7 @@
             this.textBoxFSL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFSL.Location = new System.Drawing.Point(147, 132);
+            this.textBoxFSL.Location = new System.Drawing.Point(164, 132);
             this.textBoxFSL.Name = "textBoxFSL";
             this.textBoxFSL.Size = new System.Drawing.Size(169, 20);
             this.textBoxFSL.TabIndex = 12;
@@ -257,7 +257,7 @@
             this.textBoxMOC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMOC.Location = new System.Drawing.Point(147, 9);
+            this.textBoxMOC.Location = new System.Drawing.Point(164, 10);
             this.textBoxMOC.Name = "textBoxMOC";
             this.textBoxMOC.Size = new System.Drawing.Size(169, 20);
             this.textBoxMOC.TabIndex = 15;
@@ -268,7 +268,7 @@
             this.textBoxZN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxZN.Location = new System.Drawing.Point(147, 41);
+            this.textBoxZN.Location = new System.Drawing.Point(164, 41);
             this.textBoxZN.Name = "textBoxZN";
             this.textBoxZN.Size = new System.Drawing.Size(169, 20);
             this.textBoxZN.TabIndex = 17;
@@ -279,7 +279,7 @@
             this.textBoxTN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTN.Location = new System.Drawing.Point(147, 74);
+            this.textBoxTN.Location = new System.Drawing.Point(164, 74);
             this.textBoxTN.Name = "textBoxTN";
             this.textBoxTN.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxTN.Size = new System.Drawing.Size(169, 20);
@@ -291,7 +291,7 @@
             this.textBoxZO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxZO.Location = new System.Drawing.Point(147, 154);
+            this.textBoxZO.Location = new System.Drawing.Point(164, 170);
             this.textBoxZO.Name = "textBoxZO";
             this.textBoxZO.Size = new System.Drawing.Size(169, 20);
             this.textBoxZO.TabIndex = 21;
@@ -302,7 +302,7 @@
             this.textBoxTO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTO.Location = new System.Drawing.Point(147, 177);
+            this.textBoxTO.Location = new System.Drawing.Point(164, 203);
             this.textBoxTO.Name = "textBoxTO";
             this.textBoxTO.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxTO.Size = new System.Drawing.Size(169, 20);
@@ -380,7 +380,7 @@
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(147, 234);
+            this.textBox4.Location = new System.Drawing.Point(164, 256);
             this.textBox4.Name = "textBox4";
             this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox4.Size = new System.Drawing.Size(169, 20);
@@ -393,11 +393,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(21, 234);
+            this.label9.Location = new System.Drawing.Point(16, 259);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 13);
+            this.label9.Size = new System.Drawing.Size(146, 13);
             this.label9.TabIndex = 30;
-            this.label9.Text = "Tłumienność materiału";
+            this.label9.Text = "Tłumienność przeszkody [db]";
             this.label9.Visible = false;
             // 
             // label10
@@ -422,9 +422,9 @@
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
             this.label11.Location = new System.Drawing.Point(5, 84);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 13);
+            this.label11.Size = new System.Drawing.Size(102, 13);
             this.label11.TabIndex = 36;
-            this.label11.Text = "Częstotliwość";
+            this.label11.Text = "Częstotliwość [MHz]";
             // 
             // panel1
             // 
@@ -538,7 +538,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label28.Location = new System.Drawing.Point(184, 13);
+            this.label28.Location = new System.Drawing.Point(184, 12);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(90, 13);
             this.label28.TabIndex = 69;
@@ -579,9 +579,9 @@
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(139, 320);
+            this.textBox6.Location = new System.Drawing.Point(159, 320);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(409, 20);
+            this.textBox6.Size = new System.Drawing.Size(389, 20);
             this.textBox6.TabIndex = 63;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
@@ -590,9 +590,9 @@
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(139, 188);
+            this.textBox5.Location = new System.Drawing.Point(159, 188);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(409, 20);
+            this.textBox5.Size = new System.Drawing.Size(389, 20);
             this.textBox5.TabIndex = 62;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
@@ -679,9 +679,9 @@
             this.label23.ForeColor = System.Drawing.SystemColors.Control;
             this.label23.Location = new System.Drawing.Point(7, 323);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(129, 13);
+            this.label23.Size = new System.Drawing.Size(146, 13);
             this.label23.TabIndex = 48;
-            this.label23.Text = "Długość kabla (odbiornik)";
+            this.label23.Text = "Długość kabla (odbiornik) [m]";
             // 
             // label22
             // 
@@ -744,9 +744,9 @@
             this.label17.ForeColor = System.Drawing.SystemColors.Control;
             this.label17.Location = new System.Drawing.Point(5, 191);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(126, 13);
+            this.label17.Size = new System.Drawing.Size(143, 13);
             this.label17.TabIndex = 42;
-            this.label17.Text = "Długość kabla (nadajnik)";
+            this.label17.Text = "Długość kabla (nadajnik) [m]";
             this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
@@ -813,7 +813,7 @@
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(183, 102);
+            this.textBox2.Location = new System.Drawing.Point(164, 102);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 40;
@@ -837,11 +837,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.Control;
-            this.label13.Location = new System.Drawing.Point(79, 104);
+            this.label13.Location = new System.Drawing.Point(39, 105);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(98, 13);
+            this.label13.Size = new System.Drawing.Size(119, 13);
             this.label13.TabIndex = 42;
-            this.label13.Text = "Tłumienność kabla";
+            this.label13.Text = "Tłumienność kabla [db]";
             // 
             // label19
             // 
@@ -850,11 +850,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.Control;
-            this.label19.Location = new System.Drawing.Point(301, 105);
+            this.label19.Location = new System.Drawing.Point(280, 108);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(104, 13);
+            this.label19.Size = new System.Drawing.Size(125, 13);
             this.label19.TabIndex = 43;
-            this.label19.Text = "Tłumienność złącza";
+            this.label19.Text = "Tłumienność złącza [db]";
             // 
             // comboBox1
             // 
@@ -862,7 +862,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(147, 256);
+            this.comboBox1.Location = new System.Drawing.Point(164, 282);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(169, 21);
             this.comboBox1.TabIndex = 64;
@@ -874,7 +874,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.SystemColors.Control;
-            this.label24.Location = new System.Drawing.Point(50, 259);
+            this.label24.Location = new System.Drawing.Point(39, 285);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(87, 13);
             this.label24.TabIndex = 65;
@@ -887,18 +887,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.SystemColors.Control;
-            this.label25.Location = new System.Drawing.Point(90, 283);
+            this.label25.Location = new System.Drawing.Point(39, 312);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(47, 13);
+            this.label25.Size = new System.Drawing.Size(70, 13);
             this.label25.TabIndex = 66;
-            this.label25.Text = "Grubość";
+            this.label25.Text = "Grubość [cm]";
             // 
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(147, 280);
+            this.textBox7.Location = new System.Drawing.Point(164, 309);
             this.textBox7.Name = "textBox7";
             this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox7.Size = new System.Drawing.Size(169, 20);
@@ -911,11 +911,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.SystemColors.Control;
-            this.label26.Location = new System.Drawing.Point(301, 206);
+            this.label26.Location = new System.Drawing.Point(280, 230);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(104, 13);
+            this.label26.Size = new System.Drawing.Size(125, 13);
             this.label26.TabIndex = 71;
-            this.label26.Text = "Tłumienność złącza";
+            this.label26.Text = "Tłumienność złącza [db]";
             // 
             // label27
             // 
@@ -924,18 +924,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.SystemColors.Control;
-            this.label27.Location = new System.Drawing.Point(79, 207);
+            this.label27.Location = new System.Drawing.Point(39, 230);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(98, 13);
+            this.label27.Size = new System.Drawing.Size(119, 13);
             this.label27.TabIndex = 70;
-            this.label27.Text = "Tłumienność kabla";
+            this.label27.Text = "Tłumienność kabla [db]";
             // 
             // textBox10
             // 
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(411, 203);
+            this.textBox10.Location = new System.Drawing.Point(411, 227);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 20);
             this.textBox10.TabIndex = 69;
@@ -946,7 +946,7 @@
             this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(183, 203);
+            this.textBox11.Location = new System.Drawing.Point(164, 227);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(100, 20);
             this.textBox11.TabIndex = 68;
@@ -957,11 +957,11 @@
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(334, 247);
+            this.addButton.Location = new System.Drawing.Point(351, 262);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(115, 46);
+            this.addButton.Size = new System.Drawing.Size(87, 58);
             this.addButton.TabIndex = 72;
-            this.addButton.Text = "Dodaj";
+            this.addButton.Text = "Dodaj materiał";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -1001,7 +1001,7 @@
             this.panel2.Controls.Add(this.textBox4);
             this.panel2.Location = new System.Drawing.Point(588, 149);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(547, 312);
+            this.panel2.Size = new System.Drawing.Size(547, 356);
             this.panel2.TabIndex = 73;
             // 
             // Kalkulator
