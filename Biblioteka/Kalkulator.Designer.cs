@@ -961,7 +961,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(87, 58);
             this.addButton.TabIndex = 72;
-            this.addButton.Text = "Dodaj materiał";
+            this.addButton.Text = "Dodaj przeszkodę";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -1096,11 +1096,11 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.ComboBox comboBox10;
+        public System.Windows.Forms.TextBox textBox12;
+        public System.Windows.Forms.Label label28;
     }
 }

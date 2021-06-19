@@ -22,7 +22,6 @@ namespace Biblioteka
     {
         public int lang;
         int licznik = 0;
-        int licznik2 = 0;
         //nadajnik
         List<Urzadzenie> lista_urz = new List<Urzadzenie>();
         List<parametry_anteny> lista_ant = new List<parametry_anteny>();
@@ -35,12 +34,6 @@ namespace Biblioteka
 
         List<tl_materialow> lista_mat = new List<tl_materialow>();
         List<Budzet_lacza> lista_bud = new List<Budzet_lacza>();
-        ResourceManager res_man;
-        CultureInfo cul;
-        private int licznik3;
-        private int licznik4;
-        private int licznik5;
-        private int licznik6;
         private int licznik7;
 
         public Kalkulator()
@@ -57,7 +50,6 @@ namespace Biblioteka
             label24.Hide();
             label25.Hide();
             addButton.Hide();
-            textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
             label26.Hide();
             label27.Hide();
             label13.Hide();
@@ -261,21 +253,30 @@ namespace Biblioteka
         {
             if (checkBox1.Checked)
             {
-                if (checkBox2.Checked)
-                {
-                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
-                }
-                else
-                {
-                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
-                }
+                
                 if (lang == 1)
                 {
                     WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION - OBSTACLES ATTENUATION";
+                    if (checkBox2.Checked)
+                    {
+                        textBox12.Text = "Computational model without optical optics. Autocomplete is running. Select the elements of your layout to calculate budgets.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Calculation model without optical visibility. Autocomplete disabled. Enter the values ​​for the calculated link budget manually.";
+                    }
                 }
                 else
                 {
                     WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA - TŁUMIENNOŚĆ PRZESZKÓD";
+                    if (checkBox2.Checked)
+                    {
+                        textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                    }
                 }
                
                 textBox4.Show();
@@ -290,21 +291,30 @@ namespace Biblioteka
             }
             else
             {
-                if (checkBox2.Checked)
-                {
-                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
-                }
-                else
-                {
-                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
-                }
+               
                 if (lang == 1)
                 {
                     WzorBox.Text = "TRANSMITTER POWER + TRANSMITTER GAIN - TRANSMITTER ATTENUATION - FSL + RECEIVER GAIN - RECEIVER ATTENUATION";
+                    if (checkBox2.Checked)
+                    {
+                        textBox12.Text = "Calculation model with optical visibility. Autocomplete is running. Select your layout elements to calculate your link budget.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Calculation model with optical visibility. Autocomplete disabled. Enter the values ​​for the calculated link budget manually.";
+                    }
                 }
                 else
                 {
                     WzorBox.Text = "MOC NADAJNIKA + ZYSK NADAJNIKA - TŁUMIENNOŚĆ NADAJNIKA - FSL + ZYSK ODBIORNIKA - TŁUMIENNOŚĆ ODBIRONIKA";
+                    if (checkBox2.Checked)
+                    {
+                        textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                    }
                 }
 
                 textBox4.Hide();
@@ -320,14 +330,29 @@ namespace Biblioteka
         {
             if (checkBox2.Checked)
             {
-                if (checkBox1.Checked)
+                if (lang == 1)
                 {
-                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                    if (checkBox1.Checked)
+                    {
+                        textBox12.Text = "Calculation model without optical visibility. Autocomplete is running. Select your layout elements to calculate your link budget.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Calculation model with optical visibility. Autocomplete is running. Select your layout elements to calculate your link budget.";
+                    }
                 }
                 else
                 {
-                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                    if (checkBox1.Checked)
+                    {
+                        textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełniaie uruchomione. Wybierz elementy swojego układu by wyliczyć budżet łącza.";
+                    }
                 }
+
                 label26.Show();
                 label27.Show();
                 label13.Show();
@@ -339,13 +364,29 @@ namespace Biblioteka
             }
             else
             {
-                if (checkBox1.Checked)
+                if (lang == 1)
                 {
-                    textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                    if (checkBox1.Checked)
+                    {
+                        textBox12.Text = "Calculation model without optical visibility. Autocomplete disabled. Enter the values ​​for the calculated link budget manually.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Calculation model with optical visibility. Autocomplete disabled. Enter the values ​​for the calculated link budget manually.";
+                    }
                 }
-                else{
-                    textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                else
+                {
+                    if (checkBox1.Checked)
+                    {
+                        textBox12.Text = "Model obliczeniowy bez widoczności optycznej. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                    }
+                    else
+                    {
+                        textBox12.Text = "Model obliczeniowy z widocznością optyczną. Autouzupełnianie wyłączone. Wprowadź ręcznie wartości dla liczonego budżetu łącza.";
+                    }
                 }
+               
                 label26.Hide();
                 label27.Hide();
                 label13.Hide();
