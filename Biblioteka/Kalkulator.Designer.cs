@@ -94,9 +94,9 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -1009,9 +1009,23 @@
             this.panel2.Size = new System.Drawing.Size(547, 356);
             this.panel2.TabIndex = 73;
             // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label31.ForeColor = System.Drawing.Color.DarkRed;
+            this.label31.Location = new System.Drawing.Point(519, 330);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(23, 25);
+            this.label31.TabIndex = 74;
+            this.label31.Text = "x";
+            // 
             // label30
             // 
-            this.label30.Location = new System.Drawing.Point(0, 0);
+            this.label30.Location = new System.Drawing.Point(348, 7);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(100, 23);
             this.label30.TabIndex = 0;
@@ -1029,20 +1043,6 @@
             this.label29.Size = new System.Drawing.Size(258, 20);
             this.label29.TabIndex = 73;
             this.label29.Text = "MOŻNA ZESTAWIĆ POŁĄCZENIE";
-            // 
-            // label31
-            // 
-            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label31.ForeColor = System.Drawing.Color.DarkRed;
-            this.label31.Location = new System.Drawing.Point(519, 330);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(23, 25);
-            this.label31.TabIndex = 74;
-            this.label31.Text = "x";
             // 
             // Kalkulator
             // 

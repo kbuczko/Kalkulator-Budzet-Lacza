@@ -137,17 +137,18 @@ namespace ProjektBudzetLacza
 
         private void InstructioinButton_Click(object sender, EventArgs e)
         {
-            Instrukcja inst = new Instrukcja();
-            inst.ShowDialog();
+            
             if (jezyk_pol == false)
             {
-                inst.lang = 1;
-                inst.button1.Text = "Previous";
-                inst.button2.Text = "Next";
+               InstrukcjaENG inst = new InstrukcjaENG();
+               inst.ShowDialog();
+               inst.lang = 1;
             }
             else
             {
-                inst.lang = 0;
+                InstrukcjaPL inst2 = new InstrukcjaPL();
+                inst2.ShowDialog();
+                inst2.lang = 0;
             }
         }
     }

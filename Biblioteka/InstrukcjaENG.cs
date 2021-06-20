@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Biblioteka
 {
-    public partial class Instrukcja : Form
+    public partial class InstrukcjaENG : Form
     {
         int i = 0;
         public int lang;
-        public Instrukcja()
+        public InstrukcjaENG()
         {
             InitializeComponent();
         }
