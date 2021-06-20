@@ -820,7 +820,7 @@ namespace Biblioteka
                     }
                     break;
                 case "Budżet łącza":
-                case "Budet Link":
+                case "Budget Link":
                     id = Convert.ToInt32(row.Cells[0].Value.ToString());
                     try
                     {
