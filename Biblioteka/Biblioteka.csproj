@@ -139,6 +139,8 @@
   <ItemGroup>
     <Content Include="available\available_cables.txt" />
     <Content Include="available\available_connectors.txt" />
+    <Content Include="Resources\db2_2_eng.png" />
+    <Content Include="Resources\db_eng.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
