@@ -50,16 +50,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // QuitButton
             // 
             this.QuitButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.QuitButton.Location = new System.Drawing.Point(834, 13);
+            this.QuitButton.Location = new System.Drawing.Point(836, 13);
             this.QuitButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.QuitButton.Name = "QuitButton";
             this.QuitButton.Size = new System.Drawing.Size(87, 34);
@@ -118,7 +118,7 @@
             this.dataGridView1.ColumnHeadersHeight = 22;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(311, 67);
+            this.dataGridView1.Location = new System.Drawing.Point(313, 67);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(610, 445);
             this.dataGridView1.TabIndex = 14;
@@ -137,35 +137,35 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(187, 201);
+            this.textBox1.Location = new System.Drawing.Point(205, 201);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 16;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(187, 246);
+            this.textBox2.Location = new System.Drawing.Point(205, 246);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 17;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(187, 293);
+            this.textBox3.Location = new System.Drawing.Point(205, 293);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 21);
             this.textBox3.TabIndex = 18;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(187, 340);
+            this.textBox4.Location = new System.Drawing.Point(205, 340);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 19;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(187, 390);
+            this.textBox5.Location = new System.Drawing.Point(205, 390);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 21);
             this.textBox5.TabIndex = 20;
@@ -273,20 +273,6 @@
             this.label8.Text = "x";
             this.toolTip1.SetToolTip(this.label8, "Użytkownik może wybrać tabelę z interesującymi informacjami z bazy");
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(187, 440);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 21);
-            this.textBox6.TabIndex = 32;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(187, 491);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 21);
-            this.textBox7.TabIndex = 35;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -299,6 +285,20 @@
             this.label9.TabIndex = 36;
             this.label9.Text = "x";
             this.toolTip1.SetToolTip(this.label9, "Użytkownik może wybrać tabelę z interesującymi informacjami z bazy");
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(205, 440);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 21);
+            this.textBox6.TabIndex = 32;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(205, 491);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 21);
+            this.textBox7.TabIndex = 35;
             // 
             // home
             // 

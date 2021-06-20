@@ -165,7 +165,7 @@ namespace Biblioteka
                         DeleteButton.Text = "Delete";
 
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
                         label3.Text = "connector_name" + tekst;
                         label4.Text = "cable_name" + tekst;
                         label5.Text = "antenna_name" + tekst;
@@ -175,9 +175,9 @@ namespace Biblioteka
                     else
                     {
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = "id_zlacza" + tekst;
-                        label4.Text = "id_kabla" + tekst;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
+                        label3.Text = "nazwa_zlacza" + tekst;
+                        label4.Text = "nazwa_kabla" + tekst;
                         label5.Text = "nazwa_anteny" + tekst;
                         label6.Text = "czulosc" + calkowita;
                     }
@@ -229,16 +229,16 @@ namespace Biblioteka
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
                         label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
-                        label4.Text = dataGridView1.Columns[4].HeaderText + ulamek;
+                        label4.Text = dataGridView1.Columns[4].HeaderText + calkowita;
                     }
                     else
                     {
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
                         label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
-                        label4.Text = dataGridView1.Columns[4].HeaderText + ulamek;
+                        label4.Text = dataGridView1.Columns[4].HeaderText + calkowita;
                     }
                    
                     break;
