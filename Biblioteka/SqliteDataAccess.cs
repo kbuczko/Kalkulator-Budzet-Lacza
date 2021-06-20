@@ -72,7 +72,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<kabel>("select kabel.czestotliwosc_MHz, kabel.symbol, kabel.tlumiennosc_db1m, zlacze.symbol as nazwa_zlacza from kabel, zlacze WHERE kabel.id_zlacza = zlacze.id", new DynamicParameters());
+                var output = cnn.Query<kabel>("select kabel.czestotliwosc_MHz, kabel.symbol, kabel.tlumiennosc_db1m, zlacze.symbol as nazwa_zlacza, kabel.id from kabel, zlacze WHERE kabel.id_zlacza = zlacze.id", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -102,14 +102,14 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into zlacze (symbol, tlumiennosc_db, id_kab) values (@symbol, @tlumiennosc_db, @id_kab)", zl);
+                cnn.Execute("insert into zlacze (symbol, tlumiennosc_db, czestotliwosc_MHz) values (@symbol, @tlumiennosc_db, @czestotliwosc_MHz)", zl);
             }
         }
         public static void saveDevices(Urzadzenie urz)
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into Urzadzenie (moc, dl_kabla, id_kabla, id_zlacza, id_anteny, czulosc) values (@moc, @dl_kabla, @id_kabla, @id_zlacza, @id_anteny, @czulosc)", urz);
+                cnn.Execute("insert into Urzadzenie (nazwa, moc, id_kabla, id_zlacza, id_anteny, czulosc, ant_wbud) values (@nazwa, @moc, @id_kabla, @id_zlacza, @id_anteny, @czulosc, 0)", urz);
             }
         }
 
@@ -134,7 +134,7 @@ namespace ProjektBudzetLacza
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                cnn.Execute("insert into Antena (nazwa, zysk_dBi, czestotliwosc_MHz) values (@nazwa, @zysk_dBi, @czestotliwosc_MHz)", par);
+                cnn.Execute("insert into Antena (nazwa, zysk_dBi, czestotliwosc_MHz, id_zlacza) values (@nazwa, @zysk_dBi, @czestotliwosc_MHz, @id_zlacza)", par);
             }
         }
         public static void saveBudget(Budzet_lacza budzet)

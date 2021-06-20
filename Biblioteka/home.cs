@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -142,16 +143,16 @@ namespace Biblioteka
                     textBox4.Show();
                     textBox5.Show();
                     textBox6.Show();
-                    textBox7.Show();
+                    dataGridView1.Columns[6].Visible = false;
 
                     if (lang == 1)
                     {
                         dataGridView1.Columns[1].HeaderText = "name";
                         dataGridView1.Columns[2].HeaderText = "power";
-                        dataGridView1.Columns[3].HeaderText = "connector_name";
-                        dataGridView1.Columns[4].HeaderText = "cable_name";
+                        dataGridView1.Columns[3].HeaderText = "cable_id";
+                        dataGridView1.Columns[4].HeaderText = "connector_id";
                         dataGridView1.Columns[5].HeaderText = "antenna_name";
-                        dataGridView1.Columns[6].Visible = false;
+                       
                         dataGridView1.Columns[7].HeaderText = "sensitivity";
                        
 
@@ -162,25 +163,23 @@ namespace Biblioteka
 
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
-                        label4.Text = "connector_name" + tekst;
-                        label5.Text = "cable_name" + tekst;
-                        label6.Text = "antenna_name" + tekst;
-                        label9.Text = "sensitivity" + calkowita;
+                        label3.Text = "connector_name" + tekst;
+                        label4.Text = "cable_name" + tekst;
+                        label5.Text = "antenna_name" + tekst;
+                        label6.Text = "sensitivity" + calkowita;
                     }
 
                     else
                     {
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
-                        label4.Text = "nazwa_zlacza" + tekst;
-                        label5.Text = "nazwa_kabla" + tekst;
-                        label6.Text = "nazwa_anteny" + tekst;
-                        label9.Text = "czulosc" + calkowita;
+                        label3.Text = "id_zlacza" + tekst;
+                        label4.Text = "id_kabla" + tekst;
+                        label5.Text = "nazwa_anteny" + tekst;
+                        label6.Text = "czulosc" + calkowita;
                     }
-
                     break;
+
                 case "Budżet łącza":
                 case "Link Budget":
                     dataGridView1.Columns[0].Visible = false;
@@ -260,6 +259,7 @@ namespace Biblioteka
                     textBox1.Show();
                     textBox2.Show();
                     textBox3.Show();
+                    textBox4.Show();
 
                     if (lang == 1)
                     {
@@ -275,12 +275,14 @@ namespace Biblioteka
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                         label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                        label4.Text =  "connector_name" + tekst;
                     }
                     else
                     {
                         label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
                         label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
                         label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                        label4.Text =  "nazwa_zlacza" + tekst;
                     }
                     
                     break;
@@ -289,6 +291,7 @@ namespace Biblioteka
                     DataTable dt4 = ToDataTable(lista_kab);
                     dataGridView1.DataSource = dt4;
                     dataGridView1.Columns[4].Visible = false;
+
                     clearTextBoxes();
                     clearLabels();
                     textBox1.Show();
@@ -373,8 +376,8 @@ namespace Biblioteka
                     string value2 = textBox4.Text;
                     string value3 = textBox5.Text;
 
-                    string query1 = "SELECT Kabel.id FROM  Kabel WHERE Kabel.symbol = '" + value1 + "'";
-                    string query2 = "SELECT Zlacze.id FROM  Zlacze WHERE Zlacze.symbol = '" + value2 + "'";
+                    string query1 = "SELECT Zlacze.id FROM  Zlacze WHERE Zlacze.symbol = '" + value1 + "'";
+                    string query2 = "SELECT Kabel.id FROM  Kabel WHERE Kabel.symbol = '" + value2 + "'";
                     string query3 = "SELECT Antena.id FROM  Antena WHERE Antena.nazwa = '" + value3 + "'";
                     int id_kab = 0, id_zlacz =0, id_ant = 0;
                     using (var cnn = new SQLiteConnection(loadConnectionString()))
@@ -392,41 +395,40 @@ namespace Biblioteka
                         var c = cnn.ExecuteScalar<int>(query3);
                         id_ant = c;
                     }
-
-                    try
+                    if (id_kab != 0 && id_zlacz != 0 && id_ant != 0)
                     {
-                        Urzadzenie urz = new Urzadzenie
+                        try
                         {
+                            Urzadzenie urz = new Urzadzenie
+                            {
+                                nazwa = textBox1.Text,
+                                moc = Convert.ToInt32(textBox2.Text),
+                                id_kabla = id_kab,
+                                id_zlacza = id_zlacz,
+                                id_anteny = id_ant,
+                                czulosc = Convert.ToDouble(textBox6.Text)
 
-                            moc = Convert.ToInt32(textBox1.Text),
-                            id_kabla = id_kab,
-                            id_zlacza = id_zlacz,
-                            id_anteny = id_ant,
-                            czulosc = Convert.ToDouble(textBox6.Text)
-
-                        };
-                        MessageBox.Show(urz.id_kabla + "");
-                        label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
-                        if(urz.id_kabla == 0 || urz.id_zlacza ==0 || urz.id_anteny == 0)
-                        {
-                            label8.ForeColor = Color.Red; label8.Text = "Złe dane."; label8.Show();
-                        }
-                        else
-                        {
+                            };
+                            label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
+                           
                             SqliteDataAccess.saveDevices(urz);
-                            lista_urz = SqliteDataAccess.ListUrzadzenie();
-                            dataGridView1.DataSource = lista_urz;
-                            textBox1.Text = "";
-                            textBox2.Text = "";
-                            textBox3.Text = "";
-                            textBox4.Text = "";
-                            textBox5.Text = "";
-                            textBox6.Text = "";
+                                lista_urz = SqliteDataAccess.ListUrzadzenie();
+                                dataGridView1.DataSource = lista_urz;
+                                textBox1.Text = "";
+                                textBox2.Text = "";
+                                textBox3.Text = "";
+                                textBox4.Text = "";
+                                textBox5.Text = "";
+                                textBox6.Text = "";
+
+
                         }
-                        
-                        
+                        catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
                     }
-                    catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
+                    else
+                    {
+                        label8.ForeColor = Color.Red; label8.Text = "Złe dane."; label8.Show();
+                    }
                     break;
                 case "Materiały":
                 case "Materials":
@@ -453,84 +455,124 @@ namespace Biblioteka
                     break;
                 case "Anteny":
                 case "Antennas":
-                    try
+                    string zlacze_id = textBox4.Text;
+
+                    string query_zlacze = "SELECT Zlacze.id FROM  Zlacze WHERE Zlacze.symbol = '" + zlacze_id + "'";
+                    int id_zlacza = 0;
+                    using (var cnn = new SQLiteConnection(loadConnectionString()))
                     {
-                        parametry_anteny par = new parametry_anteny
-                        {
-                            zysk_dBi = Convert.ToDouble(textBox2.Text),
-                            nazwa = textBox1.Text,
-                            czestotliwosc_MHz = Convert.ToInt32(textBox3.Text)
-                        };
-                        SqliteDataAccess.saveParameters(par);
-                        label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
-                        lista_ant = SqliteDataAccess.ListParameters();
-                        dataGridView1.DataSource = lista_ant;
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
-                        textBox5.Text = "";
+                        var a = cnn.ExecuteScalar<int>(query_zlacze);
+                        id_zlacza = a;
                     }
-                    catch(Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
+
+                    if (id_zlacza != 0)
+                    {
+                        try
+                        {
+                            parametry_anteny par = new parametry_anteny
+                            {
+                                zysk_dBi = Convert.ToDouble(textBox2.Text),
+                                nazwa = textBox1.Text,
+                                czestotliwosc_MHz = Convert.ToInt32(textBox3.Text),
+                                id_zlacza = id_zlacza
+                            };
+                            SqliteDataAccess.saveParameters(par);
+                            label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
+                            lista_ant = SqliteDataAccess.ListParameters();
+                            dataGridView1.DataSource = lista_ant;
+                            textBox1.Text = "";
+                            textBox2.Text = "";
+                            textBox3.Text = "";
+                            textBox4.Text = "";
+                            textBox5.Text = "";
+                        }
+                        catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
+                    }
+                    else
+                    {
+                        label8.ForeColor = Color.Red; label8.Text = "Nie znaleziono takiego zlacza";
+                    }
+                    
                     break;
                 case "Kable":
                 case "Cables":
 
                     string symbol = textBox4.Text;
                     
-                    string query_zlacze = "SELECT id FROM zlacze WHERE symbol = '" + symbol + "'";
+                    string query_zlaczee = "SELECT id FROM zlacze WHERE symbol = '" + symbol + "'";
 
                     int id = 0;
 
                     using (var cnn = new SQLiteConnection(loadConnectionString()))
                     {
-                        var a = cnn.ExecuteScalar<int>(query_zlacze);
+                        var a = cnn.ExecuteScalar<int>(query_zlaczee);
                         
                         id = a;
                     }
-
-                    try
+                    if (id != 0)
                     {
-                        kabel kab = new kabel
-                    {
-                        czestotliwosc_MHz = Convert.ToInt32(textBox1.Text),
-                        symbol = textBox2.Text,
-                        tlumiennosc_db1m = Convert.ToDouble(textBox3.Text),
-                        id_zlacza = id
-                    };
+                        try
+                        {
+                            kabel kab = new kabel
+                            {
+                                czestotliwosc_MHz = Convert.ToInt32(textBox1.Text),
+                                symbol = textBox2.Text,
+                                tlumiennosc_db1m = Convert.ToDouble(textBox3.Text),
+                                id_zlacza = id
+                            };
 
-                        SqliteDataAccess.saveCables(kab);
-                        label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
-                        lista_kab = SqliteDataAccess.ListCables();
-                        dataGridView1.DataSource = lista_kab;
+                            SqliteDataAccess.saveCables(kab);
+                            label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
+                            lista_kab = SqliteDataAccess.ListCables();
+                            dataGridView1.DataSource = lista_kab;
 
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
+                            textBox1.Text = "";
+                            textBox2.Text = "";
+                            textBox3.Text = "";
+                            textBox4.Text = "";
+                        }
+                        catch (Exception ex) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
                     }
-                    catch (Exception ex)  { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
+                    else
+                    {
+                        label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show();
+                    }
+                    
+                    
                     break;
                 case "Złącza":
                 case "Connectors":
-                    try
+
+                    var lines = File.ReadAllLines("available_connectors.txt");
+
+                    if (lines.Contains(textBox1.Text))
                     {
-                        zlacze zl = new zlacze
+                        try
                         {
-                            symbol = textBox1.Text,
-                            tlumiennosc_db = Convert.ToDouble(textBox2.Text),
-                            czestotliwosc_MHz = Convert.ToInt32(textBox3.Text)
-                        };
-                        SqliteDataAccess.saveZlacza(zl);
-                        label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
-                        lista_zla = SqliteDataAccess.ListZlacza();
-                        dataGridView1.DataSource = lista_zla;
-                        
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
+                            zlacze zl = new zlacze
+                            {
+                                symbol = textBox1.Text,
+                                tlumiennosc_db = Convert.ToDouble(textBox2.Text),
+                                czestotliwosc_MHz = Convert.ToInt32(textBox3.Text)
+                            };
+                            SqliteDataAccess.saveZlacza(zl);
+                            label8.ForeColor = Color.Green; label8.Text = "Dodano do bazy"; label8.Show();
+                            lista_zla = SqliteDataAccess.ListZlacza();
+                            dataGridView1.DataSource = lista_zla;
+
+                            textBox1.Text = "";
+                            textBox2.Text = "";
+                            textBox3.Text = "";
+                        }
+                        catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
                     }
-                    catch (Exception ex) when (ex is ArgumentNullException || ex is FormatException) { label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show(); }
+                    else
+                    {
+                        label8.ForeColor = Color.Red; label8.Text = "Wprowadzono błędne dane"; label8.Show();
+                    }
+
+
+                    
                     
                     break;
                 case "Budżet łącza":
