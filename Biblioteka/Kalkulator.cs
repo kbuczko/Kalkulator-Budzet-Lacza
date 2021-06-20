@@ -59,6 +59,7 @@ namespace Biblioteka
             textBox3.Hide();
             textBox11.Hide();
             textBox10.Hide();
+            label29.Text = "";
 
         }
         //load
@@ -113,6 +114,11 @@ namespace Biblioteka
         //przyciski
         private void CountButton1_Click(object sender, EventArgs e)
         {
+            string mozna = "Można zestawić połączenie";
+            string can = "Can establish a connection";
+            string niemozna = "Nie można zestawić połączenie";
+            string cant = "Can't establish a connection";
+
             double TN = 0;
             double MOC;
             double TO = 0;
@@ -191,6 +197,36 @@ namespace Biblioteka
                     MAT = 0;
                 }
                 double BL = Math.Round(MOC + ZN - TN - FSL + ZO - TO - MAT, 2);
+                string query_czulosc = "SELECT Urzadzenie.czulosc FROM  Urzadzenie WHERE Urzadzenie.nazwa = '" + comboBox5.Text + "'";
+                int id_czulosc = 0;
+                using (var cnn = new SQLiteConnection(loadConnectionString()))
+                {
+                    var a = cnn.ExecuteScalar<int>(query_czulosc);
+                    id_czulosc = a;
+                }
+                if(lang == 1)
+                {
+                    if (BL + id_czulosc + 10 >= 0)
+                    {
+                        label29.Text = can;
+                    }
+                    else
+                    {
+                        label29.Text = cant;
+                    }
+                }
+                else
+                {
+                    if (BL + id_czulosc + 10 >= 0)
+                    {
+                        label29.Text = mozna;
+                    }
+                    else
+                    {
+                        label29.Text = niemozna;
+                    }
+                }
+                
                 string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
                 string[] subs2 = czestotliwosc_txt.Split('.');
                 Int32 czestotliwosc = Convert.ToInt32(subs2[0]);
@@ -207,6 +243,38 @@ namespace Biblioteka
             else
             {
                 double BL = Math.Round(MOC + ZN - TN - FSL + ZO - TO, 2);
+
+
+                string query_czulosc = "SELECT Urzadzenie.czulosc FROM  Urzadzenie WHERE Urzadzenie.nazwa = '" + comboBox5.Text + "'";
+                int id_czulosc = 0;
+                using (var cnn = new SQLiteConnection(loadConnectionString()))
+                {
+                    var a = cnn.ExecuteScalar<int>(query_czulosc);
+                    id_czulosc = a;
+                }
+
+                if (lang == 1)
+                {
+                    if (BL + id_czulosc + 10 >= 0)
+                    {
+                        label29.Text = can;
+                    }
+                    else
+                    {
+                        label29.Text = cant;
+                    }
+                }
+                else
+                {
+                    if (BL + id_czulosc + 10 >= 0)
+                    {
+                        label29.Text = mozna;
+                    }
+                    else
+                    {
+                        label29.Text = niemozna;
+                    }
+                }
                 string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
                 string[] subs3 = czestotliwosc_txt.Split('.');
                 Int32 czestotliwosc = Convert.ToInt32(subs3[0]);

@@ -94,6 +94,7 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -972,6 +973,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.textBoxZN);
             this.panel2.Controls.Add(this.addButton);
             this.panel2.Controls.Add(this.label1);
@@ -1003,6 +1005,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(547, 356);
             this.panel2.TabIndex = 73;
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label29.ForeColor = System.Drawing.Color.DarkRed;
+            this.label29.Location = new System.Drawing.Point(279, 335);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(258, 20);
+            this.label29.TabIndex = 73;
+            this.label29.Text = "MOŻNA ZESTAWIĆ POŁĄCZENIE";
             // 
             // Kalkulator
             // 
@@ -1096,11 +1112,12 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ComboBox comboBox10;
         public System.Windows.Forms.TextBox textBox12;
         public System.Windows.Forms.Label label28;
         public System.Windows.Forms.ComboBox comboBox6;
+        public System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ComboBox comboBox5;
     }
 }
