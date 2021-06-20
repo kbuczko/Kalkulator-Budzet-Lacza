@@ -1,0 +1,10 @@
+N
+N-Male
+N-Female
+N-męskie
+N-żeńskie
+BNC
+TNC
+UHF
+SMA
+RP-SMA
