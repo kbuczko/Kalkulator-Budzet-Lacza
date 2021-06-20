@@ -567,7 +567,7 @@ namespace Biblioteka
                     }
                     if (id != 0)
                     {
-                        var lines_cables = File.ReadAllLines("..\..\..\Biblioteka\available\available_cables.txt");
+                        var lines_cables = File.ReadAllLines(@"..\..\..\Biblioteka\available\available_cables.txt");
                         if (lines_cables.Contains(textBox2.Text))
                         {
                             //MessageBox.Show("1");
