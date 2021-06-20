@@ -139,6 +139,16 @@ namespace ProjektBudzetLacza
         {
             Instrukcja inst = new Instrukcja();
             inst.ShowDialog();
+            if (jezyk_pol == false)
+            {
+                inst.lang = 1;
+                inst.button1.Text = "Previous";
+                inst.button2.Text = "Next";
+            }
+            else
+            {
+                inst.lang = 0;
+            }
         }
     }
 
