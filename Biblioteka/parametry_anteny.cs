@@ -12,24 +12,19 @@ namespace Biblioteka
         public string nazwa { get; set; }
         public double zysk_dBi { get; set; }
 
-        public double czestotliwosc_MHz { get; set; }
+        public int czestotliwosc_MHz { get; set; }
 
-        /*public string parametry_anteny_opis
-        {
-            get
-            {
-                return $"{rodzaj} {zysk} {moc} {id_kabla} {id_zlacza} {czy_nad}";
-            }
-        }*/
+        public int id_zlacza { get; set; }
     }
+
     public class parametry_anteny_moc
     {
-        public string rodzaj { get; set; }
+        public int id { get; set; }
         public double moc { get; set; }
     }
     public class parametry_anteny_zysk
     {
-        public string rodzaj { get; set; }
-        public double zysk { get; set; }
+        public string nazwa { get; set; }
+        public double zysk_dBi { get; set; }
     }
 }

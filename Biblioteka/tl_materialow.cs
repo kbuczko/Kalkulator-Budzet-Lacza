@@ -10,7 +10,7 @@ namespace Biblioteka
     {
         public int id { get; set; }
         public string nazwa { get; set; }
-        public double wartosc { get; set; }
+        public double tlumiennosc_db { get; set; }
 
         public double grubosc_cm { get; set; }
 
@@ -28,6 +28,10 @@ namespace Biblioteka
     public class tl_materialow2
     {
         public string nazwa { get; set; }
-        public double wartosc { get; set; }
+        public double tlumiennosc { get; set; }
+
+        public double grubosc_cm { get; set; }
+
+        public int czestotliwosc_MHz { get; set; }
     }
 }

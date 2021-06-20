@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -48,7 +51,13 @@
   <ItemGroup>
     <Compile Include="Budzet lacza.cs" />
     <Compile Include="calculator.cs" />
-    <Compile Include="Nadajnik.cs" />
+    <Compile Include="Instrukcja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Instrukcja.Designer.cs">
+      <DependentUpon>Instrukcja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Urzadzenie.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,16 +76,6 @@
     <Compile Include="Kalkulator.Designer.cs">
       <DependentUpon>Kalkulator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lang\eng.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>eng.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Lang\pol.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>pol.resx</DependentUpon>
-    </Compile>
     <Compile Include="parametry_anteny.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqliteDataAccess.cs" />
@@ -87,16 +86,11 @@
     <EmbeddedResource Include="home.resx">
       <DependentUpon>home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Instrukcja.resx">
+      <DependentUpon>Instrukcja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kalkulator.resx">
       <DependentUpon>Kalkulator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\eng.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>eng.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\pol.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>pol.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,6 +101,9 @@
   <ItemGroup>
     <PackageReference Include="Dapper">
       <Version>2.0.78</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Data.Sqlite.Core">
+      <Version>5.0.7</Version>
     </PackageReference>
     <PackageReference Include="Stub.System.Data.SQLite.Core.NetFramework">
       <Version>1.0.113.3</Version>
@@ -121,9 +118,23 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\4882066.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instrukcja21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instrukcja3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instrukcja4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
