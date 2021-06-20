@@ -87,6 +87,7 @@ namespace ProjektBudzetLacza
                 kalk.ClearButton.Text = "Clear";
                 kalk.QuitButton.Text = "Quit";
                 kalk.label28.Text = "Autocomplete";
+                kalk.comboBox6.Text = "Choose";
             }
             else
             {

@@ -479,7 +479,6 @@
             // 
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Items.AddRange(new object[] {
-            "",
             "400.0",
             "450.0",
             "460.0",
@@ -532,6 +531,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(409, 21);
             this.comboBox6.TabIndex = 70;
+            this.comboBox6.Text = "Wybierz";
             this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
             // 
             // label28
@@ -1098,9 +1098,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.ComboBox comboBox10;
         public System.Windows.Forms.TextBox textBox12;
         public System.Windows.Forms.Label label28;
+        public System.Windows.Forms.ComboBox comboBox6;
     }
 }
