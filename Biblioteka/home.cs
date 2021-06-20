@@ -567,7 +567,7 @@ namespace Biblioteka
                     }
                     if (id != 0)
                     {
-                        var lines_cables = File.ReadAllLines("available_cables.txt");
+                        var lines_cables = File.ReadAllLines("..\..\..\Biblioteka\available\available_cables.txt");
                         if (lines_cables.Contains(textBox2.Text))
                         {
                             //MessageBox.Show("1");
@@ -639,7 +639,7 @@ namespace Biblioteka
                 case "Złącza":
                 case "Connectors":
 
-                    var lines = File.ReadAllLines("available_connectors.txt");
+                    var lines = File.ReadAllLines(@"..\..\..\Biblioteka\available\available_connectors.txt");
 
                     if (lines.Contains(textBox1.Text))
                     {
