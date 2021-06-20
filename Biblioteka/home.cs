@@ -21,6 +21,7 @@ namespace Biblioteka
 {
     public partial class home : Form
     {
+        //LINIA 572
         public int lang;
 
         List<tl_materialow> lista_mat = new List<tl_materialow>();
@@ -569,7 +570,7 @@ namespace Biblioteka
                         var lines_cables = File.ReadAllLines("available_cables.txt");
                         if (lines_cables.Contains(textBox2.Text))
                         {
-                            MessageBox.Show("1");
+                            //MessageBox.Show("1");
                             try
                             {
                                 kabel kab = new kabel

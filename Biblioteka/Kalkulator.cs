@@ -114,7 +114,7 @@ namespace Biblioteka
         //przyciski
         private void CountButton1_Click(object sender, EventArgs e)
         {
-            string mozna = "Można zestawić połączenie";
+            string mozna = "Można zestawić połączenia";
             string can = "Can establish a connection";
             string niemozna = "Nie można zestawić połączenie";
             string cant = "Can't establish a connection";
@@ -209,10 +209,14 @@ namespace Biblioteka
                     if (BL + id_czulosc + 10 >= 0)
                     {
                         label29.Text = can;
+                        label31.Text = "✓";
+                        label31.ForeColor = Color.Green;
                     }
                     else
                     {
                         label29.Text = cant;
+                        label31.Text = "X";
+                        label31.ForeColor = Color.Red;
                     }
                 }
                 else
@@ -220,10 +224,15 @@ namespace Biblioteka
                     if (BL + id_czulosc + 10 >= 0)
                     {
                         label29.Text = mozna;
+                        label31.Text = "✓";
+                        label31.ForeColor = Color.Green;
+
                     }
                     else
                     {
                         label29.Text = niemozna;
+                        label31.Text = "X";
+                        label31.ForeColor = Color.Red;
                     }
                 }
                 
@@ -258,10 +267,15 @@ namespace Biblioteka
                     if (BL + id_czulosc + 10 >= 0)
                     {
                         label29.Text = can;
+                        label29.ForeColor = Color.Green;
+                        label31.Text = "✓";
+                        label31.ForeColor = Color.Green;
                     }
                     else
                     {
                         label29.Text = cant;
+                        label31.Text = "X";
+                        label31.ForeColor = Color.Red;
                     }
                 }
                 else
@@ -269,10 +283,15 @@ namespace Biblioteka
                     if (BL + id_czulosc + 10 >= 0)
                     {
                         label29.Text = mozna;
+                        label29.ForeColor = Color.Green;
+                        label31.Text = "✓";
+                        label31.ForeColor = Color.Green;
                     }
                     else
                     {
                         label29.Text = niemozna;
+                        label31.Text = "X";
+                        label31.ForeColor = Color.Red;
                     }
                 }
                 string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
@@ -1174,9 +1193,6 @@ namespace Biblioteka
             }
         }
 
-        private void label17_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

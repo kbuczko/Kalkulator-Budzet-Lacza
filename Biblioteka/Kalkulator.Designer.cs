@@ -94,7 +94,9 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -748,7 +750,6 @@
             this.label17.Size = new System.Drawing.Size(143, 13);
             this.label17.TabIndex = 42;
             this.label17.Text = "Długość kabla (nadajnik) [m]";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 
@@ -973,6 +974,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label31);
+            this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.textBoxZN);
             this.panel2.Controls.Add(this.addButton);
@@ -1006,6 +1009,13 @@
             this.panel2.Size = new System.Drawing.Size(547, 356);
             this.panel2.TabIndex = 73;
             // 
+            // label30
+            // 
+            this.label30.Location = new System.Drawing.Point(0, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(100, 23);
+            this.label30.TabIndex = 0;
+            // 
             // label29
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1014,11 +1024,25 @@
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label29.ForeColor = System.Drawing.Color.DarkRed;
-            this.label29.Location = new System.Drawing.Point(279, 335);
+            this.label29.Location = new System.Drawing.Point(265, 335);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(258, 20);
             this.label29.TabIndex = 73;
             this.label29.Text = "MOŻNA ZESTAWIĆ POŁĄCZENIE";
+            // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label31.ForeColor = System.Drawing.Color.DarkRed;
+            this.label31.Location = new System.Drawing.Point(519, 330);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(23, 25);
+            this.label31.TabIndex = 74;
+            this.label31.Text = "x";
             // 
             // Kalkulator
             // 
@@ -1119,5 +1143,7 @@
         public System.Windows.Forms.ComboBox comboBox6;
         public System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox comboBox5;
+        public System.Windows.Forms.Label label30;
+        public System.Windows.Forms.Label label31;
     }
 }
