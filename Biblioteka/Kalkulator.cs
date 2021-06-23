@@ -24,15 +24,15 @@ namespace Biblioteka
         int licznik = 0;
         //nadajnik
         List<Urzadzenie> lista_urz = new List<Urzadzenie>();
-        List<parametry_anteny> lista_ant = new List<parametry_anteny>();
+        List<Anteny> lista_ant = new List<Anteny>();
         List<kabel> lista_kab = new List<kabel>();
         List<zlacze> lista_zla = new List<zlacze>();
         //odbiornik
-        List<parametry_anteny> lista_ant2 = new List<parametry_anteny>();
+        List<Anteny> lista_ant2 = new List<Anteny>();
         List<kabel> lista_kab2 = new List<kabel>();
         List<zlacze> lista_zla2 = new List<zlacze>();
 
-        List<tl_materialow> lista_mat = new List<tl_materialow>();
+        List<materialy> lista_mat = new List<materialy>();
         List<Budzet_lacza> lista_bud = new List<Budzet_lacza>();
         private int licznik7;
         private static string czestotliwosc_global;
@@ -563,7 +563,7 @@ namespace Biblioteka
                             textBox5.Text = "Antena wbudowana";
                             string id_anteny = cnn.ExecuteScalar(query2).ToString();
                             string query3 = "SELECT nazwa FROM Antena WHERE id='" + id_anteny + "'";
-                            var anteny = cnn.Query<parametry_anteny>(query3, new DynamicParameters()); //uzupełnienie pasujących anten
+                            var anteny = cnn.Query<Anteny>(query3, new DynamicParameters()); //uzupełnienie pasujących anten
 
                             comboBox2.DataSource = anteny.ToList();
                             comboBox2.DisplayMember = "nazwa";
@@ -580,15 +580,15 @@ namespace Biblioteka
                             czestotliwosc_global = czestotliwosc_antena;
                             comboBox6.Text = czestotliwosc_antena;
                             string query5 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + czestotliwosc_antena + "'";
-                            var output3 = cnn.Query<parametry_anteny>(query5, new DynamicParameters());
+                            var output3 = cnn.Query<Anteny>(query5, new DynamicParameters());
                             lista_ant2 = output3.ToList();
                             if (lang == 1)
                             {
-                                lista_ant2.Insert(0, new parametry_anteny() { nazwa = "Choose" });
+                                lista_ant2.Insert(0, new Anteny() { nazwa = "Choose" });
                             }
                             else
                             {
-                                lista_ant2.Insert(0, new parametry_anteny() { nazwa = "Wybierz" });
+                                lista_ant2.Insert(0, new Anteny() { nazwa = "Wybierz" });
                             }
                             comboBox7.DataSource = lista_ant2;
                             comboBox7.DisplayMember = "nazwa";
@@ -677,15 +677,15 @@ namespace Biblioteka
                     string id = cnn.ExecuteScalar(query2).ToString();
                     string czestotliwosc_txt = comboBox6.GetItemText(comboBox6.SelectedItem);
                     string query1 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + czestotliwosc_txt + "' AND id_zlacza='" + id + "'";
-                    var output = cnn.Query<parametry_anteny>(query1, new DynamicParameters());
+                    var output = cnn.Query<Anteny>(query1, new DynamicParameters());
                     lista_ant = output.ToList();
                     if (lang == 1)
                     {
-                        lista_ant.Insert(0, new parametry_anteny() { nazwa = "Choose" });
+                        lista_ant.Insert(0, new Anteny() { nazwa = "Choose" });
                     }
                     else
                     {
-                        lista_ant.Insert(0, new parametry_anteny() { nazwa = "Wybierz" });
+                        lista_ant.Insert(0, new Anteny() { nazwa = "Wybierz" });
                     }
                     
                     comboBox2.DataSource = lista_ant.ToList();
@@ -729,15 +729,15 @@ namespace Biblioteka
             string query1 = "SELECT nazwa FROM Antena WHERE czestotliwosc_MHz='" + czestotliwosc_txt + "'";
             using (var cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny>(query1, new DynamicParameters());
+                var output = cnn.Query<Anteny>(query1, new DynamicParameters());
                 lista_ant2 = output.ToList();
                 if (lang == 1)
                 {
-                    lista_ant2.Insert(0, new parametry_anteny() { nazwa = "Choose" });
+                    lista_ant2.Insert(0, new Anteny() { nazwa = "Choose" });
                 }
                 else
                 {
-                    lista_ant2.Insert(0, new parametry_anteny() { nazwa = "Wybierz" });
+                    lista_ant2.Insert(0, new Anteny() { nazwa = "Wybierz" });
                 }
                 
                 comboBox7.DataSource = lista_ant2;
@@ -874,15 +874,15 @@ namespace Biblioteka
                 
                     string id = cnn.ExecuteScalar(query).ToString();
                     string query2 = "SELECT nazwa FROM Urzadzenie WHERE id_zlacza ='" + id + "'";
-                    var output = cnn.Query<parametry_anteny>(query2, new DynamicParameters());
+                    var output = cnn.Query<Anteny>(query2, new DynamicParameters());
                     lista_ant2 = output.ToList();
                     if (lang == 1)
                     {
-                        lista_ant2.Insert(0, new parametry_anteny() { nazwa = "Choose" });
+                        lista_ant2.Insert(0, new Anteny() { nazwa = "Choose" });
                     }
                     else
                     {
-                        lista_ant2.Insert(0, new parametry_anteny() { nazwa = "Wybierz" });
+                        lista_ant2.Insert(0, new Anteny() { nazwa = "Wybierz" });
                     }
                     
                     comboBox10.DataSource = lista_ant2;

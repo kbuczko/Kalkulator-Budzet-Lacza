@@ -22,11 +22,11 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static List<tl_materialow> example()
+        public static List<materialy> example()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<tl_materialow>("select wartosc from Material where id=1", new DynamicParameters());
+                var output = cnn.Query<materialy>("select wartosc from Material where id=1", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -79,20 +79,20 @@ namespace ProjektBudzetLacza
 
        
 
-        public static List<parametry_anteny> ListParameters()
+        public static List<Anteny> ListParameters()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<parametry_anteny>("select * from Antena", new DynamicParameters());
+                var output = cnn.Query<Anteny>("select * from Antena", new DynamicParameters());
                 return output.ToList();
             }
         }
 
-        public static List<tl_materialow> listMaterials()
+        public static List<materialy> listMaterials()
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
-                var output = cnn.Query<tl_materialow>("select * from Material", new DynamicParameters());
+                var output = cnn.Query<materialy>("select * from Material", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -122,7 +122,7 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static void saveMaterials(tl_materialow mat)
+        public static void saveMaterials(materialy mat)
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {
@@ -130,7 +130,7 @@ namespace ProjektBudzetLacza
             }
         }
 
-        public static void saveParameters(parametry_anteny par)
+        public static void saveParameters(Anteny par)
         {
             using (IDbConnection cnn = new SQLiteConnection(loadConnectionString()))
             {

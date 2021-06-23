@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteka
 {
-    public class parametry_anteny
+    public class Anteny
     {
         public int id { get; set; }
         public string nazwa { get; set; }

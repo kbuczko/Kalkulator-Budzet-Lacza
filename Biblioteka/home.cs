@@ -24,8 +24,8 @@ namespace Biblioteka
         //LINIA 572
         public int lang;
 
-        List<tl_materialow> lista_mat = new List<tl_materialow>();
-        List<parametry_anteny> lista_ant = new List<parametry_anteny>();
+        List<materialy> lista_mat = new List<materialy>();
+        List<Anteny> lista_ant = new List<Anteny>();
         List<kabel> lista_kab = new List<kabel>();
         List<zlacze> lista_zla = new List<zlacze>();
         List<Budzet_lacza> lista_bud = new List<Budzet_lacza>();
@@ -101,9 +101,9 @@ namespace Biblioteka
                 textBox2.Show();
                 textBox3.Show();
                 label2.Text = "Choose a table";
-                label7.Text = "name" + calkowita;
-                label1.Text = "gain_dBi" + calkowita;
-                label3.Text = "frequency_MHz" + tekst;
+                label7.Text = "name";
+                label1.Text = "gain_dBi [dbI]";
+                label3.Text = "frequency_MHz [MHz]";
             }
             else
             {
@@ -112,9 +112,9 @@ namespace Biblioteka
                 textBox1.Show();
                 textBox2.Show();
                 textBox3.Show();
-                label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                label7.Text = dataGridView1.Columns[1].HeaderText;
+                label1.Text = dataGridView1.Columns[2].HeaderText + " [dBi]";
+                label3.Text = dataGridView1.Columns[3].HeaderText + " [MHz]";
             }
             dataGridView1.Columns[0].Visible = false;
 
@@ -152,9 +152,9 @@ namespace Biblioteka
                     {
                         dataGridView1.Columns[1].HeaderText = "name";
                         dataGridView1.Columns[2].HeaderText = "power";
-                        dataGridView1.Columns[3].HeaderText = "cable_id";
-                        dataGridView1.Columns[4].HeaderText = "connector_id";
-                        dataGridView1.Columns[5].HeaderText = "antenna_name";
+                        dataGridView1.Columns[3].HeaderText = "cable id";
+                        dataGridView1.Columns[4].HeaderText = "connector id";
+                        dataGridView1.Columns[5].HeaderText = "antenna name";
                        
                         dataGridView1.Columns[7].HeaderText = "sensitivity";
                        
@@ -164,22 +164,29 @@ namespace Biblioteka
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
 
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
-                        label3.Text = "connector_name" + tekst;
-                        label4.Text = "cable_name" + tekst;
-                        label5.Text = "antenna_name" + tekst;
-                        label6.Text = "sensitivity" + calkowita;
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText + " [dBi]";
+                        label3.Text = "connector_name";
+                        label4.Text = "cable_name";
+                        label5.Text = "antenna_name";
+                        label6.Text = "sensitivity" + " [dBi]";
                     }
 
                     else
                     {
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
-                        label3.Text = "nazwa_zlacza" + tekst;
-                        label4.Text = "nazwa_kabla" + tekst;
-                        label5.Text = "nazwa_anteny" + tekst;
-                        label6.Text = "czulosc" + calkowita;
+                        dataGridView1.Columns[2].HeaderText = "moc [dBi]";
+                        dataGridView1.Columns[3].HeaderText = "id kabla";
+                        dataGridView1.Columns[4].HeaderText = "id złącza";
+                        dataGridView1.Columns[5].HeaderText = "nazwa anteny";
+
+                        dataGridView1.Columns[7].HeaderText = "czułość [dBi]";
+
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = "nazwa złącza";
+                        label4.Text = "nazwa kabla";
+                        label5.Text = "nazwa anteny";
+                        label6.Text = dataGridView1.Columns[7].HeaderText;
                     }
                     break;
 
@@ -195,12 +202,17 @@ namespace Biblioteka
 
                     if (lang == 1)
                     {
-                        dataGridView1.Columns[2].HeaderText = "distance_km";
-                        dataGridView1.Columns[3].HeaderText = "frequency_MHz";
+                        dataGridView1.Columns[2].HeaderText = "distance [km]";
+                        dataGridView1.Columns[3].HeaderText = "frequency [MHz]";
                         dataGridView1.Columns[4].HeaderText = "value";
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         DeleteButton.Text = "Delete";
+                    }
+                    else
+                    {
+                        dataGridView1.Columns[2].HeaderText = "odległość [km]";
+                        dataGridView1.Columns[3].HeaderText = "częstotliwość [MHz]";
                     }
 
                     
@@ -221,24 +233,28 @@ namespace Biblioteka
                     if (lang == 1)
                     {
                         dataGridView1.Columns[1].HeaderText = "name";
-                        dataGridView1.Columns[2].HeaderText = "attenuation_db";
-                        dataGridView1.Columns[4].HeaderText = "frequency_MHz";
-                        dataGridView1.Columns[3].HeaderText = "thickness_cm";
+                        dataGridView1.Columns[2].HeaderText = "attenuation [db]";
+                        dataGridView1.Columns[4].HeaderText = "frequency [MHz]";
+                        dataGridView1.Columns[3].HeaderText = "thickness [cm]";
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
-                        label4.Text = dataGridView1.Columns[4].HeaderText + calkowita;
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
+                        label4.Text = dataGridView1.Columns[4].HeaderText;
                     }
                     else
                     {
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + calkowita;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
-                        label4.Text = dataGridView1.Columns[4].HeaderText + calkowita;
+                        dataGridView1.Columns[2].HeaderText = "tłumienność [db]";
+                        dataGridView1.Columns[4].HeaderText = "częstotliwość [MHz]";
+                        dataGridView1.Columns[3].HeaderText = "grubość [cm]";
+
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
+                        label4.Text = dataGridView1.Columns[4].HeaderText;
                     }
                    
                     break;
@@ -258,25 +274,29 @@ namespace Biblioteka
                     if (lang == 1)
                     {
                         dataGridView1.Columns[1].HeaderText = "name";
-                        dataGridView1.Columns[2].HeaderText = "gain_dBi";
-                        dataGridView1.Columns[3].HeaderText = "frequency_MHz";
-                        dataGridView1.Columns[4].HeaderText = "connector_id";
+                        dataGridView1.Columns[2].HeaderText = "gain [dBi]";
+                        dataGridView1.Columns[3].HeaderText = "frequency [MHz]";
+                        dataGridView1.Columns[4].HeaderText = "connector id";
 
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
-                        label4.Text =  "connector_name" + tekst;
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
+                        label4.Text =  "connector name" + tekst;
                     }
                     else
                     {
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
-                        label4.Text =  "nazwa_zlacza" + tekst;
+                        dataGridView1.Columns[2].HeaderText = "zysk [dBi]";
+                        dataGridView1.Columns[3].HeaderText = "częstotliwość [MHz]";
+                        dataGridView1.Columns[4].HeaderText = "id złącza";
+
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
+                        label4.Text =  "nazwa złącza";
                     }
                     
                     break;
@@ -295,26 +315,30 @@ namespace Biblioteka
 
                     if (lang == 1)
                     {
-                        dataGridView1.Columns[1].HeaderText = "frequency_MHZ";
+                        dataGridView1.Columns[1].HeaderText = "frequency [MHz]";
                         dataGridView1.Columns[2].HeaderText = "name";
-                        dataGridView1.Columns[3].HeaderText = "attenuation_db1m";
-                        dataGridView1.Columns[5].HeaderText = "connector_name";
+                        dataGridView1.Columns[3].HeaderText = "attenuation [db/1m]";
+                        dataGridView1.Columns[5].HeaderText = "connector name";
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
-                        label7.Text = dataGridView1.Columns[1].HeaderText + calkowita;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + tekst;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
-                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
+                        label4.Text = dataGridView1.Columns[5].HeaderText;
                     }
 
                     else
                     {
-                        label7.Text = dataGridView1.Columns[1].HeaderText + calkowita;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + tekst;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + ulamek;
-                        label4.Text = dataGridView1.Columns[5].HeaderText + tekst;
+                        dataGridView1.Columns[1].HeaderText = "częstotliwość [MHz]";
+                        dataGridView1.Columns[3].HeaderText = "tłumienność [db/1m]";
+                        dataGridView1.Columns[5].HeaderText = "nazwa złącza";
+
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
+                        label4.Text = dataGridView1.Columns[5].HeaderText;
                     }
                     
                     break;
@@ -333,22 +357,25 @@ namespace Biblioteka
                     if (lang == 1)
                     {
                         dataGridView1.Columns[1].HeaderText = "name";
-                        dataGridView1.Columns[2].HeaderText = "attenuation_db";
-                        dataGridView1.Columns[3].HeaderText = "frequency_MHz";
+                        dataGridView1.Columns[2].HeaderText = "attenuation [db]";
+                        dataGridView1.Columns[3].HeaderText = "frequency [MHz]";
                         label2.Text = "Choose a table";
                         QuitButton.Text = "Quit";
                         AddButton.Text = "Add";
                         DeleteButton.Text = "Delete";
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
                     }
 
                     else
                     {
-                        label7.Text = dataGridView1.Columns[1].HeaderText + tekst;
-                        label1.Text = dataGridView1.Columns[2].HeaderText + ulamek;
-                        label3.Text = dataGridView1.Columns[3].HeaderText + calkowita;
+                        dataGridView1.Columns[2].HeaderText = "tłumienność [db]";
+                        dataGridView1.Columns[3].HeaderText = "częstotliwość [MHz]";
+
+                        label7.Text = dataGridView1.Columns[1].HeaderText;
+                        label1.Text = dataGridView1.Columns[2].HeaderText;
+                        label3.Text = dataGridView1.Columns[3].HeaderText;
                     }
                     break;
 
@@ -451,7 +478,7 @@ namespace Biblioteka
 
                     try
                     {
-                        tl_materialow mat = new tl_materialow
+                        materialy mat = new materialy
                         {
                             nazwa = textBox1.Text,
                             tlumiennosc_db = Convert.ToDouble(textBox2.Text),
@@ -502,7 +529,7 @@ namespace Biblioteka
                     {
                         try
                         {
-                            parametry_anteny par = new parametry_anteny
+                            Anteny par = new Anteny
                             {
                                 zysk_dBi = Convert.ToDouble(textBox2.Text),
                                 nazwa = textBox1.Text,

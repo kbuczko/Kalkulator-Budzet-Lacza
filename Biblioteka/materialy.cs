@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteka
 {
-    public class tl_materialow
+    public class materialy
     {
         public int id { get; set; }
         public string nazwa { get; set; }

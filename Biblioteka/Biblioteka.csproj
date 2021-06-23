@@ -76,10 +76,10 @@
     <Compile Include="Kalkulator.Designer.cs">
       <DependentUpon>Kalkulator.cs</DependentUpon>
     </Compile>
-    <Compile Include="parametry_anteny.cs" />
+    <Compile Include="Anteny.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqliteDataAccess.cs" />
-    <Compile Include="tl_materialow.cs" />
+    <Compile Include="materialy.cs" />
     <Compile Include="zlacze.cs" />
   </ItemGroup>
   <ItemGroup>
