@@ -93,6 +93,46 @@ namespace Biblioteka.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap db_eng {
+            get {
+                object obj = ResourceManager.GetObject("db_eng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap db2_2_eng {
+            get {
+                object obj = ResourceManager.GetObject("db2_2_eng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instrukcja1_eng {
+            get {
+                object obj = ResourceManager.GetObject("instrukcja1-eng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instrukcja1_pl {
+            get {
+                object obj = ResourceManager.GetObject("instrukcja1-pl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap instrukcja2 {
             get {
                 object obj = ResourceManager.GetObject("instrukcja2", resourceCulture);
@@ -103,9 +143,49 @@ namespace Biblioteka.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap instrukcja2_eng {
+            get {
+                object obj = ResourceManager.GetObject("instrukcja2-eng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instrukcja2_pl {
+            get {
+                object obj = ResourceManager.GetObject("instrukcja2-pl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap instrukcja3 {
             get {
                 object obj = ResourceManager.GetObject("instrukcja3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instrukcja3_eng {
+            get {
+                object obj = ResourceManager.GetObject("instrukcja3-eng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instrukcja3_pl {
+            get {
+                object obj = ResourceManager.GetObject("instrukcja3-pl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

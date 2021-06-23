@@ -51,11 +51,17 @@
   <ItemGroup>
     <Compile Include="Budzet lacza.cs" />
     <Compile Include="calculator.cs" />
-    <Compile Include="Instrukcja.cs">
+    <Compile Include="InstrukcjaENG.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Instrukcja.Designer.cs">
-      <DependentUpon>Instrukcja.cs</DependentUpon>
+    <Compile Include="InstrukcjaENG.Designer.cs">
+      <DependentUpon>InstrukcjaENG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstrukcjaPL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstrukcjaPL.Designer.cs">
+      <DependentUpon>InstrukcjaPL.cs</DependentUpon>
     </Compile>
     <Compile Include="Urzadzenie.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -86,8 +92,11 @@
     <EmbeddedResource Include="home.resx">
       <DependentUpon>home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Instrukcja.resx">
-      <DependentUpon>Instrukcja.cs</DependentUpon>
+    <EmbeddedResource Include="InstrukcjaENG.resx">
+      <DependentUpon>InstrukcjaENG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstrukcjaPL.resx">
+      <DependentUpon>InstrukcjaPL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kalkulator.resx">
       <DependentUpon>Kalkulator.cs</DependentUpon>
@@ -141,6 +150,18 @@
     <Content Include="available\available_connectors.txt" />
     <Content Include="Resources\db2_2_eng.png" />
     <Content Include="Resources\db_eng.png" />
+    <Content Include="Resources\instrukcja1-eng.png" />
+    <None Include="Resources\instrukcja1-eng1.png" />
+    <Content Include="Resources\instrukcja1-pl.png" />
+    <None Include="Resources\instrukcja3-pl1.png" />
+    <None Include="Resources\instrukcja1-pl1.png" />
+    <Content Include="Resources\instrukcja2-eng.png" />
+    <None Include="Resources\instrukcja2-eng1.png" />
+    <Content Include="Resources\instrukcja2-pl.png" />
+    <None Include="Resources\instrukcja2-pl1.png" />
+    <Content Include="Resources\instrukcja3-eng.png" />
+    <None Include="Resources\instrukcja3-eng1.png" />
+    <Content Include="Resources\instrukcja3-pl.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
